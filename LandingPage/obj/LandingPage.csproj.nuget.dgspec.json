@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\W\\Project\\LandingPage\\LandingPage\\LandingPage\\LandingPage.csproj": {}
+    "D:\\W\\Project\\LandingPage\\LandingPage\\LandingPage.csproj": {}
   },
   "projects": {
-    "D:\\W\\Project\\LandingPage\\LandingPage\\LandingPage\\LandingPage.csproj": {
+    "D:\\W\\Project\\LandingPage\\LandingPage\\LandingPage.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\W\\Project\\LandingPage\\LandingPage\\LandingPage\\LandingPage.csproj",
+        "projectUniqueName": "D:\\W\\Project\\LandingPage\\LandingPage\\LandingPage.csproj",
         "projectName": "LandingPage",
-        "projectPath": "D:\\W\\Project\\LandingPage\\LandingPage\\LandingPage\\LandingPage.csproj",
+        "projectPath": "D:\\W\\Project\\LandingPage\\LandingPage\\LandingPage.csproj",
         "packagesPath": "C:\\Users\\VanSon\\.nuget\\packages\\",
-        "outputPath": "D:\\W\\Project\\LandingPage\\LandingPage\\LandingPage\\obj\\",
+        "outputPath": "D:\\W\\Project\\LandingPage\\LandingPage\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\VanSon\\AppData\\Roaming\\NuGet\\NuGet.Config",
