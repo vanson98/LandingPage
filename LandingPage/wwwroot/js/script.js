@@ -1437,6 +1437,7 @@
 						}
 					},
 					success: function (result) {
+						debugger
 						if (isNoviBuilder)
 							return;
 
