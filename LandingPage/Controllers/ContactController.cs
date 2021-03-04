@@ -15,7 +15,7 @@ namespace LandingPage.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(ContactModel contact)
+        public IActionResult ContactView(ContactModel contact)
         {
             string fistName = contact.FirstName;
             string lastName = contact.LastName;
