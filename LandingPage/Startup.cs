@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LandingPage.Domain;
+using LandingPage.Repository;
+using LandingPage.Repository.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -58,5 +60,12 @@ namespace LandingPage
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+        private void ConfigureCoreAndRepositoryService(IServiceCollection services)
+        {
+            services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
+            services.AddScoped<IBannerRepository, BannerRepository>();
+
+        }
+
     }
 }

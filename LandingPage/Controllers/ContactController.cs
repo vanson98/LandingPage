@@ -17,11 +17,7 @@ namespace LandingPage.Controllers
         [HttpPost]
         public IActionResult Index(ContactModel contact)
         {
-            string fistName = contact.FirstName;
-            string lastName = contact.LastName;
-            string message = contact.Message;
-            string email = contact.Email;
-            string phoneNumber = contact.PhoneNumber;
+          
             return View();
         }
 
