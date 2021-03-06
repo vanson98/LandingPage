@@ -15,7 +15,7 @@ namespace LandingPage.Controllers
         }
 
         [HttpPost]
-        public IActionResult ContactView(ContactModel contact)
+        public IActionResult ContactView(ContactViewModel contact)
         {
           
             return View();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LandingPage.Domain;
+using LandingPage.Domain.EF;
 using LandingPage.Repository;
 using LandingPage.Repository.Interfaces;
 using Microsoft.AspNetCore.Builder;

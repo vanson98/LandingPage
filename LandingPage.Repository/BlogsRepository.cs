@@ -1,6 +1,6 @@
 ﻿using LadingPage.Common.ViewModel.Admin;
-using LandingPage.Domain;
-using LandingPage.Domain.Models;
+using LandingPage.Domain.EF;
+using LandingPage.Domain.Entities;
 using LandingPage.Repository.Interfaces;
 using System;
 using System.Collections.Generic;

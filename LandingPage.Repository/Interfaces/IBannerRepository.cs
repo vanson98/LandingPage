@@ -1,5 +1,5 @@
 ﻿using LadingPage.Common.ViewModel.Admin;
-using LandingPage.Domain.Models;
+using LandingPage.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -7,9 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="../../cdn-cgi/apps/head/3ts2ksMwXvKRuG480KNifJ2_JNM.js"></script>
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CLato%7CKalam:300,400,700">
+    <!-- Project Font: Fonts -->
     <link rel="stylesheet" href="~/css/fonts.css" />
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/css/bootstrap.css" />
+    <!-- Style Project -->
     <link rel="stylesheet" href="~/css/style.css" />
     <style>
         .ie-panel {
@@ -27,6 +31,7 @@
             display: block;
         }
     </style>
+    @RenderSection("Header", required: false)
 </head>
 <body>
     <div class="ie-panel"><a href="https://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
@@ -65,7 +70,8 @@
                                 <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                                 <!-- RD Navbar Brand-->
                                 <div class="rd-navbar-brand ">
-                                    <!--Brand-->@*<a class="brand" href="index"><img class="brand-logo-dark" src="" alt="" width="180" height="60" /><img class="brand-logo-light" src="images/icon.png" alt="" width="180" height="60" /></a>*@
+                                    <!--Brand-->
+                                    <img class="brand-logo-dark" src="images/eximani-icon.png" alt="" width="180" height="60" />
                                 </div>
                             </div>
                             <div class="rd-navbar-nav-wrap">
