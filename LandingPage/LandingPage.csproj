@@ -26,8 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LandingPage.Domain\LandingPage.Domain.csproj" />
     <ProjectReference Include="..\LandingPage.Repository\LandingPage.Repository.csproj" />
+    <ProjectReference Include="..\LandingPage.Service\LandingPage.Service.csproj" />
   </ItemGroup>
 
 </Project>

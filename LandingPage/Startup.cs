@@ -1,14 +1,18 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LandingPage.Domain;
 using LandingPage.Domain.EF;
+using LandingPage.Domain.Entities;
 using LandingPage.Repository;
 using LandingPage.Repository.Interfaces;
+using LandingPage.Service.Interfaces;
+using LandingPage.Service.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,12 +33,18 @@ namespace LandingPage
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            
+            // Sử dụng DbContext
             services.AddDbContext<ApplicationDbContext>(options =>
-             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("LandingPageDB")));
+            // Cấu hình Identity 
+            services.AddIdentity<AppUser, AppRole>()
+                    .AddEntityFrameworkStores<ApplicationDbContext>()
+                    .AddDefaultTokenProviders();
+            // Cấu hình Dependency Injection 
+            ConfigureDependencyInjection(services);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -49,9 +59,8 @@ namespace LandingPage
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseAuthentication();
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -61,11 +70,12 @@ namespace LandingPage
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
-        private void ConfigureCoreAndRepositoryService(IServiceCollection services)
-        {
-            services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
-            services.AddScoped<IBannerRepository, BannerRepository>();
 
+        private void ConfigureDependencyInjection(IServiceCollection services)
+        {
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
+            services.AddScoped<SignInManager<AppUser>, SignInManager<AppUser>>();
         }
 
     }
