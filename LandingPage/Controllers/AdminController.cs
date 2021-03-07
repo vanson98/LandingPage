@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LandingPage.Models;
 using LandingPage.Service.Dto;
 using LandingPage.Service.Interfaces;
 using LandingPage.Service.Services;
@@ -54,7 +55,7 @@ namespace LandingPage.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Register([FromBody]RegisterRequestDto request)
+        public async Task<IActionResult> RegisterPost([FromBody]RegisterRequestDto request)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

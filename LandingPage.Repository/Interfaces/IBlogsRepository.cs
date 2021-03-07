@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LandingPage.Repository.Interfaces
 {
-    public interface IBlogsRepository : IRepository<Blogs>
+    public interface IBlogsRepository : IRepository<Blog>
     {
         Task<List<BlogsAdminViewModel>> GetBlogsAdminViewModels();
 

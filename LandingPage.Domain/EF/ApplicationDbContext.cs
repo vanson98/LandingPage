@@ -32,13 +32,13 @@ namespace LandingPage.Domain.EF
             modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens").HasKey(x => x.UserId);
         }
 
-        public DbSet<Banner> Banner { get; set; }
-        public DbSet<Blogs> Blogs { get; set; }
-        public DbSet<Category> Category { get; set; }
+        public DbSet<Banner> Banners { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ContactModel> ContactModels { get; set; }
         public DbSet<FeedBack> FeedBacks { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
-
+        public DbSet<BlogCategory> BlogCategories { get; set; }
     }
 }

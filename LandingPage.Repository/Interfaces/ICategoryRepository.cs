@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LandingPage.Repository.Interfaces
 {
-    public interface ICategoryRepository : IRepository<Category>
+    public interface ICategoryRepository : IRepository<ProductCategory>
     {
-        Task<ICollection<Category>> GetCategoryParrent();
+        Task<ICollection<ProductCategory>> GetCategoryParrent();
 
 
     }

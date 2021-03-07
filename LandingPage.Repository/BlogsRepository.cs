@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LandingPage.Repository
 {
-    public class BlogsRepository : BaseRepository<Blogs>, IBlogsRepository
+    public class BlogsRepository : BaseRepository<Blog>, IBlogsRepository
     {
         public BlogsRepository(ApplicationDbContext dbContext) : base(dbContext)
         {
