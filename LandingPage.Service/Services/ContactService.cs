@@ -20,6 +20,7 @@ namespace LandingPage.Service.Services
 
         public async Task<List<CustomerContactDto>> GetContactAdminViewModels()
         {
+            return null;
         }
 
         public async Task<bool> SaveCustomerContact(CustomerContactDto request)

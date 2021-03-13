@@ -26,7 +26,7 @@ namespace LandingPage.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            var model = await _contactService.get();
+            var model = await _contactService.GetContactAdminViewModels();
             return View(model);
         }
     }
