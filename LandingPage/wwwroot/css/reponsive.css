@@ -1,0 +1,1080 @@
+﻿.SttAllPage {
+    /*width: 27px;*/
+}
+/*///////////////////GetCustomerList    /////////////////////////*/
+.GetCartList_table > th {
+    text-align: center;
+}
+
+.GetCartList_table > td p {
+    text-align: center;
+    width: inherit;
+}
+
+.GetCartList_Username {
+    width: 848px;
+}
+
+.GetCartList_NotionalPrice {
+    width: 110px;
+}
+
+.GetCartList_TotalPrice {
+    width: 110px;
+}
+
+.GetCartList_CouponName {
+    width: 140px;
+}
+
+.GetCartList_CreatedDate {
+    width: 150px;
+}
+
+.GetCartList_CreatedBy {
+    width: 140px;
+}
+
+.GetCartList_UpdatedDate {
+    width: 150px;
+}
+
+.GetCartList_UpdatedBy {
+    width: 140px;
+}
+
+.GetCartList_Status {
+    width: 80px;
+}
+
+.GetCartList_IsDeleted {
+    width: 80px;
+}
+
+.GetCartList_Function {
+    display: flex;
+    border: none !important;
+}
+
+    .GetCartList_Function a {
+    }
+
+
+/*///////////////////GetCustomerList    /////////////////////////*/
+
+.GetCustomerList_table > th {
+    text-align: center;
+}
+
+.GetCustomerList_table > td p {
+    text-align: center;
+    width: inherit;
+}
+
+.GetCustomerList_UserName {
+    width: 80px;
+}
+
+.GetCustomerList_Name {
+    width: 80px;
+}
+
+.GetCustomerList_Gender {
+    width: 80px;
+}
+
+.GetCustomerList_Birthday {
+    width: 80px;
+}
+
+.GetCustomerList_Phone {
+    width: 80px;
+}
+
+.GetCustomerList_Email {
+    width: 190px;
+}
+
+.GetCustomerList_UrlImage {
+    width: 193px;
+}
+
+    .GetCustomerList_UrlImage img {
+        width: 168px;
+    }
+
+.GetCustomerList_Status {
+    width: 54px;
+}
+
+.GetCustomerList_IsDeleted {
+    width: 47px;
+}
+
+.GetCustomerList_CreatedDate {
+    width: 90px;
+}
+
+.GetCustomerList_CreatedBy {
+    width: 80px;
+}
+
+.GetCustomerList_UpdatedDate {
+    width: 90px;
+}
+
+.GetCustomerList_UpdatedBy {
+    width: 80px;
+}
+
+.GetCustomerList_Function {
+    width: 172px;
+    display: flex;
+    border: none !important;
+}
+
+    .GetCustomerList_Function a {
+        margin-right: 5px;
+    }
+
+
+/*///////////////////GetManufacturerList  /////////////////////////*/
+
+.GetManufacturerList_table > th {
+    text-align: center;
+}
+
+.GetManufacturerList_table > td p {
+    text-align: center;
+    width: inherit;
+}
+
+.GetManufacturerList_Name {
+    width: 940px;
+}
+
+.GetManufacturerList_Description {
+    width: 250px;
+}
+
+.GetManufacturerList_Status {
+    width: 65px;
+}
+
+.GetManufacturerList_IsDeleted {
+    width: 65px;
+}
+
+.GetManufacturerList_CreatedDate {
+    width: 150px;
+}
+
+.GetManufacturerList_CreatedBy {
+    width: 150px;
+}
+
+.GetManufacturerList_UpdatedDate {
+    width: 150px;
+}
+
+.GetManufacturerList_UpdatedBy {
+    width: 150px;
+}
+
+.GetManufacturerList_Function {
+    width: 172px;
+    display: flex;
+    border: none !important;
+}
+
+    .GetManufacturerList_Function a {
+        margin-right: 5px;
+    }
+
+
+/*///////////////////GetCouponList/////////////////////////*/
+.GetCouponList_table > th {
+    text-align: center;
+}
+
+.GetCouponList_table > td p {
+    text-align: center;
+    width: inherit;
+}
+
+.GetCouponList_Name {
+    width: 110px;
+}
+
+.GetCouponList_Amount {
+    width: 90px;
+}
+
+.GetCouponList_NumberApply {
+    width: 54px;
+}
+
+.GetCouponList_StartTime {
+    width: 105px;
+}
+
+.GetCouponList_EndTime {
+    width: 105px;
+}
+
+.GetCouponList_CategoryName {
+    width: 110px;
+}
+
+.GetCouponList_Status {
+    width: 70px;
+}
+
+.GetCouponList_IsDeleted {
+    width: 70px;
+}
+
+.GetCouponList_CreatedDate {
+    width: 80px;
+}
+
+.GetCouponList_CreatedBy {
+    width: 90px;
+}
+
+.GetCouponList_UpdatedDate {
+    width: 105px;
+}
+
+.GetCouponList_UpdatedBy {
+    width: 105px;
+}
+
+.GetCouponList_Function {
+    width: 172px;
+    display: flex;
+    border: none !important;
+}
+
+    .GetCouponList_Function a {
+        margin-right: 5px;
+    }
+
+/*///////////////////GetSupplierList      min_1366/////////////////////////*/
+
+.GetSupplierList_table > th {
+    text-align: center;
+}
+
+.GetSupplierList_table > td p {
+    text-align: center;
+    width: inherit;
+}
+
+.GetSupplierList_Name {
+    width: 222px;
+}
+
+.GetSupplierList_CodeName {
+    width: 230px;
+}
+
+.GetSupplierList_Email {
+    width: 230px;
+}
+
+.GetSupplierList_Fax {
+    width: 230px;
+}
+
+.GetSupplierList_Phone {
+    width: 230px;
+}
+
+.GetSupplierList_Status {
+    width: 54px;
+}
+
+.GetSupplierList_IsDeleted {
+    width: 47px;
+}
+
+.GetSupplierList_CreatedDate {
+    width: 80px;
+}
+
+.GetSupplierList_CreatedBy {
+    width: 90px;
+}
+
+.GetSupplierList_UpdatedDate {
+    width: 80px;
+}
+
+.GetSupplierList_UpdatedBy {
+    width: 90px;
+}
+
+.GetSupplierList_Function {
+    width: 172px;
+    display: flex;
+    border: none !important;
+}
+
+    .GetSupplierList_Function a {
+        margin-right: 5px;
+    }
+
+
+
+/*///////////////////GetCollectionImageList/////////////////////////*/
+.GetCollectionImageList_table > th {
+    text-align: center;
+}
+
+.GetCollectionImageList_table > td p {
+    text-align: center;
+    width: inherit;
+}
+
+.GetCollectionImageList_Name {
+    width: 335px;
+}
+
+.GetCollectionImageList_URLImage {
+    width: 250px;
+}
+
+    .GetCollectionImageList_URLImage img {
+        width: 225px;
+    }
+
+.GetCollectionImageList_Status {
+    width: 70px;
+}
+
+.GetCollectionImageList_IsDeleted {
+    width: 70px;
+}
+
+.GetCollectionImageList_CreatedDate {
+    width: 150px;
+}
+
+.GetCollectionImageList_CreatedBy {
+    width: 120px;
+}
+
+.GetCollectionImageList_UpdatedDate {
+    width: 150px;
+}
+
+.GetCollectionImageList_UpdatedBy {
+    width: 120px;
+}
+
+.GetCollectionImageList_Function {
+    width: 160px;
+    display: flex;
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+    .GetCollectionImageList_Function a {
+        margin-right: auto;
+    }
+
+
+
+
+
+/*///////////////////GetCategoryList/////////////////////////*/
+.GetCategoryList_table > th {
+    text-align: center;
+}
+
+.GetCategoryList_table > td p {
+    text-align: center;
+    width: inherit;
+}
+
+.GetCategoryList_Name {
+    width: 110px;
+}
+
+.GetCategoryList_Description {
+    width: 130px;
+}
+
+.GetCategoryList_Sort {
+    width: 52px;
+}
+
+.GetCategoryList_URLImage {
+    width: 193px;
+}
+
+    .GetCategoryList_URLImage img {
+        width: 168px;
+    }
+
+.GetCategoryList_ParentId {
+    width: 110px;
+}
+
+.GetCategoryList_IsCollection {
+    width: 47px;
+}
+
+.GetCategoryList_Status {
+    width: 54px;
+}
+
+.GetCategoryList_IsDeleted {
+    width: 47px;
+}
+
+.GetCategoryList_CreatedDate {
+    width: 80px;
+}
+
+.GetCategoryList_CreatedBy {
+    width: 90px;
+}
+
+.GetCategoryList_UpdatedDate {
+    width: 80px;
+}
+
+.GetCategoryList_UpdatedBy {
+    width: 90px;
+}
+
+.GetCategoryList_Function {
+    width: 175px;
+}
+
+    .GetCategoryList_Function a {
+        margin-right: 5px;
+    }
+
+/*////////////////////////GetProductList////////////////////////////*/
+
+.GetProductList_table > th {
+    text-align: center;
+}
+
+.GetProductList_table td p {
+    text-align: center;
+    width: inherit;
+}
+
+.GetProductList_Name {
+    width: 110px;
+}
+
+.GetProductList_Description {
+    width: 283px;
+}
+
+.GetProductList_ShortDescription {
+    width: 180px;
+}
+
+.GetProductList_PublicationDate {
+    width: 80px;
+}
+
+.GetProductList_Keyword {
+    width: 100px;
+}
+
+.GetProductList_Sku {
+    width: 100px;
+}
+
+.GetProductList_View {
+    width: 35px;
+}
+
+.GetProductList_Price {
+    width: 90px;
+}
+
+.GetProductList_DiscountPrice {
+    width: 90px;
+}
+
+.GetProductList_ManufacturerName {
+    width: 90px;
+}
+
+.GetProductList_SupplierName {
+    width: 90px;
+}
+
+.GetProductList_CreatedDate {
+    width: 80px;
+}
+
+.GetProductList_CreatedBy {
+    width: 90px;
+}
+
+.GetProductList_UpdatedDate {
+    width: 80px;
+}
+
+.GetProductList_UpdatedBy {
+    width: 90px;
+}
+
+.GetProductList_IsDeleted {
+    width: 43px;
+}
+
+.GetProductList_Status {
+    width: 54px;
+}
+
+.GetProductList_Function {
+    width: 89px;
+    /*width: 150px;*/
+    /*display: flex;*/ /*
+    border: none !important;*/
+}
+
+    .GetProductList_Function a:nth-child(1) {
+        /*margin-right: auto;*/
+    }
+
+@media (min-width: 1920px) {
+}
+
+@media (max-width: 1919px) and (min-width: 1600px) {
+}
+
+@media (max-width: 1599px) and (min-width: 1366px) {
+    body {
+        font-size: 0.9rem;
+    }
+
+
+    /*///////////////////GetCustomerList      min_1366/////////////////////////*/
+
+    .GetCustomerList_table > th {
+        text-align: center;
+    }
+
+    .GetCustomerList_table > td p {
+        text-align: center;
+        width: inherit;
+    }
+
+    .GetCustomerList_UserName {
+        width: 80px;
+    }
+
+    .GetCustomerList_Name {
+        width: 80px;
+    }
+
+    .GetCustomerList_Gender {
+        width: 80px;
+    }
+
+    .GetCustomerList_Birthday {
+        width: 80px;
+    }
+
+    .GetCustomerList_Phone {
+        width: 80px;
+    }
+
+    .GetCustomerList_Email {
+        width: 190px;
+    }
+
+    .GetCustomerList_UrlImage {
+        width: 193px;
+    }
+
+        .GetCustomerList_UrlImage img {
+            width: 168px;
+        }
+
+    .GetCustomerList_Status {
+        width: 54px;
+    }
+
+    .GetCustomerList_IsDeleted {
+        width: 47px;
+    }
+
+    .GetCustomerList_CreatedDate {
+        width: 90px;
+    }
+
+    .GetCustomerList_CreatedBy {
+        width: 80px;
+    }
+
+    .GetCustomerList_UpdatedDate {
+        width: 90px;
+    }
+
+    .GetCustomerList_UpdatedBy {
+        width: 80px;
+    }
+
+    .GetCustomerList_Function {
+        width: 172px;
+        display: flex;
+        border: none !important;
+    }
+
+        .GetCustomerList_Function a {
+            margin-right: 5px;
+        }
+
+
+    /*///////////////////GetSupplierList      min_1366/////////////////////////*/
+
+    .GetSupplierList_table > th {
+        text-align: center;
+    }
+
+    .GetSupplierList_table > td p {
+        text-align: center;
+        width: inherit;
+    }
+
+    .GetSupplierList_Name {
+        width: 80px;
+    }
+
+    .GetSupplierList_CodeName {
+        width: 80px;
+    }
+
+    .GetSupplierList_Email {
+        width: 190px;
+    }
+
+    .GetSupplierList_Fax {
+        width: 80px;
+    }
+
+    .GetSupplierList_Phone {
+        width: 80px;
+    }
+
+    .GetSupplierList_Status {
+        width: 54px;
+    }
+
+    .GetSupplierList_IsDeleted {
+        width: 47px;
+    }
+
+    .GetSupplierList_CreatedDate {
+        width: 80px;
+    }
+
+    .GetSupplierList_CreatedBy {
+        width: 90px;
+    }
+
+    .GetSupplierList_UpdatedDate {
+        width: 80px;
+    }
+
+    .GetSupplierList_UpdatedBy {
+        width: 90px;
+    }
+
+    .GetSupplierList_Function {
+        width: 172px;
+        display: flex;
+        border: none !important;
+    }
+
+        .GetSupplierList_Function a {
+            margin-right: 5px;
+        }
+
+
+    /*///////////////////GetManufacturerList      min_1366/////////////////////////*/
+
+    .GetManufacturerList_table > th {
+        text-align: center;
+    }
+
+    .GetManufacturerList_table > td p {
+        text-align: center;
+        width: inherit;
+    }
+
+    .GetManufacturerList_Name {
+        width: 80px;
+    }
+
+    .GetManufacturerList_Description {
+        width: 193px;
+    }
+
+    .GetManufacturerList_Status {
+        width: 54px;
+    }
+
+    .GetManufacturerList_IsDeleted {
+        width: 47px;
+    }
+
+    .GetManufacturerList_CreatedDate {
+        width: 80px;
+    }
+
+    .GetManufacturerList_CreatedBy {
+        width: 90px;
+    }
+
+    .GetManufacturerList_UpdatedDate {
+        width: 80px;
+    }
+
+    .GetManufacturerList_UpdatedBy {
+        width: 90px;
+    }
+
+    .GetManufacturerList_Function {
+        width: 172px;
+        display: flex;
+        border: none !important;
+    }
+
+        .GetManufacturerList_Function a {
+            margin-right: 5px;
+        }
+
+
+
+    /*///////////////////GetCouponList    min_1366/////////////////////////*/
+    .GetCouponList_table > th {
+        text-align: center;
+    }
+
+    .GetCouponList_table > td p {
+        text-align: center;
+        width: inherit;
+    }
+
+    .GetCouponList_Name {
+        width: 110px;
+    }
+
+    .GetCouponList_Amount {
+        width: 90px;
+    }
+
+    .GetCouponList_NumberApply {
+        width: 54px;
+    }
+
+    .GetCouponList_StartTime {
+        width: 80px;
+    }
+
+    .GetCouponList_EndTime {
+        width: 80px;
+    }
+
+    .GetCouponList_CategoryName {
+        width: 110px;
+    }
+
+    .GetCouponList_Status {
+        width: 70px;
+    }
+
+    .GetCouponList_IsDeleted {
+        width: 70px;
+    }
+
+    .GetCouponList_CreatedDate {
+        width: 80px;
+    }
+
+    .GetCouponList_CreatedBy {
+        width: 90px;
+    }
+
+    .GetCouponList_UpdatedDate {
+        width: 80px;
+    }
+
+    .GetCouponList_UpdatedBy {
+        width: 80px;
+    }
+
+    .GetCouponList_Function {
+        width: 172px;
+        display: flex;
+        border: none !important;
+    }
+
+        .GetCouponList_Function a {
+            margin-right: 5px;
+        }
+
+
+
+
+    /*///////////////////GetCollectionImageList      min_1366/////////////////////////*/
+
+    .GetCollectionImageList_table > th {
+        text-align: center;
+    }
+
+    .GetCollectionImageList_table > td p {
+        text-align: center;
+        width: inherit;
+    }
+
+    .GetCollectionImageList_Name {
+        width: 80px;
+    }
+
+    .GetCollectionImageList_URLImage {
+        width: 193px;
+    }
+
+        .GetCollectionImageList_URLImage img {
+            width: 168px;
+        }
+
+    .GetCollectionImageList_Status {
+        width: 54px;
+    }
+
+    .GetCollectionImageList_IsDeleted {
+        width: 47px;
+    }
+
+    .GetCollectionImageList_CreatedDate {
+        width: 80px;
+    }
+
+    .GetCollectionImageList_CreatedBy {
+        width: 90px;
+    }
+
+    .GetCollectionImageList_UpdatedDate {
+        width: 80px;
+    }
+
+    .GetCollectionImageList_UpdatedBy {
+        width: 90px;
+    }
+
+    .GetCollectionImageList_Function {
+        width: 150px;
+        display: flex;
+        border-bottom: none !important;
+        border-left: none !important;
+        border-right: none !important;
+    }
+
+        .GetCollectionImageList_Function a {
+            margin-right: 5px;
+        }
+
+    /*///////////////////GetCategoryList     min_1366/////////////////////////*/
+    .GetCategoryList_table > th {
+        text-align: center;
+    }
+
+    .GetCategoryList_table > td p {
+        text-align: center;
+        width: inherit;
+    }
+
+    .GetCategoryList_Name {
+        width: 110px;
+    }
+
+    .GetCategoryList_Description {
+        width: 130px;
+    }
+
+    .GetCategoryList_Sort {
+        width: 52px;
+    }
+
+    .GetCategoryList_URLImage {
+        width: 193px;
+    }
+
+        .GetCategoryList_URLImage img {
+            width: 168px;
+        }
+
+    .GetCategoryList_ParentId {
+        width: 110px;
+    }
+
+    .GetCategoryList_IsCollection {
+        width: 47px;
+    }
+
+    .GetCategoryList_Status {
+        width: 54px;
+    }
+
+    .GetCategoryList_IsDeleted {
+        width: 47px;
+    }
+
+    .GetCategoryList_CreatedDate {
+        width: 75px;
+    }
+
+    .GetCategoryList_CreatedBy {
+        width: 90px;
+    }
+
+    .GetCategoryList_UpdatedDate {
+        width: 80px;
+    }
+
+    .GetCategoryList_UpdatedBy {
+        width: 90px;
+    }
+
+    .GetCategoryList_Function {
+        width: 170px;
+        display: flex;
+        border-bottom: none !important;
+        border-left: none !important;
+        border-right: none !important;
+    }
+
+        .GetCategoryList_Function a {
+            margin-right: auto;
+        }
+    /*////////////////////////GetProductList     min_1366////////////////////////////*/
+
+    .GetProductList_table > th {
+        text-align: center;
+    }
+
+    .GetProductList_table td p {
+        text-align: center;
+        width: inherit;
+    }
+
+    .GetProductList_Name {
+        width: 110px;
+    }
+
+    .GetProductList_Description {
+        width: 130px;
+    }
+
+    .GetProductList_ShortDescription {
+        width: 180px;
+    }
+
+    .GetProductList_PublicationDate {
+        width: 80px;
+    }
+
+    .GetProductList_Keyword {
+        width: 100px;
+    }
+
+    .GetProductList_Sku {
+        width: 100px;
+    }
+
+    .GetProductList_View {
+        width: 35px;
+    }
+
+    .GetProductList_Price {
+        width: 90px;
+    }
+
+    .GetProductList_DiscountPrice {
+        width: 90px;
+    }
+
+    .GetProductList_ManufacturerName {
+        width: 90px;
+    }
+
+    .GetProductList_SupplierName {
+        width: 90px;
+    }
+
+    .GetProductList_CreatedDate {
+        width: 80px;
+    }
+
+    .GetProductList_CreatedBy {
+        width: 90px;
+    }
+
+    .GetProductList_UpdatedDate {
+        width: 80px;
+    }
+
+    .GetProductList_UpdatedBy {
+        width: 90px;
+    }
+
+    .GetProductList_IsDeleted {
+        width: 43px;
+    }
+
+    .GetProductList_Status {
+        width: 54px;
+    }
+
+    .GetProductList_Function {
+        width: 150px;
+        display: flex;
+        border-bottom: none !important;
+        border-left: none !important;
+        border-right: none !important;
+    }
+
+        .GetProductList_Function a:nth-child(1) {
+            margin-right: auto;
+        }
+}
+
+@media (max-width: 1365px) and (min-width: 1280px) {
+}
+
+@media (max-width: 1199px) and (min-width: 1024px) {
+}
+
+@media (max-width: 1023px) and (min-width: 992px) {
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+}
+
+@media (max-width: 767px) and (min-width: 576px) {
+}
+
+@media (max-width: 575px) and (min-width: 480px) {
+}
+
+@media (max-width: 479px) and (min-width: 320px) {
+}
+
+@media (max-width: 379px) {
+}

@@ -76,6 +76,7 @@ namespace LandingPage
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddScoped<SignInManager<AppUser>, SignInManager<AppUser>>();
+            services.AddScoped<IContactService, ContactService>();
         }
 
     }

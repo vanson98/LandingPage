@@ -3,34 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LandingPage.Models;
+using LandingPage.Service.Dto;
+using LandingPage.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LandingPage.Controllers
 {
     public class ContactController : Controller
     {
-        public IActionResult Index()
+        private readonly IContactService _contactService;
+
+        public ContactController(IContactService contactService)
+        {
+            _contactService = contactService;
+        }
+
+
+        public async Task<IActionResult> Index()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult ContactView(ContactViewModel contact)
+        public async Task<IActionResult> ReceiveContact(CustomerContactDto contactdto)
         {
-          
+            await _contactService.SaveCustomerContact(contactdto);
+            return View("Index");
+        }
+        public async Task<IActionResult> ContactList()
+        {
             return View();
         }
-
-        [HttpPost]
-        public IActionResult ReceiveEmail(string email)
-        {
-            var mail = email;
-            var isReceive = false;
-            if (mail!=null){
-                isReceive = true;
-            }
-            return Json(isReceive);
-        }
-
     }
 }
