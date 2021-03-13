@@ -1,0 +1,613 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Change input control border color */
+.form-control, .input-group-text {
+    border: 1px solid #0080ff;
+}
+
+a.btn:hover {
+    cursor: pointer !important;
+}
+
+/*loader*/
+.loaderbody {
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background-color: rgba(128,128,128,0.2);
+    z-index: 2147483647;
+}
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    position: fixed;
+    top: 45%;
+    left: 40%;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.hide {
+    display: none;
+}
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+.paragraph {
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    display: -webkit-box;
+}
+.mini_paragraph{
+    display:block;
+}
+
+.table-scroll {
+    overflow-x: scroll;
+}
+table {
+    table-layout: fixed;
+}
+table td img{
+    object-fit:contain;
+    width:100%;
+}
+table td img.large{
+    height:120px;
+}
+    table td img.small-img {
+        height: 80px;
+    }
+    .card-header a i {
+        margin-right:5px
+    }
+.dataTables_filter input:focus {
+    border: 1px solid #fff;
+}
+table tbody {
+    font-size: 14px !important;
+    font-family: sans-serif !important;
+}
+table p {
+    margin: 0px !important;
+}
+form select {
+    border-radius: 3px;
+    padding: 5px;
+}
+.form-group{
+    margin-bottom: 2rem !important;
+}
+.form-control{
+    box-shadow:none !important;
+}
+.attribute{
+    padding:25px 15px 10px;
+    margin-bottom:15px;
+    border:1px solid #333;
+    border-radius:5px;
+    text-align:center;
+    position:relative;
+}
+.btn-close {
+    cursor: pointer;
+    position: absolute !important;
+    top: -3px;
+    right: 6px;
+    padding: 4px !important;
+    font-size: 20px;
+}
+.attr-head{
+    border-bottom:1px solid #333;
+    padding-bottom:5px;
+    margin-bottom:15px;
+}
+.attr-filter{
+    margin-bottom:30px;
+}
+.attr-filter i{
+    margin-right:5px;
+}
+    .attr-filter ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .attr-filter ul li{
+        margin-left:10px;
+    }
+.image-product {
+    padding: 30px 15px 10px;
+    margin-bottom: 15px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+}
+.button-container {
+    position: relative;
+    margin-left: 8px;
+}
+
+    .button-container .button {
+        cursor: pointer;
+        display: block;
+        padding: 8px 14px;
+        border: 1px solid rgb(0, 127, 240);
+        border-radius: 4px;
+        font-weight: 400;
+        font-size: 13px;
+    }
+
+.button-container a.button {
+    color: rgb(0, 127, 240) !important;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+     .button-container input {
+        display: none;
+    }
+
+    .button-container a:hover {
+        background: rgb(0, 127, 240);
+        color: #fff !important;
+    }
+    .picture{
+        width:100px;
+        height:100px;
+        margin-left:10px;
+        cursor:pointer;
+    }
+    .main-picture{
+
+    }
+    .picture img{
+        width:100%;
+        height:100%;
+        object-fit:contain
+    }
+.picture-input{
+    display:flex;
+    margin-top:-10px;
+}
+#add-img i {
+    margin-right: 5px;
+}
+.main-picture {
+    display: flex;
+}
+.is-main-picture {
+    width: 100px;
+    text-align: center;
+    margin-left: 10px;
+}
+.is-main-picture input{
+    width:24px;
+    height:24px;
+}
+.required {
+    color: red;
+    font-size: 24px;
+}
+form span.text-danger {
+    float: left;
+    padding-left: 12px;
+}
+
+.order-detail {
+    width: 100%;
+    color: rgb(66, 66, 66);
+    display: table;
+    font-size: 13px;
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+    .order-detail thead {
+        display: table-header-group;
+    }
+
+    .order-detail tr {
+        display: table-row;
+        padding: 10px;
+    }
+
+    .order-detail thead tr th:first-child {
+        border-left: none;
+        width: 400px;
+    }
+
+    .order-detail thead tr th {
+        display: table-cell;
+        padding: 20px 15px;
+        border-top: none;
+        min-width: 100px;
+        position: relative;
+        background: 0px 0px;
+        color: rgb(120, 120, 120);
+        font-size: 15px;
+        font-weight: 400;
+        border-bottom: 1px solid rgb(244, 244, 244);
+        text-align: left;
+    }
+
+        .order-detail thead tr th:last-child {
+            text-align: right;
+            min-width: 160px;
+        }
+
+    .order-detail tbody {
+        display: table-row-group;
+    }
+
+        .order-detail tbody tr:first-child {
+            border-top: none;
+        }
+
+        .order-detail tbody tr {
+            border-bottom: 1px solid rgb(244, 244, 244);
+        }
+
+            .order-detail tbody tr td {
+                border: none;
+                position: relative;
+                display: table-cell;
+                padding: 20px 15px;
+                color: rgb(36, 36, 36);
+                vertical-align: top;
+                min-width: 100px;
+            }
+
+                .order-detail tbody tr td .product-item {
+                    display: flex;
+                }
+
+                    .order-detail tbody tr td .product-item img {
+                        width: 60px;
+                        height: 60px;
+                        margin-right: 15px;
+                    }
+
+                    .order-detail tbody tr td .product-item .product-info .product-info-name {
+                        font-size: 14px;
+                        color: rgb(36, 36, 36);
+                    }
+
+                .order-detail tbody tr td.price {
+                    white-space: nowrap;
+                }
+
+                .order-detail tbody tr td:last-child {
+                    text-align: right;
+                    min-width: 160px;
+                }
+
+    .order-detail tfoot tr {
+        border-top: none;
+    }
+
+        .order-detail tfoot tr td {
+            text-align: right;
+            display: table-cell;
+            padding: 5px 20px;
+            max-width: 550px;
+            min-width: 125px;
+            color: rgb(36, 36, 36);
+        }
+
+            .order-detail tfoot tr td:first-child {
+                border-top: none;
+            }
+
+        .order-detail tfoot tr:last-child td {
+            padding-bottom: 30px;
+        }
+
+        .order-detail tfoot tr td span {
+            color: rgb(120, 120, 120);
+            font-size: 14px;
+        }
+
+        .order-detail tfoot tr td .sum {
+            color: rgb(255, 59, 39);
+            font-size: 18px;
+        }
+.badge {
+    padding: 0.5em .75em !important;
+    font-size: 90% !important;
+    line-height: 1.25 !important;
+}
+.current-status .title {
+    font-weight: 400;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: rgb(36, 36, 36);
+}
+
+.current-status .status-block {
+    border-radius: 4px;
+    background-color: rgb(250, 250, 250);
+    padding: 20px 20px 80px;
+}
+
+    .current-status .status-block .status-text {
+        font-size: 14px;
+        color: rgb(32, 32, 32);
+        margin-top: 10px;
+        display: block;
+    }
+
+    .current-status .status-block .progress-bars {
+        margin: 40px 50px 20px;
+        height: 10px;
+        border-radius: 10px;
+        display: flex;
+    }
+
+.order-status-detail {
+    margin-top: 20px;
+}
+
+    .order-status-detail .title {
+        font-weight: 400;
+        margin-top: 0px;
+        margin-bottom: 15px;
+        font-size: 13px;
+        text-transform: uppercase;
+        color: rgb(36, 36, 36);
+    }
+
+    .order-status-detail .detail {
+        background: rgb(250, 250, 250);
+        padding: 20px;
+    }
+
+.progress-done {
+    width: calc(25%);
+    background-color: rgb(89, 162, 56);
+    position: relative;
+}
+
+    .progress-done::before {
+        position: absolute;
+        height: 16px;
+        width: 16px;
+        left: -8px;
+        top: -3px;
+        line-height: 45px;
+        border-radius: 50%;
+        content: "";
+        background-color: rgb(89, 162, 56);
+    }
+
+    .progress-done span, .progress-wait span {
+        position: absolute;
+        left: 0px;
+        top: 31px;
+        max-width: calc(100% - 90px);
+        min-width: 90px;
+        text-align: center;
+        transform: translateX(-50%);
+        font-size: 14px;
+        color: rgb(32, 32, 32);
+        opacity: 0.5;
+        line-height: 1.4;
+    }
+
+.progress-current {
+    width: calc(25%);
+    background-color: rgb(241, 241, 241);
+    position: relative;
+}
+
+    .progress-current::before {
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        left: -10px;
+        top: -5px;
+        line-height: 45px;
+        border-radius: 50%;
+        content: "";
+        background-color: rgb(255, 255, 255);
+        border: 4px solid rgb(89, 162, 56);
+    }
+
+    .progress-current span {
+        position: absolute;
+        left: 0px;
+        top: 31px;
+        max-width: calc(100% - 30px);
+        min-width: 100px;
+        text-align: center;
+        transform: translateX(-50%);
+        font-size: 14px;
+        color: rgb(32, 32, 32);
+        opacity: 1;
+        line-height: 1.4;
+    }
+
+.progress-wait {
+    width: calc(25%);
+    background-color: rgb(241, 241, 241);
+    position: relative;
+}
+
+    .progress-wait::before {
+        width: calc(25%);
+        background-color: rgb(241, 241, 241);
+        position: relative;
+    }
+
+    .progress-wait::before {
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        left: -10px;
+        top: -5px;
+        line-height: 45px;
+        border-radius: 50%;
+        content: "";
+        background-color: rgb(241, 241, 241);
+        border: 4px solid rgb(241, 241, 241);
+    }
+
+    .progress-current:last-child, .progress-wait:last-child {
+        width: 0;
+    }
+
+.order-status-detail .detail .detail-border {
+    border-radius: 4px;
+    border: 1px solid rgb(218, 218, 218);
+}
+
+.update-date {
+    padding: 12px 15px;
+    font-size: 13px;
+    color: rgb(32, 32, 32);
+    border-bottom: 1px solid rgb(218, 218, 218);
+    background-color: rgb(241, 241, 241);
+    font-weight: bolder;
+}
+
+.latest-update-status {
+    padding: 15px;
+    font-size: 13px;
+    color: rgb(32, 32, 32);
+    border-bottom: 1px solid rgb(218, 218, 218);
+    font-weight: bolder;
+}
+
+    .latest-update-status .left-status, .update-status .left-status {
+        margin-right: 20px;
+    }
+
+.update-status {
+    padding: 15px;
+    font-size: 13px;
+    color: rgb(32, 32, 32);
+    border-bottom: 1px solid rgb(218, 218, 218);
+    font-weight: normal;
+}
+.current-status {
+    font-family: 'Roboto', sans-serif;
+}
+.order-status-detail {
+    font-family: 'Roboto', sans-serif;
+}
+.product-item {
+    display: flex;
+}
+
+    .product-item img {
+        width: 60px;
+        height: 60px;
+        margin-right: 15px;
+    }
+
+    .product-item .product-info .product-info-name {
+        font-size: 14px;
+        color: rgb(36, 36, 36);
+    }
+a.dashboard {
+    color: #212529 !important;
+}
+.mix-attribute  {
+    border: 1px black solid;
+    padding: 20px;
+    border-radius: 5px;
+}

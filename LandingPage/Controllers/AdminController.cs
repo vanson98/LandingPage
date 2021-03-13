@@ -20,7 +20,6 @@ namespace LandingPage.Controllers
             _userService = userService;
         }
 
-        [Authorize]
         public IActionResult BlogList()
         {
             return View();
