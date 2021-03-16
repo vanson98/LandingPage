@@ -10,7 +10,7 @@ namespace LandingPage.Domain.Entities
     public class Blog : BaseModel
     {
         public string Title { get; set; }
-        public string MetaTitle { get; set; }
+        public string ShortDescription { get; set; }
         public string UrlImage { get; set; }
         public string Content { get; set; }
 

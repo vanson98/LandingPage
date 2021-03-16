@@ -16,5 +16,10 @@ namespace LandingPage.Controllers
         {
             return View("~/Views/Admin/Blogs/CreateItem.cshtml");
         }
+
+        public IActionResult SaveBlog()
+        {
+
+        }
     }
 }
