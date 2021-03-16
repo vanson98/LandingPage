@@ -20,11 +20,6 @@ namespace LandingPage.Controllers
             _userService = userService;
         }
 
-        public IActionResult BlogList()
-        {
-            return View();
-        }
-
         [AllowAnonymous]
         public IActionResult Login()
         {
