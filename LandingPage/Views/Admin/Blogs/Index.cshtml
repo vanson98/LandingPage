@@ -1,0 +1,30 @@
+﻿@model BlogViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_AdminLayout";
+}
+<div class="card" style="width: 81%; height: 1000px; margin-left: 275px; margin-top: 11px;">
+    <div class="control-container">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Launch demo modal
+        </button>
+    </div>
+    <div class="table-container">
+        <table id="blog-table">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Blog Name</th>
+                    <th>Blog Title</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+@section Scripts
+{
+    <script type="text/javascript" src="~/js/admin/blog/blogs.js"></script>
+}

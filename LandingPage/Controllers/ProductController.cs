@@ -8,7 +8,7 @@ namespace LandingPage.Controllers
 {
     public class ProductController : Controller
     {
-        public IActionResult Index()
+        public IActionResult ProductView()
         {
             return View();
         }

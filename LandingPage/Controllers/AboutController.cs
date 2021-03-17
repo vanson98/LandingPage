@@ -8,7 +8,7 @@ namespace LandingPage.Controllers
 {
     public class AboutController : Controller
     {
-        public IActionResult Index()
+        public IActionResult AboutView()
         {
             return View();
         }
