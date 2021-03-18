@@ -28,8 +28,7 @@
     <link rel="stylesheet" href="~/css/bootstrap-datepicker.css">
     <!-- Jquery UI-->
     <link href="~/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" />
-    <!-- Tiny MCE -->
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  
     <!-- Chosen -->
     <link href="~/plugins/chosen/chosen.css" rel="stylesheet" />
     <!-- Latest compiled and minified CSS -->
@@ -74,8 +73,8 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     @*<div class="image">
-                        <img src="~/images/@Context.Session.GetString("avatar")" class="img-circle elevation-2" alt="User Image">
-                    </div>*@
+                            <img src="~/images/@Context.Session.GetString("avatar")" class="img-circle elevation-2" alt="User Image">
+                        </div>*@
                     <div class="info">
                         @*<a href="#" class="d-block">@Context.Session.GetString("userName")</a>*@
                     </div>
@@ -207,7 +206,7 @@
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        
+
         @RenderBody()
         <!-- /.content-wrapper -->
         <!-- Control Sidebar -->
@@ -262,7 +261,7 @@
     <script src="~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script src="~/dist/js/adminlte.js"></script>
-    
+
     <!-- AdminLTE for demo purposes -->
     <script src="~/dist/js/demo.js"></script>
     @*<script src="~/js/jquery.min.js"></script>*@
@@ -277,7 +276,8 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
-
+    <!-- Tiny MCE -->
+    <script src="~/plugins//tinymce/tinymce.js" referrerpolicy="origin"></script>
     <script src="~/plugins/ckeditor/ckeditor.js"></script>
     <script type="text/javascript">
         CKEDITOR.replace('txtContext', {
