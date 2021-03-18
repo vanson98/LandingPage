@@ -1,6 +1,6 @@
 ﻿using LandingPage.Domain.EF;
 using LandingPage.Domain.Entities;
-using LandingPage.Service.Dto;
+using LandingPage.Service.Dto.Contact;
 using LandingPage.Service.Interfaces;
 using System;
 using System.Collections.Generic;

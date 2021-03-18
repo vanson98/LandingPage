@@ -1,5 +1,5 @@
 ﻿using LandingPage.Domain.Entities;
-using LandingPage.Service.Dto;
+using LandingPage.Service.Dto.User;
 using LandingPage.Service.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using System;

@@ -148,10 +148,7 @@ namespace LandingPage.Domain.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("BlogCategoryId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int?>("BlogCategoryId1")
+                    b.Property<int>("BlogCategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
@@ -163,7 +160,10 @@ namespace LandingPage.Domain.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("MetaTitle")
+                    b.Property<bool>("Published")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ShortDescription")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Status")
@@ -183,7 +183,7 @@ namespace LandingPage.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BlogCategoryId1");
+                    b.HasIndex("BlogCategoryId");
 
                     b.ToTable("Blog");
                 });
@@ -496,7 +496,9 @@ namespace LandingPage.Domain.Migrations
                 {
                     b.HasOne("LandingPage.Domain.Entities.BlogCategory", "BlogCategory")
                         .WithMany("Blogs")
-                        .HasForeignKey("BlogCategoryId1");
+                        .HasForeignKey("BlogCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("LandingPage.Domain.Entities.Product", b =>

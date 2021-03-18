@@ -13,9 +13,12 @@ namespace LandingPage.Domain.Entities
         public string ShortDescription { get; set; }
         public string UrlImage { get; set; }
         public string Content { get; set; }
-
+        public bool Published { get; set; }
+        public string MetaKeyWord { get; set; }
+        public string MetaDescription { get; set; }
+        public string MetaTitle { get; set; }
         [ForeignKey("BlogCaregory")]
-        public Guid BlogCategoryId { get; set; }
+        public int BlogCategoryId { get; set; }
 
         public  BlogCategory BlogCategory { get; set; }
     }

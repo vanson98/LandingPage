@@ -18,36 +18,47 @@
         <div id="tabs-1">
             <div class="input-group mb-3">
                 <label></label>
-                <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" id="title-input" class="form-control" placeholder="Blog title" aria-label="Blog title" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
-                <select data-palaceholder="Choose category" multiple tabindex="3" class="category">
+                <select data-palaceholder="Choose category" tabindex="3" id="category-select" class="category">
                     <option value=""></option>
-                    <option value="United States">United States</option>
-                    <option value="United Kingdom">United Kingdom</option>
-                    <option value="Afghanistan">Afghanistan</option>
-                    <option value="Aland Islands">Aland Islands</option>
+                    <option value="1">United States</option>
+                    <option value="2">United Kingdom</option>
+                    <option value="3">Afghanistan</option>
+                    <option value="4">Aland Islands</option>
                 </select>
             </div>
             <div class="input-group mb-3">
                 <label for="short-description">ShortDescription</label>
-                <textarea rows="3" id="short-description" type="text" name="ShortDescription" style="width:100%"></textarea>
+                <textarea rows="3" id="short-description-input" type="text" name="ShortDescription" style="width:100%" ></textarea>
             </div>
             <div class="md-3">
                 <label for="content">Content</label>
-                <textarea id="content">Next, use our Get Started docs to setup Tiny!</textarea>
+                <textarea id="content-textarea">Next, use our Get Started docs to setup Tiny!</textarea>
             </div>
             <div class="form-check form-check-inline mt-3">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                <input class="form-check-input" type="checkbox" id="publish-checkbox" value="option">
                 <label class="form-check-label" for="inlineCheckbox1">Published</label>
             </div>
         </div>
         <div id="tabs-2">
-            <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+            <div class="input-group mb-3">
+                <label></label>
+                <input type="text" id="meta-title-input" class="form-control" placeholder="Meta Title" >
+            </div>
+            <div class="input-group mb-3">
+                <label></label>
+                <input type="text" id="meta-description-input" class="form-control" placeholder="Meta Description"  >
+            </div>
+            <div class="input-group mb-3">
+                <label></label>
+                <input type="text" id="meta-key-word-input" class="form-control" placeholder="Meta Key Word" >
+            </div>
         </div>
     </div>
     <div>
-        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" id="btn-create-blog" class="btn btn-primary">Save</button>
     </div>
 
 </div>
