@@ -1,10 +1,13 @@
-﻿using System;
+﻿using LandingPage.Service.Dto.Blog;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LandingPage.Service.Interfaces
 {
-    interface IBlogsService
+    public interface IBlogsService
     {
+        public Task<int> CreateBlog(CreateBlogInputDto input);
     }
 }

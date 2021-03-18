@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace LandingPage.Service.Dto
+namespace LandingPage.Service.Dto.User
 {
     public class UserLoginDto
     {

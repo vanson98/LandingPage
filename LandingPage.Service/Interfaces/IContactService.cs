@@ -1,4 +1,4 @@
-﻿using LandingPage.Service.Dto;
+﻿using LandingPage.Service.Dto.Contact;
 using System;
 using System.Collections.Generic;
 using System.Text;

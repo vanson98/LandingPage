@@ -1,4 +1,4 @@
-﻿using LandingPage.Service.Dto;
+﻿using LandingPage.Service.Dto.User;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LandingPage.Models;
-using LandingPage.Service.Dto;
+using LandingPage.Service.Dto.User;
 using LandingPage.Service.Interfaces;
 using LandingPage.Service.Services;
 using Microsoft.AspNetCore.Authorization;
