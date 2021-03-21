@@ -9,8 +9,11 @@ using LandingPage.Repository;
 using LandingPage.Repository.Interfaces;
 using LandingPage.Service.Interfaces;
 using LandingPage.Service.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -40,6 +43,19 @@ namespace LandingPage
             services.AddIdentity<AppUser, AppRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();
+            // Authen
+            services.AddAuthorization(options =>
+            {
+                options.DefaultPolicy = new AuthorizationPolicyBuilder("Cookies").RequireAuthenticatedUser().Build();
+            });
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = new PathString("/Admin/Login");
+                    options.AccessDeniedPath = new PathString("/Admin/Login");
+                    options.SlidingExpiration = true;
+                });
+
             // Cấu hình Dependency Injection 
             ConfigureDependencyInjection(services);
         }

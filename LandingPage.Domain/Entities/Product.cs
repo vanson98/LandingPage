@@ -10,7 +10,7 @@ namespace LandingPage.Domain.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         [ForeignKey("ProductCategory")]
-        public Guid ProductCategoryId { get; set; }
+        public int ProductCategoryId { get; set; }
         public virtual ProductCategory ProductCategory { get; set; }
 
         public virtual ICollection<ProductImage> ProductImages { get; set; }

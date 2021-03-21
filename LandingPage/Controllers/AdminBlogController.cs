@@ -1,13 +1,17 @@
-﻿using LandingPage.Service.Dto.Blog;
+﻿using LandingPage.Models;
+using LandingPage.Service.Dto.Blog;
 using LandingPage.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LandingPage.Controllers
 {
+    [Authorize]
     public class AdminBlogController : Controller
     {
         private IBlogsService _blogsService;
@@ -17,21 +21,31 @@ namespace LandingPage.Controllers
             _blogsService = blogsService;
         }
 
-        public IActionResult Index()
+       
+        public async Task<ActionResult> Index()
         {
-            return View("~/Views/Admin/Blogs/Index.cshtml");
+            var data = await _blogsService.GetAll();
+            var listBlog = data.Select(b => new BlogViewModel()
+            {
+                Id = b.Id,
+                BlogTitle = b.BlogTitle
+            }).ToList();
+            return View("~/Views/Admin/Blogs/Index.cshtml",listBlog);
         }
 
-        public IActionResult CreateItem()
+        public async Task<IActionResult> CreateItem()
         {
-            
+            var listBlogCategory = await _blogsService.GetAllBlogCategory();
+            ViewBag.BlogCategories = listBlogCategory;
             return View("~/Views/Admin/Blogs/CreateItem.cshtml");
         }
+
 
         [HttpPost]
         public async Task<IActionResult> SaveBlog([FromBody]CreateBlogInputDto input)
         {
-            input.CreateUserId = HttpContext.Session.Id;
+            var userId = User.Claims.FirstOrDefault(c => c.Type == "Id").Value;
+            input.CreateUserId = userId;
             var result = await _blogsService.CreateBlog(input);
             if (result > 0)
             {

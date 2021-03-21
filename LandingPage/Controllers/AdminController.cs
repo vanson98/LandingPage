@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using LandingPage.Models;
 using LandingPage.Service.Dto.User;
 using LandingPage.Service.Interfaces;
 using LandingPage.Service.Services;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,8 +24,9 @@ namespace LandingPage.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult Login()
+        public async Task<IActionResult> Login()
         {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return View();
         }
 
@@ -33,10 +37,27 @@ namespace LandingPage.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _userService.Authenticate(userLoginDto);
-                if (result)
+                var user = await _userService.Authenticate(userLoginDto);
+                if (user!=null)
                 {
-                    return RedirectToAction("BlogList", "Admin");
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Name, user.Email),
+                        new Claim("FullName",user.FirstName+" "+user.LastName),
+                        new Claim("Id",user.Id.ToString())
+                    };
+                    var claimsIdentity = new ClaimsIdentity(
+                        claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var authProperties = new AuthenticationProperties
+                    {
+                        ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30),
+                        IsPersistent = true
+                    };
+                    await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme,
+                        new ClaimsPrincipal(claimsIdentity),
+                        authProperties);
+                    return RedirectToAction("Index", "AdminBlog");
                 }
                 else
                 {
@@ -49,7 +70,7 @@ namespace LandingPage.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> RegisterPost([FromBody]RegisterRequestDto request)
+        public async Task<IActionResult> Register([FromBody]RegisterRequestDto request)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

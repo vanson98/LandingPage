@@ -9,7 +9,7 @@ namespace LandingPage.Service.Interfaces
 {
     public interface IUserService
     {
-        Task<bool> Authenticate(UserLoginDto userLoginDto);
+        Task<UserDto> Authenticate(UserLoginDto userLoginDto);
         Task<bool> Register(RegisterRequestDto request);
     }
 }

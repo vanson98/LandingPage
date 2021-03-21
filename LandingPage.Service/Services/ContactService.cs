@@ -29,7 +29,6 @@ namespace LandingPage.Service.Services
             {
                 var contactModel = new ContactModel()
                 {
-                    Id = Guid.NewGuid(),
                     FirstName = request.FirstName,
                     LastName = request.LastName,
                     PhoneNumber = request.PhoneNumber,

@@ -6,7 +6,8 @@ namespace LandingPage.Domain.Entities
 {
     public class BaseModel
     {
-        public Guid Id { get; set; }
+
+        public int Id { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public Guid? CreateUserId { get; set; }
