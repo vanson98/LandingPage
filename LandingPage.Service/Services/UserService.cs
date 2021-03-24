@@ -20,13 +20,23 @@ namespace LandingPage.Service.Services
             this._signInManager = signInManager;
         }
 
-        public async Task<bool> Authenticate(UserLoginDto userLoginDto)
+        public async Task<UserDto> Authenticate(UserLoginDto userLoginDto)
         {
             var user = await _userManager.FindByNameAsync(userLoginDto.Username);
             if (user==null)
-                return false;
+                return null;
             var result = await _signInManager.PasswordSignInAsync(user, userLoginDto.Password, false, true);
-            return result.Succeeded;
+            if (result.Succeeded)
+            {
+                return new UserDto()
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName
+                };
+            }
+            return null;
         }
 
         public async Task<bool> Register(RegisterRequestDto request)
@@ -44,5 +54,7 @@ namespace LandingPage.Service.Services
             if (result.Succeeded) return true;
             return false;
         }
+
+       
     }
 }

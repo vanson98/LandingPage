@@ -1,30 +1,35 @@
-﻿@model BlogViewModel
+﻿@model List<BlogViewModel>
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
     Layout = "_AdminLayout";
 }
-<div class="card" style="width: 81%; height: 1000px; margin-left: 275px; margin-top: 11px;">
-    <div class="control-container">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Launch demo modal
-        </button>
+<div class="content-wrapper">
+    <div class="card" style="min-height: 381px; margin: 25px; padding: 15px;">
+        <div class="table-container">
+            <table id="blog-table">
+                <thead>
+                    <tr>
+                        <th>Blog Title</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.BlogTitle</td>
+                            <td>Test</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
-    <div class="table-container">
-        <table id="blog-table">
-            <thead>
-                <tr>
-                    <th>STT</th>
-                    <th>Blog Name</th>
-                    <th>Blog Title</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-        </table>
-    </div>
+   
 </div>
 @section Scripts
 {
-    <script type="text/javascript" src="~/js/admin/blog/blogs.js"></script>
+    <script type="text/javascript" src="~/js/admin/blog/index.js"></script>
 }
