@@ -24,7 +24,7 @@ namespace LandingPage.Service.Services
         {
             var blog = new Blog()
             {
-                BlogCategoryId = input.BlogCategoryId,
+                BlogCategoryId = input.BlogCategoryId,  
                 Content = input.Content,
                 CreateUserId = Guid.Parse(input.CreateUserId),
                 CreatedDate = DateTime.Now,
@@ -40,13 +40,21 @@ namespace LandingPage.Service.Services
             return _dbContext.SaveChangesAsync();
         }
 
-        public Task<List<BlogDto>> GetAll()
+        public async Task<List<BlogDto>> GetAll()
         {
-            var listBlog = _dbContext.Set<Blog>().Where(c => c.IsDeleted == false).Select(b => new BlogDto()
-            {
-                Id = b.Id,
-                BlogTitle = b.Title
-            }).ToListAsync();
+            var listBlog = await (from b in _dbContext.Set<Blog>()
+                           join bc in _dbContext.Set<BlogCategory>() on b.BlogCategoryId equals bc.Id
+                           join u in _dbContext.Set<AppUser>() on b.CreateUserId equals u.Id
+                           where b.IsDeleted == false
+                           select new BlogDto()
+                           {
+                               Id = b.Id,
+                               BlogTitle = b.Title,
+                               Author = u.FirstName,
+                               CategoryName = bc.Name,
+                               CreatedDate = b.CreatedDate.Value.ToString("dd/MM/YYYY"),
+                               Published = b.Published
+                           }).ToListAsync();
             return listBlog;
         }
 
@@ -58,5 +66,22 @@ namespace LandingPage.Service.Services
             }).ToListAsync();
             return listBlogCategory;
         }
+
+        public async Task<int> UpdateBlog(UpdateBlogInputDto input)
+        {
+            var blog = _dbContext.Set<Blog>().Find(input.Id);
+            blog.BlogCategoryId = input.BlogCategoryId;
+            blog.Content = input.Content;
+            blog.Title = input.Title;
+            blog.ShortDescription = input.ShortDescription;
+            blog.UrlImage = input.UrlImage;
+            blog.Published = input.Published;
+            blog.MetaKeyWord = input.MetaKeyWord;
+            blog.MetaDescription = input.MetaDescription;
+            blog.MetaTitle = input.MetaTitle;
+            _dbContext.Update<Blog>(blog);
+            return await _dbContext.SaveChangesAsync();
+        }
+
     }
 }

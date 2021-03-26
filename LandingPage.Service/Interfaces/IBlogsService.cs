@@ -11,5 +11,6 @@ namespace LandingPage.Service.Interfaces
         public Task<List<BlogDto>> GetAll();
         public Task<int> CreateBlog(CreateBlogInputDto input);
         public Task<List<BlogCategoryDto>> GetAllBlogCategory();
+        public Task<int> UpdateBlog(UpdateBlogInputDto input);
     }
 }

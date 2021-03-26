@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Views\Manufactor\" />
+    <Folder Include="Views\Product\" />
     <Folder Include="wwwroot\images\ie8-panel\" />
     <Folder Include="wwwroot\images\products\" />
     <Folder Include="wwwroot\upload\blog-asset\" />
