@@ -45,7 +45,7 @@ namespace LandingPage.Service.Services
             var listBlog = await (from b in _dbContext.Set<Blog>()
                            join bc in _dbContext.Set<BlogCategory>() on b.BlogCategoryId equals bc.Id
                            join u in _dbContext.Set<AppUser>() on b.CreateUserId equals u.Id
-                           where b.IsDeleted == false
+                           where b.IsDeleted == false && b.Published==true
                            select new BlogDto()
                            {
                                Id = b.Id,

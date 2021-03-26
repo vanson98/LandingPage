@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
     // ==============  Config  ===============
+    // Property 
+    var cropImageDialog;
     // Config jquery tab 
     $("#tabs").tabs();
     
@@ -56,10 +58,43 @@
     })
     // Config chosen select
     $(".category").chosen();
-
+    // Config crop image dialog 
+    cropImageDialog = $("#crop-img-dialog").dialog({
+        autoOpen: false,
+        resizable: false,
+        height: 500,
+        width: 1000,
+        modal: true,
+        buttons: [
+            {
+                text: "Save",
+                click: function () { alert("save"); },
+                class: "sampleClass1",
+                style: "color:Red"
+            },
+            {
+                text: "Cancel",
+                click: function () {
+                    cropImageDialog.dialog("close");
+                },
+                class: "sampleClass2"
+            }
+        ],
+        close: function () {
+          
+        }
+    });
+    // Config cropper
+    var cropper = new 
     //===============  Binding event  ==============
-    $("#btn-create-blog").on("click",CreateNewBlog)
+    $("#btn-create-blog").on("click", CreateNewBlog)
+    $("#open-crop-img-btn").on("click", OpenCropImageDialog)
+   
     // =============   Function  =============
+    // Mở dialog cắt ảnh đại diện của dialog
+    function OpenCropImageDialog() {
+        cropImageDialog.dialog("open");
+    }
     // Tạo mới blog
     function CreateNewBlog() {
         var blogTitle = $('#title-input').val();
