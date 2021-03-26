@@ -1,5 +1,8 @@
 ﻿$(document).ready(function () {
     // ==============  Config  ===============
+    // Property 
+    var cropImageDialog;
+    var blogAvatar = $('#img-cropper');
     // Config jquery tab 
     $("#tabs").tabs();
     
@@ -56,10 +59,56 @@
     })
     // Config chosen select
     $(".category").chosen();
-
+    // Config crop image dialog 
+    cropImageDialog = $("#crop-img-dialog").dialog({
+        autoOpen: false,
+        resizable: false,
+        height: 500,
+        width: 800,
+        modal: true,
+        buttons: [
+            {
+                text: "Save",
+                click: function () { alert("save"); },
+                class: "sampleClass1",
+                style: "color:Red"
+            },
+            {
+                text: "Cancel",
+                click: function () {
+                    cropImageDialog.dialog("close");
+                },
+                class: "sampleClass2"
+            }
+        ],
+        close: function () {
+          
+        }
+    });
+    // Config cropper
+    blogAvatar.cropper({
+        viewMode: 0,
+        crop: function (event) {
+            console.log(event.detail.x);
+            console.log(event.detail.y);
+            console.log(event.detail.width);
+            console.log(event.detail.height);
+            console.log(event.detail.rotate);
+            console.log(event.detail.scaleX);
+            console.log(event.detail.scaleY);
+        }
+    });
+    var avatarCropper = blogAvatar.data('cropper');
     //===============  Binding event  ==============
-    $("#btn-create-blog").on("click",CreateNewBlog)
+    $("#btn-create-blog").on("click", CreateNewBlog)
+    $("#open-crop-img-btn").on("click", OpenCropImageDialog)
+    $("#update-image-file").on("change", HandleFiles);
+    $("#cut-img-btn").on("click",GetCropImage)
     // =============   Function  =============
+    // Mở dialog cắt ảnh đại diện của dialog
+    function OpenCropImageDialog() {
+        cropImageDialog.dialog("open");
+    }
     // Tạo mới blog
     function CreateNewBlog() {
         var blogTitle = $('#title-input').val();
@@ -93,5 +142,24 @@
                 Swal.fire('Đã có lỗi xảy ra')
             }
         });
+    }
+    // Xử lý file
+    function HandleFiles() {
+        debugger
+        var file = $("#update-image-file")[0].files[0];
+        // convert file to base64
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            //$('#img-cropper').attr('src', reader.result);
+            avatarCropper.replace(reader.result);
+        };
+        reader.onerror = function (error) {
+            alert("Upload image faild");
+        };
+    }
+    function GetCropImage() {
+        var croppedimage = avatarCropper.getCroppedCanvas().toDataURL("image/png");
+        $('#blog-avatar').attr('src', croppedimage);
     }
 })

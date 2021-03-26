@@ -1,0 +1,8 @@
+﻿.chosen-container{
+    width: 100% !important;
+}
+/*Crop image dialog*/
+#blog-avatar{
+    width: 100%;
+    max-width: 300px;
+}

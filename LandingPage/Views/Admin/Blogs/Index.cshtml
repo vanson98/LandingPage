@@ -7,6 +7,12 @@
 }
 <div class="content-wrapper">
     <div class="card" style="min-height: 381px; margin: 25px; padding: 15px;">
+        <div style="display: flex; margin: 20px 10px; align-items: center">
+            <h4 style="flex-grow: 1">Danh sách blog</h4>
+            <button class="btn btn-primary">
+                <a href="/AdminBlog/CreateItem" style="color: #FFF; text-decoration: none">Tạo mới</a>
+            </button>
+        </div>
         <div class="table-container">
             <table id="blog-table" class="table table-striped">
                 <thead>
@@ -15,8 +21,8 @@
                         <th>Author</th>
                         <th>Created Date</th>
                         <th>Category</th>
-                        <th>Published</th>
-                        <th>Action</th>
+                        <th style="text-align:center">Published</th>
+                        <th style="text-align:center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,6 +30,12 @@
                     {
                         <tr>
                             <td>@item.BlogTitle</td>
+                            <td>@item.Author</td>
+                            <td>@item.CreatedDate</td>
+                            <td>@item.Category</td>
+                            <td style="text-align:center">
+                                <input class="form-check-input" type="checkbox" @(item.Published?"checked='checked'":"")>
+                            </td>
                             <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

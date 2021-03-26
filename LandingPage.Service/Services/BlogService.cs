@@ -45,14 +45,14 @@ namespace LandingPage.Service.Services
             var listBlog = await (from b in _dbContext.Set<Blog>()
                            join bc in _dbContext.Set<BlogCategory>() on b.BlogCategoryId equals bc.Id
                            join u in _dbContext.Set<AppUser>() on b.CreateUserId equals u.Id
-                           where b.IsDeleted == false
+                           where b.IsDeleted == false && b.Published==true
                            select new BlogDto()
                            {
                                Id = b.Id,
                                BlogTitle = b.Title,
-                               Author = u.FirstName,
+                               Author = u.FirstName+" "+u.LastName,
                                CategoryName = bc.Name,
-                               CreatedDate = b.CreatedDate.Value.ToString("dd/MM/YYYY"),
+                               CreatedDate = b.CreatedDate.Value.ToString("dd/MM/yyyy"),
                                Published = b.Published
                            }).ToListAsync();
             return listBlog;

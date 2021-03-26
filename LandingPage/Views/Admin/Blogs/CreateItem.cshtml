@@ -5,8 +5,12 @@
 @{
     Layout = "_AdminLayout";
 }
+@section Styles
+{
+    <link rel="stylesheet" href="~/plugins/cropper/cropper.min.css"/>
+}
 <div class="content-wrapper">
-    <div class="card" style="min-height: 381px; margin: 25px; padding: 15px; z-index:1000">
+    <div class="card" style="min-height: 381px; margin: 25px; padding: 15px;">
         <div>
             <p>Create Blog</p>
         </div>
@@ -20,7 +24,20 @@
                     <label for="title-input" style="width: 100%">Blog title</label>
                     <input type="text" id="title-input" class="form-control" placeholder="Blog title" aria-label="Blog title" aria-describedby="basic-addon1">
                 </div>
-
+                <div class="input-group mb-3">
+                    <input type="file" id="update-image-file"/>
+                    <button class="btn btn-primary" id="cut-img-btn">Cắt ảnh</button>
+                    <div style="height: 348px;width: 100%; margin: 20px 0">
+                        <div style="height: 100%;width: 100%">
+                            <img style="max-width: 100%;"
+                                 id="img-cropper"
+                                 src="~/images/about-1-143x114.jpg"/>
+                        </div>
+                    </div>
+                    <div>
+                        <img id="blog-avatar" />
+                    </div>
+                </div>
                 <div class="input-group mb-3">
                     <label for="category-select">Blog category</label>
                     <select data-palaceholder="Choose category" tabindex="3" id="category-select" class="category">
@@ -61,10 +78,12 @@
         <div>
             <button type="button" id="btn-create-blog" class="btn btn-primary">Save</button>
         </div>
-
     </div>
 </div>
+
 @section Scripts
 {
+    <script type="text/javascript" src="~/plugins/cropper/cropper.min.js"></script>
+    <script type="text/javascript" src="~/plugins/cropper/jquery-cropper.min.js"></script>
     <script type="text/javascript" src="~/js/admin/blog/CreateBlogs.js"></script>
 }
