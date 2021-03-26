@@ -2,6 +2,7 @@
     // ==============  Config  ===============
     // Property 
     var cropImageDialog;
+    var blogAvatar = $('#blog-avatar-img');
     // Config jquery tab 
     $("#tabs").tabs();
     
@@ -85,7 +86,19 @@
         }
     });
     // Config cropper
-    var cropper = new 
+    blogAvatar.cropper({
+        aspectRatio: 16 / 9,
+        crop: function (event) {
+            console.log(event.detail.x);
+            console.log(event.detail.y);
+            console.log(event.detail.width);
+            console.log(event.detail.height);
+            console.log(event.detail.rotate);
+            console.log(event.detail.scaleX);
+            console.log(event.detail.scaleY);
+        }
+    });
+    var cropper = blogAvatar.data('cropper');
     //===============  Binding event  ==============
     $("#btn-create-blog").on("click", CreateNewBlog)
     $("#open-crop-img-btn").on("click", OpenCropImageDialog)

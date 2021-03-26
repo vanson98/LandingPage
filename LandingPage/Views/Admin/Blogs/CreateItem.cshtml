@@ -73,8 +73,9 @@
         <div style="display: flex; flex-direction: column">
             <input type="file" />
             <img 
-                 style="max-width: 800px"
-                 src="~/images/about-1-634x373.jpg"/>
+                 style="max-width: 100%"
+                 id="blog-avatar-img"
+                 src="~/images/exm-product/product-bg.jpg"/>
         </div>
     </div>
 </div>
@@ -83,5 +84,6 @@
 @section Scripts
 {
     <script type="text/javascript" src="~/plugins/cropper/cropper.min.js"></script>
+    <script type="text/javascript" src="~/plugins/cropper/jquery-cropper.min.js"></script>
     <script type="text/javascript" src="~/js/admin/blog/CreateBlogs.js"></script>
 }
