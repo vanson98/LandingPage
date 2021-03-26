@@ -25,7 +25,18 @@
                     <input type="text" id="title-input" class="form-control" placeholder="Blog title" aria-label="Blog title" aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
-                    <button class="btn btn-primary" id="open-crop-img-btn">Chọn ảnh</button>
+                    <input type="file" id="update-image-file"/>
+                    <button class="btn btn-primary" id="cut-img-btn">Cắt ảnh</button>
+                    <div style="height: 348px;width: 100%; margin: 20px 0">
+                        <div style="height: 100%;width: 100%">
+                            <img style="max-width: 100%;"
+                                 id="img-cropper"
+                                 src="~/images/about-1-143x114.jpg"/>
+                        </div>
+                    </div>
+                    <div>
+                        <img id="blog-avatar" />
+                    </div>
                 </div>
                 <div class="input-group mb-3">
                     <label for="category-select">Blog category</label>
@@ -67,19 +78,8 @@
         <div>
             <button type="button" id="btn-create-blog" class="btn btn-primary">Save</button>
         </div>
-
-    </div>
-    <div id="crop-img-dialog">
-        <div style="display: flex; flex-direction: column">
-            <input type="file" />
-            <img 
-                 style="max-width: 100%"
-                 id="blog-avatar-img"
-                 src="~/images/exm-product/product-bg.jpg"/>
-        </div>
     </div>
 </div>
-
 
 @section Scripts
 {

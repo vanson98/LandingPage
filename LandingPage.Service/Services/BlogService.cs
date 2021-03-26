@@ -50,9 +50,9 @@ namespace LandingPage.Service.Services
                            {
                                Id = b.Id,
                                BlogTitle = b.Title,
-                               Author = u.FirstName,
+                               Author = u.FirstName+" "+u.LastName,
                                CategoryName = bc.Name,
-                               CreatedDate = b.CreatedDate.Value.ToString("dd/MM/YYYY"),
+                               CreatedDate = b.CreatedDate.Value.ToString("dd/MM/yyyy"),
                                Published = b.Published
                            }).ToListAsync();
             return listBlog;

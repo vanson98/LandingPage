@@ -28,7 +28,11 @@ namespace LandingPage.Controllers
             var listBlog = data.Select(b => new BlogViewModel()
             {
                 Id = b.Id,
-                BlogTitle = b.BlogTitle
+                BlogTitle = b.BlogTitle,
+                Author = b.Author,
+                Category = b.CategoryName,
+                CreatedDate = b.CreatedDate,
+                Published = b.Published
             }).ToList();
             return View("~/Views/Admin/Blogs/Index.cshtml",listBlog);
         }
