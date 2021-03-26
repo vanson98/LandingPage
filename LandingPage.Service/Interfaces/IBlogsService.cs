@@ -8,8 +8,8 @@ namespace LandingPage.Service.Interfaces
 {
     public interface IBlogsService
     {
-        public Task<List<BlogDto>> GetAll();
-        public Task<int> CreateBlog(CreateBlogInputDto input);
-        public Task<List<BlogCategoryDto>> GetAllBlogCategory();
+         Task<List<BlogDto>> GetAll();
+         Task<int> CreateBlog(CreateBlogInputDto input);
+         Task<List<BlogCategoryDto>> GetAllBlogCategory();
     }
 }
