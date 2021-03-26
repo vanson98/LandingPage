@@ -8,10 +8,14 @@
 <div class="content-wrapper">
     <div class="card" style="min-height: 381px; margin: 25px; padding: 15px;">
         <div class="table-container">
-            <table id="blog-table">
+            <table id="blog-table" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Blog Title</th>
+                        <th>Blog Title</th>  
+                        <th>Author</th>
+                        <th>Created Date</th>
+                        <th>Category</th>
+                        <th>Published</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -20,7 +24,17 @@
                     {
                         <tr>
                             <td>@item.BlogTitle</td>
-                            <td>Test</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Action
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <button class="dropdown-item" type="button">Edit</button>
+                                        <button class="dropdown-item" type="button">Delete</button>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     }
                 </tbody>
