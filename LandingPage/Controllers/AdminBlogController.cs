@@ -53,7 +53,8 @@ namespace LandingPage.Controllers
             var result = await _blogsService.CreateBlog(input);
             if (result > 0)
             {
-                return Json(new { StatusCode = 200, Message = "Success" });
+                //return Json(new { StatusCode = 200, Message = "Success" });
+                return RedirectToAction("Index", "AdminBlog");
             }
             return Json(new { StatusCode = 500, Message = "Error" });
         }
