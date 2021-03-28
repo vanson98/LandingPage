@@ -1,71 +1,12 @@
-﻿blockquote {
-    background-color: #f6fff7;
-    margin: 0;
-    padding: 10px 25px 10px;
-    border-left-color: #339036;
-    border-left-width: 5px;
-    border-left-style: solid;
-}
-
-.news-high-light-text {
-    color: green;
-    font-weight: bold
-}
-
-table.news-table {
-    border-collapse: collapse;
-    text-align: left;
+﻿
+.link-btn {
     width: 100%;
-    max-width: 100% !important;
+    height: 100%;
+    display: flex;
 }
 
-.news-table {
-    overflow: hidden;
-    border: 1px solid #36752D;
-}
-
-table.news-table td, table th {
-    padding: 3px 10px;
-}
-
-table.news-table thead th {
-    background-color: #66a923;
-    color: #FFFFFF;
-    font-weight: bold;
-}
-
-    table.news-table thead th:first-child {
-        border: none;
-    }
-
-table.news-table tbody td {
-    border-left: 1px solid #36752D;
-}
-
-/*table.news-table tbody tr:first-child td {
-    background-color: #66a923;
-    color: #FFFFFF;
-    font-weight: bold;
-}*/
-
-table.news-table tr:nth-child(odd) {
-    background: #fafafa;
-}
-
-.news-link-button {
-    background: #80c342;
-    color: #fff;
-    padding: 10px;
-    text-decoration:none;
-    border-radius:5px;
-    font-style:normal;
-    font-weight:bold;
-}
-
-.news-link-button:hover {
-    color: #fff;
-}
-
-.span-rounded {
-    border: 1px solid red;
+.btn-save-blog {
+    margin: 20px;
+    min-width: 115px;
+    float: right;
 }

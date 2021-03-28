@@ -17,9 +17,5 @@ namespace LandingPage.Domain.Entities
         public string MetaKeyWord { get; set; }
         public string MetaDescription { get; set; }
         public string MetaTitle { get; set; }
-        [ForeignKey("BlogCaregory")]
-        public int BlogCategoryId { get; set; }
-
-        public  BlogCategory BlogCategory { get; set; }
     }
 }

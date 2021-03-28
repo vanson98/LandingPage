@@ -24,7 +24,7 @@ namespace LandingPage.Service.Services
         {
             var blog = new Blog()
             {
-                BlogCategoryId = input.BlogCategoryId,  
+                //BlogCategoryId = input.BlogCategoryId,  
                 Content = input.Content,
                 CreateUserId = Guid.Parse(input.CreateUserId),
                 CreatedDate = DateTime.Now,
@@ -40,37 +40,52 @@ namespace LandingPage.Service.Services
             return _dbContext.SaveChangesAsync();
         }
 
+        public async Task<int> Delete(int blogId)
+        {
+            var blog = _dbContext.Find<Blog>(blogId);
+            if (blog == null)
+            {
+                return -1;
+            }
+            blog.IsDeleted = true;
+            _dbContext.Update<Blog>(blog);
+            return await _dbContext.SaveChangesAsync();
+        }
+
         public async Task<List<BlogDto>> GetAll()
         {
             var listBlog = await (from b in _dbContext.Set<Blog>()
-                           join bc in _dbContext.Set<BlogCategory>() on b.BlogCategoryId equals bc.Id
                            join u in _dbContext.Set<AppUser>() on b.CreateUserId equals u.Id
-                           where b.IsDeleted == false && b.Published==true
+                           where b.IsDeleted == false 
                            select new BlogDto()
                            {
                                Id = b.Id,
-                               BlogTitle = b.Title,
+                               Title = b.Title,
                                Author = u.FirstName+" "+u.LastName,
-                               CategoryName = bc.Name,
                                CreatedDate = b.CreatedDate.Value.ToString("dd/MM/yyyy"),
                                Published = b.Published
                            }).ToListAsync();
             return listBlog;
         }
 
-        public Task<List<BlogCategoryDto>> GetAllBlogCategory()
+        public async Task<BlogDto> GetById(int id)
         {
-            var listBlogCategory = _dbContext.Set<BlogCategory>().Where(c=>c.IsDeleted==false).Select(c=>new BlogCategoryDto() { 
-                Id = c.Id,
-                Name = c.Name
-            }).ToListAsync();
-            return listBlogCategory;
+            return await _dbContext.Set<Blog>().Where(b=>b.Id==id).Select(b=>new BlogDto() {
+                Id = b.Id,
+                Title = b.Title,
+                Published = b.Published,
+                Content = b.Content,
+                ShortDescription = b.ShortDescription,
+                MetaDescription = b.MetaDescription,
+                MetaKeyWord = b.MetaKeyWord,
+                MetaTitle = b.MetaTitle,
+                UrlImage = b.UrlImage
+            }).FirstOrDefaultAsync();
         }
 
-        public async Task<int> UpdateBlog(UpdateBlogInputDto input)
+        public async Task<int> UpdateBlog(BlogDto input)
         {
             var blog = _dbContext.Set<Blog>().Find(input.Id);
-            blog.BlogCategoryId = input.BlogCategoryId;
             blog.Content = input.Content;
             blog.Title = input.Title;
             blog.ShortDescription = input.ShortDescription;

@@ -9,10 +9,13 @@ namespace LandingPage.Domain.Entities
     {
         public string Name { get; set; }
         public string Description { get; set; }
+        public string Content { get; set; }
+        public string Tag { get; set; }
+        public int ParentId { get; set; }
+
         [ForeignKey("ProductCategory")]
         public int ProductCategoryId { get; set; }
         public virtual ProductCategory ProductCategory { get; set; }
-
         public virtual ICollection<ProductImage> ProductImages { get; set; }
     }
 }

@@ -39,6 +39,5 @@ namespace LandingPage.Domain.EF
         public DbSet<FeedBack> FeedBacks { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
-        public DbSet<BlogCategory> BlogCategories { get; set; }
     }
 }

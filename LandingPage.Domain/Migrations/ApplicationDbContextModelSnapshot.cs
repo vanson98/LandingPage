@@ -153,9 +153,6 @@ namespace LandingPage.Domain.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BlogCategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
@@ -200,30 +197,7 @@ namespace LandingPage.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BlogCategoryId");
-
                     b.ToTable("Blog");
-                });
-
-            modelBuilder.Entity("LandingPage.Domain.Entities.BlogCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("BlogCategories");
                 });
 
             modelBuilder.Entity("LandingPage.Domain.Entities.ContactModel", b =>
@@ -320,6 +294,9 @@ namespace LandingPage.Domain.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<Guid?>("CreateUserId")
                         .HasColumnType("uniqueidentifier");
 
@@ -341,8 +318,14 @@ namespace LandingPage.Domain.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ParentId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ProductCategoryId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Tag")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -421,10 +404,7 @@ namespace LandingPage.Domain.Migrations
                     b.Property<Guid?>("LastModifierUserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int?>("ProductId1")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedDate")
@@ -435,7 +415,7 @@ namespace LandingPage.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId1");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("ProductImages");
                 });
@@ -535,15 +515,6 @@ namespace LandingPage.Domain.Migrations
                     b.ToTable("AppUserTokens");
                 });
 
-            modelBuilder.Entity("LandingPage.Domain.Entities.Blog", b =>
-                {
-                    b.HasOne("LandingPage.Domain.Entities.BlogCategory", "BlogCategory")
-                        .WithMany("Blogs")
-                        .HasForeignKey("BlogCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("LandingPage.Domain.Entities.Product", b =>
                 {
                     b.HasOne("LandingPage.Domain.Entities.ProductCategory", "ProductCategory")
@@ -557,7 +528,9 @@ namespace LandingPage.Domain.Migrations
                 {
                     b.HasOne("LandingPage.Domain.Entities.Product", "Product")
                         .WithMany("ProductImages")
-                        .HasForeignKey("ProductId1");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

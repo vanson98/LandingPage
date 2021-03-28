@@ -11,7 +11,7 @@ namespace LandingPage.Service.Dto.Blog
         public string UrlImage { get; set; }
         public string Content { get; set; }
         public bool Published { get; set; }
-        public int BlogCategoryId { get; set; }
+        //public int BlogCategoryId { get; set; }
         public string CreateUserId { get; set; }
         public string MetaKeyWord { get; set; }
         public string MetaDescription { get; set; }

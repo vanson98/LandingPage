@@ -9,7 +9,7 @@ namespace LandingPage.Domain.Entities
         public string UrlImage { get; set; }
 
         public bool IsMainImage { get; set; }
-        public Guid ProductId { get; set; }
+        public int ProductId { get; set; }
         public virtual Product Product { get; set; }
 
 

@@ -111,32 +111,39 @@
     }
     // Tạo mới blog
     function CreateNewBlog() {
+        debugger
         var blogTitle = $('#title-input').val();
-        var blogCategoryId = $('#category-select').val().trim() != "" ? parseInt($('#category-select').val()) : 0;
+        //var blogCategoryId = $('#category-select').val().trim() != "" ? parseInt($('#category-select').val()) : 0;
         var blogShortDescription = $('#short-description-input').val();
         var blogContent = tinymce.get("content-textarea").getContent();
         var isPublished = $('#publish-checkbox').is(":checked");
         var metaTitle = $('#meta-title-input').val();
         var metaDescription = $('#meta-description-input').val();
         var metaKeyWord = $('#meta-key-word-input').val();
-        var newBlog = {
+        var blogId = parseInt($("#blog-id").val());
+        var blog = {
+            id: blogId,
             title: blogTitle,
             shortDescription: blogShortDescription,
             urlImage: "test",
             content: blogContent,
             published: isPublished,
-            blogCategoryId: blogCategoryId,
+            //blogCategoryId: blogCategoryId,
             metaKeyWord: metaKeyWord,
             metaDescription: metaDescription,
             metaTitle: metaTitle
         }
+        var url = "/AdminBlog/SaveBlog"
+        if (blogId !== null || blogId !== ""){
+            url = "/AdminBlog/UpdateBlog";
+        }
         $.ajax({
-            url: "/AdminBlog/SaveBlog",
+            url: url,
             contentType: 'application/json',
             type: 'POST',
-            data: JSON.stringify(newBlog),
+            data: JSON.stringify(blog),
             success: function (result) {
-                window.location = "localhost:44318/adminblog"
+                window.location.href = result.urlRedirect;
             },
             error: function (result) {
                 Swal.fire('Đã có lỗi xảy ra')
@@ -145,7 +152,6 @@
     }
     // Xử lý file
     function HandleFiles() {
-        debugger
         var file = $("#update-image-file")[0].files[0];
         // convert file to base64
         var reader = new FileReader();
@@ -162,4 +168,5 @@
         var croppedimage = avatarCropper.getCroppedCanvas().toDataURL("image/png");
         $('#blog-avatar').attr('src', croppedimage);
     }
+   
 })

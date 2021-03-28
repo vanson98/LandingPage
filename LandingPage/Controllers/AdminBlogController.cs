@@ -28,22 +28,38 @@ namespace LandingPage.Controllers
             var listBlog = data.Select(b => new BlogViewModel()
             {
                 Id = b.Id,
-                BlogTitle = b.BlogTitle,
+                BlogTitle = b.Title,
                 Author = b.Author,
-                Category = b.CategoryName,
                 CreatedDate = b.CreatedDate,
                 Published = b.Published
             }).ToList();
             return View("~/Views/Admin/Blogs/Index.cshtml",listBlog);
         }
 
-        public async Task<IActionResult> CreateItem()
+        public async Task<IActionResult> CreateOrUpdateItem([FromQuery]int blogId)
         {
-            var listBlogCategory = await _blogsService.GetAllBlogCategory();
-            ViewBag.BlogCategories = listBlogCategory;
-            return View("~/Views/Admin/Blogs/CreateItem.cshtml");
+            CreateOrUpdateBlogViewModel model = null ;
+            if (blogId != null)
+            {
+                var blog = await _blogsService.GetById(blogId);
+                model = new CreateOrUpdateBlogViewModel()
+                {
+                    Id = blog.Id,
+                    Content = blog.Content,
+                    MetaDescription = blog.MetaDescription,
+                    MetaKeyWord = blog.MetaKeyWord,
+                    MetaTitle = blog.MetaTitle,
+                    Published = blog.Published,
+                    ShortDescription = blog.ShortDescription,
+                    Title = blog.Title
+                };
+            }
+            else
+            {
+                model = new CreateOrUpdateBlogViewModel();
+            }
+            return View("~/Views/Admin/Blogs/CreateOrUpdateItem.cshtml", model);
         }
-
 
         [HttpPost]
         public async Task<IActionResult> SaveBlog([FromBody]CreateBlogInputDto input)
@@ -53,7 +69,28 @@ namespace LandingPage.Controllers
             var result = await _blogsService.CreateBlog(input);
             if (result > 0)
             {
-                return Json(new { StatusCode = 200, Message = "Success" });
+                return Json(new { StatusCode = 500, Message = "Error", UrlRedirect = Url.Action("Index", "AdminBlog") });
+            }
+            return Json(new { StatusCode = 500, Message = "Error" });
+        }
+
+        public async Task<IActionResult> UpdateBlog([FromBody]BlogDto input)
+        {
+            var result = await _blogsService.UpdateBlog(input);
+            if (result > 0)
+            {
+                return Json(new { StatusCode = 200, Message = "Success", UrlRedirect = Url.Action("Index", "AdminBlog") });
+            }
+            return Json(new { StatusCode = 500, Message = "Error" });
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteBlog([FromQuery]int blogId)
+        {
+            var result = await _blogsService.Delete(blogId);
+            if (result > 0)
+            {
+                return Json(new { StatusCode = 200, Message = "Success", UrlRedirect = Url.Action("Index", "AdminBlog") });
             }
             return Json(new { StatusCode = 500, Message = "Error" });
         }

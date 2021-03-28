@@ -13,6 +13,5 @@ namespace LandingPage.Models
         public string CreatedDate { get; set; }
         public string Category { get; set; }
         public bool Published { get; set; }
-
     }
 }
