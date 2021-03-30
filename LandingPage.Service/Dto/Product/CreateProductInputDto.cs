@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace LandingPage.Domain.Entities
+namespace LandingPage.Service.Dto.Product
 {
-    public class Product : BaseModel
+    public class CreateProductInputDto
     {
         public string ProductCode { get; set; }
         public string Name { get; set; }
@@ -17,10 +16,8 @@ namespace LandingPage.Domain.Entities
         public string MetaDescription { get; set; }
         public string MetaTitle { get; set; }
         public int ParentId { get; set; }
-        public string UrlMainImage { get; set; }
-        [ForeignKey("ProductCategory")]
+        public Guid CreateUserId { get; set; }
         public int ProductCategoryId { get; set; }
-        public virtual ProductCategory ProductCategory { get; set; }
-        public virtual ICollection<ProductImage> ProductImages { get; set; }
+        public string UrlMainImage { get; set; }
     }
 }

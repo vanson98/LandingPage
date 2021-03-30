@@ -48,7 +48,6 @@ namespace LandingPage.Service.Services
 
                 throw e;
             }
-        
         }
     }
 }

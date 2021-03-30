@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LandingPage.Domain.Migrations
 {
-    public partial class init : Migration
+    public partial class product : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -226,9 +226,7 @@ namespace LandingPage.Domain.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedUserId = table.Column<Guid>(nullable: true),
                     Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    ParentId = table.Column<Guid>(nullable: true),
-                    URLImage = table.Column<string>(nullable: true)
+                    Description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -247,10 +245,15 @@ namespace LandingPage.Domain.Migrations
                     LastModifierUserId = table.Column<Guid>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedUserId = table.Column<Guid>(nullable: true),
+                    ProductCode = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true),
                     Tag = table.Column<string>(nullable: true),
+                    Status = table.Column<bool>(nullable: false),
+                    MetaKeyWord = table.Column<string>(nullable: true),
+                    MetaDescription = table.Column<string>(nullable: true),
+                    MetaTitle = table.Column<string>(nullable: true),
                     ParentId = table.Column<int>(nullable: false),
                     ProductCategoryId = table.Column<int>(nullable: false)
                 },
