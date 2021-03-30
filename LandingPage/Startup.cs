@@ -94,6 +94,7 @@ namespace LandingPage
             services.AddScoped<SignInManager<AppUser>, SignInManager<AppUser>>();
             services.AddScoped<IContactService, ContactService>();
             services.AddScoped<IBlogsService, BlogService>();
+            services.AddScoped<IProductService, ProductService>();
         }
 
     }

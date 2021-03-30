@@ -1,0 +1,134 @@
+﻿@model CreateOrUpdateProductViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_AdminLayout";
+}
+@section Styles
+{
+    <link rel="stylesheet" href="~/plugins/cropper/cropper.min.css" />
+    <link rel="stylesheet" href="~/css/blog.css" />
+}
+<div class="content-wrapper">
+    <div class="card" style="min-height: 381px; margin: 25px; padding: 15px;">
+        <div>
+            <p>Create Blog</p>
+            <input class="hide" value="@Model.Id" id="blog-id" />
+        </div>
+        <div id="tabs">
+            <ul>
+                <li><a href="#tabs-1">General</a></li>
+                <li><a href="#tabs-2">Product Image</a></li>
+                <li><a href="#tabs-3">SEO</a></li>
+            </ul>
+            <div id="tabs-1">
+                <div class="input-group mb-3">
+                    <label for="prod-code-input" style="width: 100%">Mã sản phẩm</label>
+                    <input type="text" id="prod-code-input" class="form-control" placeholder="Mã sản phẩm" aria-label="Product code" aria-describedby="basic-addon1" value="@Model.ProductCode">
+                </div>
+                <div class="input-group mb-3">
+                    <label for="prod-name-input" style="width: 100%">Tên sản phẩm</label>
+                    <input type="text" id="prod-name-input" class="form-control" placeholder="Tên sản phẩm" aria-label="Product name" aria-describedby="basic-addon1" value="@Model.Name">
+                </div>
+                <div class="input-group mb-3">
+                    <label for="prod-category-select">Loại sản phẩm</label>
+                    <select data-palaceholder="Chọn loại sản phẩm" tabindex="3" id="prod-category-select" class="category">
+                        @foreach (var item in ViewBag.ProductCategory)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="input-group mb-3">
+                    <label for="prod-parent-code-select">Mã sản phẩm cha</label>
+                    <select data-palaceholder="Chọn mã sản phẩm cha" tabindex="3" id="prod-parent-code-select" class="category">
+                        <option value="0">Không có</option>
+                        @foreach (var item in ViewBag.ProductParentCodes)
+                        {
+                            <option value="@item.Id">@item.Code</option>
+                        }
+                    </select>
+                </div>
+                <div class="input-group mb-3">
+                    <label for="prod-description-input">Mô tả</label>
+                    <textarea rows="3" id="prod-description-textarea" type="text" name="ShortDescription" style="width:100%">@Model.Description</textarea>
+                </div>
+                <div class="md-3">
+                    <label for="content">Nội dung</label>
+                    <textarea rows="3" id="prod-content-textarea">@Model.Content</textarea>
+                </div>
+
+                <div class="form-check form-check-inline mt-3">
+                    <input class="form-check-input" type="checkbox" id="prod-status-checkbox" @(Model.Status ? "checked='checked'" : "")>
+                    <label class="form-check-label" for="inlineCheckbox1">Kích hoạt</label>
+                </div>
+            </div>
+            <div id="tabs-2">
+                <div class="row">
+                    <button class="btn btn-primary" id="choose-main-img-btn">Chọn ảnh chính</button>
+                    <div class="col-12">
+                        <img src="@Model.UrlMainImage" id="prod-main-img" />
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn btn-primary" id="choose-img-btn">Chọn ảnh chính</button>
+                    <div class="col-12">
+                        @foreach (var linkImg in Model.LinkImages)
+                        {
+                            <img src="@linkImg" />
+                        }
+                    </div>
+                </div>
+            </div>
+            <div id="tabs-3">
+                <div class="input-group mb-3">
+                    <label></label>
+                    <input type="text" id="meta-title-input" class="form-control" value="@Model.MetaTitle" placeholder="Meta Title">
+                </div>
+                <div class="input-group mb-3">
+                    <label></label>
+                    <input type="text" id="meta-description-input" class="form-control" value="@Model.MetaDescription" placeholder="Meta Description">
+                </div>
+                <div class="input-group mb-3">
+                    <label></label>
+                    <input type="text" id="meta-key-word-input" class="form-control" value="@Model.MetaKeyWord" placeholder="Meta Key Word">
+                </div>
+            </div>
+        </div>
+        <div>
+            <button type="button" id="btn-create-blog" class="btn btn-primary btn-save-blog">Save</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript" src="~/plugins/cropper/cropper.min.js"></script>
+    <script type="text/javascript" src="~/plugins/cropper/jquery-cropper.min.js"></script>
+    <script type="text/javascript" src="~/js/admin/blog/CreateBlogs.js"></script>
+}
+
+@*<div class="input-group mb-3">
+        <input type="file" id="update-image-file"/>
+        <button class="btn btn-primary" id="cut-img-btn">Cắt ảnh</button>
+        <div style="height: 348px;width: 100%; margin: 20px 0">
+            <div style="height: 100%;width: 100%">
+                <img style="max-width: 100%;"
+                     id="img-cropper"
+                     src="~/images/about-1-143x114.jpg"/>
+            </div>
+        </div>
+        <div>
+            <img id="blog-avatar" />
+        </div>
+    </div>*@
+@*<div class="input-group mb-3">
+        <label for="category-select">Blog category</label>
+        <select data-palaceholder="Choose category" tabindex="3" id="category-select" class="category">
+            @foreach (var item in ViewBag.BlogCategories)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+    </div>*@

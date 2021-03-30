@@ -70,7 +70,7 @@ namespace LandingPage.Service.Services
 
         public List<ProductDto> GetAll()
         {
-            return _dbContext.Set<Product>().Join(
+            var listProduct = _dbContext.Set<Product>().Join(
                 _dbContext.Set<ProductCategory>(),
                 p => p.ProductCategoryId,
                 pc => pc.Id,
@@ -80,11 +80,16 @@ namespace LandingPage.Service.Services
                     ProductCode = p.ProductCode,
                     Name = p.Name,
                     Status = p.Status,
-                    ParentCode = p.ParentId == 0 ? "" : GetParentProductCode(p.Id),
+                    ParentId = p.ParentId,
                     UrlMainImage = p.UrlMainImage,
                     ProductCategoryId = p.ProductCategoryId,
                     PorductCategoryName = pc.Name
                 }).ToList();
+            foreach (var product in listProduct)
+            {
+                product.ParentCode = GetParentProductCode(product.Id, product.ParentId);
+            }
+            return listProduct;
         }
 
         public ProductDto GetById(int id)
@@ -132,8 +137,12 @@ namespace LandingPage.Service.Services
             return _dbContext.SaveChanges() > 1 ? true : false;
         }
 
-        private string GetParentProductCode(int id)
+        private string GetParentProductCode(int id,int parentId)
         {
+            if (parentId == 0)
+            {
+                return "";
+            }
             return _dbContext.Set<Product>().Find(id).ProductCode;
         }
 

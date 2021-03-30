@@ -9,8 +9,6 @@ namespace LandingPage.Domain.Entities
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public Guid? ParentId { get; set; }
-        public string URLImage { get; set; }
         public virtual ICollection<Product> Products { get; set; }
 
     }

@@ -1,0 +1,73 @@
+﻿@model List<ProductViewModel>
+@{
+    Layout = "_AdminLayout";
+}
+@section Styles
+{
+}
+<div class="content-wrapper">
+    <div class="card" style="min-height: 381px; margin: 25px; padding: 15px;">
+        <div style="display: flex; margin: 20px 10px; align-items: center">
+            <h4 style="flex-grow: 1">Danh sách sản phẩm</h4>
+            <button class="btn btn-primary">
+                <a href="/AdminProduct/CreateOrUpdateItem?productId=#" style="color: #FFF; text-decoration: none">Thêm mới</a>
+            </button>
+        </div>
+        <div class="table-container">
+            <table id="blog-table" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Mã sản phẩm</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Loại sản phẩm</th>
+                        <th>Mã sản phẩm cha</th>
+                        <th style="text-align: center;width: 100px">Trạng thái</th>
+                        <th style="text-align:center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr id="record-@item.Id">
+                            <td>@item.ProductCode</td>
+                            <td>@item.Name</td>
+                            <td>@item.ProductCategoryName</td>
+                            <td>@item.ParentCode</td>
+                            <td style="text-align:center">
+                                @if (item.Status)
+                                {
+                                    <i class="fas fa-check"></i>
+                                }
+                                else
+                                {
+                                    <i class="fas fa-times"></i>
+                                }
+                            </td>
+                            <td style="text-align: center">
+
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Action
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <button class="dropdown-item" type="button">
+                                            <a class="link-btn" href="/AdminBlog/CreateOrUpdateItem?blogId=@item.Id">Edit</a>
+                                        </button>
+                                        <button class="dropdown-item delete-btn" type="button" id="@item.Id">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+@section Scripts
+{
+
+}
