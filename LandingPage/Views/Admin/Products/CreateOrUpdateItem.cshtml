@@ -8,7 +8,7 @@
 @section Styles
 {
     <link rel="stylesheet" href="~/plugins/cropper/cropper.min.css" />
-    <link rel="stylesheet" href="~/css/blog.css" />
+    <link rel="stylesheet" href="~/css/product.css" />
 }
 <div class="content-wrapper">
     <div class="card" style="min-height: 381px; margin: 25px; padding: 15px;">
@@ -54,6 +54,30 @@
                     <label for="prod-description-input">Mô tả</label>
                     <textarea rows="3" id="prod-description-textarea" type="text" name="ShortDescription" style="width:100%">@Model.Description</textarea>
                 </div>
+                <div class="row">
+                    <div>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#main-img-crop-dialog">
+                            Chọn ảnh chính
+                        </button>
+                    </div>
+                    <div>
+                        <label>Ảnh chính</label>
+                        <img id="main-img" src="#" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sub-img-crop-dialog">
+                            Chọn ảnh phụ
+                        </button>
+                    </div>
+                    <div>
+                        <label>Ảnh phụ</label>
+                        <div id="list-sub-img">
+
+                        </div>
+                    </div>
+                </div>
                 <div class="md-3">
                     <label for="content">Nội dung</label>
                     <textarea rows="3" id="prod-content-textarea">@Model.Content</textarea>
@@ -72,7 +96,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <button class="btn btn-primary" id="choose-img-btn">Chọn ảnh chính</button>
+                    <button class="btn btn-primary" id="choose-img-btn">Chọn ảnh sản phẩm</button>
                     <div class="col-12">
                         @foreach (var linkImg in Model.LinkImages)
                         {
@@ -102,12 +126,52 @@
     </div>
 </div>
 
-@section Scripts
-{
-    <script type="text/javascript" src="~/plugins/cropper/cropper.min.js"></script>
-    <script type="text/javascript" src="~/plugins/cropper/jquery-cropper.min.js"></script>
-    <script type="text/javascript" src="~/js/admin/blog/CreateBlogs.js"></script>
-}
+
+<!-- Modal Crop Main Product Image -->
+<div class="modal fade" id="main-img-crop-dialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Cắt ảnh chính</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="min-width:650px;min-height:500px">
+                <div>
+                    <img id="main-crop-img" src="~/img/image.jpg">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Crop Sub Product Image -->
+<div class="modal fade" id="sub-img-crop-dialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Cắt ảnh phụ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="min-width:650px;min-height:500px">
+                <div>
+                    <img id="sub-crop-img" src="~/img/image.jpg">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @*<div class="input-group mb-3">
         <input type="file" id="update-image-file"/>
@@ -132,3 +196,10 @@
             }
         </select>
     </div>*@
+
+@section Scripts
+{
+    <script type="text/javascript" src="~/plugins/cropper/cropper.min.js"></script>
+    <script type="text/javascript" src="~/plugins/cropper/jquery-cropper.min.js"></script>
+    <script type="text/javascript" src="~/js/admin/product/CreateOrUpdateProduct.js"></script>
+}
