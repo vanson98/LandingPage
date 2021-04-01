@@ -103,7 +103,7 @@
             </div>
         </div>
         <div>
-            <button type="button" id="btn-create-blog" class="btn btn-primary btn-save-blog">Save</button>
+            <button type="button" id="btn-save-product" class="btn btn-primary btn-save-product">Save</button>
         </div>
     </div>
 </div>
@@ -121,12 +121,15 @@
             </div>
             <div class="modal-body" style="min-width:650px;min-height:500px">
                 <div>
+                    <input type="file" id="update-main-image-file" />
+                </div>
+                <div>
                     <img id="main-crop-img" src="~/images/slide-1.jpg">
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" id="crop-main-img-btn">Crop Image</button>
             </div>
         </div>
     </div>
@@ -144,12 +147,15 @@
             </div>
             <div class="modal-body" style="min-width:650px;min-height:500px">
                 <div>
+                    <input type="file" id="update-sub-image-file" />
+                </div>
+                <div>
                     <img id="sub-crop-img" src="~/img/image.jpg">
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" id="crop-sub-img-btn">Crop Image</button>
             </div>
         </div>
     </div>

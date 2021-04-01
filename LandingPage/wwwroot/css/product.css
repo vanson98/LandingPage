@@ -2,3 +2,8 @@
     display: block;
     max-width: 100%; /* This rule is very important, please do not ignore this! */
 }
+.btn-save-product {
+    margin: 20px;
+    min-width: 115px;
+    float: right;
+}
