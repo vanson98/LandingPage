@@ -92,6 +92,16 @@ namespace LandingPage.Service.Services
             return listProduct;
         }
 
+        public List<ProductDto> GetAllParentProduct()
+        {
+            return _dbContext.Set<Product>().Where(p => p.IsDeleted == false && p.ParentId == 0).Select(p => new ProductDto()
+            {
+                Id = p.Id,
+                ProductCode = p.ProductCode,
+                Name = p.Name
+            }).ToList();
+        }
+
         public ProductDto GetById(int id)
         {
             return _dbContext.Set<Product>().Where(p => p.Id == id).Select(p => new ProductDto()
@@ -150,5 +160,7 @@ namespace LandingPage.Service.Services
         {
             return _dbContext.ProductImages.Where(pi => pi.ProductId == productId).Select(pi => pi.UrlImage).ToArray();
         }
+
+        
     }
 }

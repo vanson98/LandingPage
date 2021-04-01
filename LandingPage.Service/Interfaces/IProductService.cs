@@ -10,6 +10,7 @@ namespace LandingPage.Service.Interfaces
     {
         ProductDto GetById(int id);
         List<ProductDto> GetAll();
+        List<ProductDto> GetAllParentProduct();
         bool Add(CreateProductInputDto entity);
         bool Update(ProductDto entity);
         bool Delete(int Id);

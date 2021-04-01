@@ -36,12 +36,12 @@ namespace LandingPage.Controllers
             return View("~/Views/Admin/Blogs/Index.cshtml",listBlog);
         }
 
-        public async Task<IActionResult> CreateOrUpdateItem([FromQuery]int blogId)
+        public async Task<IActionResult> CreateOrUpdateItem([FromQuery]int? blogId)
         {
             CreateOrUpdateBlogViewModel model = null ;
-            if (blogId != null)
+            if (blogId != null && blogId!=0)
             {
-                var blog = await _blogsService.GetById(blogId);
+                var blog = await _blogsService.GetById(blogId.Value);
                 model = new CreateOrUpdateBlogViewModel()
                 {
                     Id = blog.Id,

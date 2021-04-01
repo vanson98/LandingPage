@@ -34,7 +34,7 @@
                 <div class="input-group mb-3">
                     <label for="prod-category-select">Loại sản phẩm</label>
                     <select data-palaceholder="Chọn loại sản phẩm" tabindex="3" id="prod-category-select" class="category">
-                        @foreach (var item in ViewBag.ProductCategory)
+                        @foreach (var item in ViewBag.ListProductCategory)
                         {
                             <option value="@item.Id">@item.Name</option>
                         }
@@ -44,7 +44,7 @@
                     <label for="prod-parent-code-select">Mã sản phẩm cha</label>
                     <select data-palaceholder="Chọn mã sản phẩm cha" tabindex="3" id="prod-parent-code-select" class="category">
                         <option value="0">Không có</option>
-                        @foreach (var item in ViewBag.ProductParentCodes)
+                        @foreach (var item in ViewBag.ListParentProduct)
                         {
                             <option value="@item.Id">@item.Code</option>
                         }
@@ -54,35 +54,10 @@
                     <label for="prod-description-input">Mô tả</label>
                     <textarea rows="3" id="prod-description-textarea" type="text" name="ShortDescription" style="width:100%">@Model.Description</textarea>
                 </div>
-                <div class="row">
-                    <div>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#main-img-crop-dialog">
-                            Chọn ảnh chính
-                        </button>
-                    </div>
-                    <div>
-                        <label>Ảnh chính</label>
-                        <img id="main-img" src="#" />
-                    </div>
-                </div>
-                <div class="row">
-                    <div>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sub-img-crop-dialog">
-                            Chọn ảnh phụ
-                        </button>
-                    </div>
-                    <div>
-                        <label>Ảnh phụ</label>
-                        <div id="list-sub-img">
-
-                        </div>
-                    </div>
-                </div>
                 <div class="md-3">
                     <label for="content">Nội dung</label>
                     <textarea rows="3" id="prod-content-textarea">@Model.Content</textarea>
                 </div>
-
                 <div class="form-check form-check-inline mt-3">
                     <input class="form-check-input" type="checkbox" id="prod-status-checkbox" @(Model.Status ? "checked='checked'" : "")>
                     <label class="form-check-label" for="inlineCheckbox1">Kích hoạt</label>
@@ -90,17 +65,24 @@
             </div>
             <div id="tabs-2">
                 <div class="row">
-                    <button class="btn btn-primary" id="choose-main-img-btn">Chọn ảnh chính</button>
+                    <button type="button"  id="choose-main-img-btn" class="btn btn-primary" data-toggle="modal" data-target="#main-img-crop-dialog">
+                        Chọn ảnh chính
+                    </button>
                     <div class="col-12">
                         <img src="@Model.UrlMainImage" id="prod-main-img" />
                     </div>
                 </div>
                 <div class="row">
-                    <button class="btn btn-primary" id="choose-img-btn">Chọn ảnh sản phẩm</button>
-                    <div class="col-12">
-                        @foreach (var linkImg in Model.LinkImages)
+                    <button type="button" id="choose-img-btn" class="btn btn-primary" data-toggle="modal" data-target="#sub-img-crop-dialog">
+                        Chọn ảnh sản phẩm
+                    </button>
+                    <div class="col-12" id="list-sub-img">
+                        @if (Model.LinkImages != null)
                         {
-                            <img src="@linkImg" />
+                            @foreach (var linkImg in Model.LinkImages)
+                            {
+                                <img src="@linkImg" />
+                            }
                         }
                     </div>
                 </div>
@@ -139,7 +121,7 @@
             </div>
             <div class="modal-body" style="min-width:650px;min-height:500px">
                 <div>
-                    <img id="main-crop-img" src="~/img/image.jpg">
+                    <img id="main-crop-img" src="~/images/slide-1.jpg">
                 </div>
             </div>
             <div class="modal-footer">
@@ -172,30 +154,6 @@
         </div>
     </div>
 </div>
-
-@*<div class="input-group mb-3">
-        <input type="file" id="update-image-file"/>
-        <button class="btn btn-primary" id="cut-img-btn">Cắt ảnh</button>
-        <div style="height: 348px;width: 100%; margin: 20px 0">
-            <div style="height: 100%;width: 100%">
-                <img style="max-width: 100%;"
-                     id="img-cropper"
-                     src="~/images/about-1-143x114.jpg"/>
-            </div>
-        </div>
-        <div>
-            <img id="blog-avatar" />
-        </div>
-    </div>*@
-@*<div class="input-group mb-3">
-        <label for="category-select">Blog category</label>
-        <select data-palaceholder="Choose category" tabindex="3" id="category-select" class="category">
-            @foreach (var item in ViewBag.BlogCategories)
-            {
-                <option value="@item.Id">@item.Name</option>
-            }
-        </select>
-    </div>*@
 
 @section Scripts
 {

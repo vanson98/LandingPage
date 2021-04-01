@@ -10,7 +10,7 @@
         <div style="display: flex; margin: 20px 10px; align-items: center">
             <h4 style="flex-grow: 1">Danh sách sản phẩm</h4>
             <button class="btn btn-primary">
-                <a href="/AdminProduct/CreateOrUpdateItem?productId=#" style="color: #FFF; text-decoration: none">Thêm mới</a>
+                <a href="/AdminProduct/CreateOrUpdate" style="color: #FFF; text-decoration: none">Thêm mới</a>
             </button>
         </div>
         <div class="table-container">
@@ -51,7 +51,7 @@
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <button class="dropdown-item" type="button">
-                                            <a class="link-btn" href="/AdminBlog/CreateOrUpdateItem?blogId=@item.Id">Edit</a>
+                                            <a class="link-btn" href="/AdminProduct/CreateOrUpdateItem?productId=@item.Id">Edit</a>
                                         </button>
                                         <button class="dropdown-item delete-btn" type="button" id="@item.Id">
                                             Delete

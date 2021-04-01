@@ -95,6 +95,7 @@ namespace LandingPage
             services.AddScoped<IContactService, ContactService>();
             services.AddScoped<IBlogsService, BlogService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductCategoryService, ProductCategoryService>();
         }
 
     }
