@@ -1,4 +1,4 @@
-﻿img {
+﻿.modal-body img {
     display: block;
     max-width: 100%; /* This rule is very important, please do not ignore this! */
 }
@@ -6,4 +6,18 @@
     margin: 20px;
     min-width: 115px;
     float: right;
+}
+.main-img-container{
+    margin: 20px 0;
+}
+.sub-img-container{
+    margin: 20px 0;
+}
+#prod-main-img {
+    max-width: 300px;
+    margin-top: 20px;
+}
+div#list-sub-img > img {
+    max-width: 300px;
+    margin: 7px;
 }

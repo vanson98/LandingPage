@@ -112,8 +112,6 @@
         var mainImageBase64 = mainImgBase64;
         var productCategoryId = $('#prod-category-select').val().trim() != "" ? parseInt($('#category-select').val()) : 0;
         var imagesBase64 = subImgBase64;
-       
-      
         var blog = {
             id: blogId,
             title: blogTitle,
@@ -172,12 +170,14 @@
         var mainImageSrc = mainImgCropper.getCroppedCanvas().toDataURL("image/png");
         $('#prod-main-img').attr('src', mainImageSrc);
         mainImgBase64 = mainImageSrc;
+        $('#main-img-crop-dialog').modal('hide');
     }
 
     // Lấy ảnh sau khi crop và append vào list image
     function AddSubCropImagesSrc() {
         var subImageSrc = subImgCropper.getCroppedCanvas().toDataURL("image/png");
-        $('#list-sub-img').append("<img src='" + subImageSrc + "' />")
+        $('#list-sub-img').append("<img src='" + subImageSrc + "' />");
+        $('#sub-img-crop-dialog').modal('hide');
         subImgBase64.push(subImageSrc);
     }
 
