@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LandingPage.Models;
+using LandingPage.Service.Dto.Product;
 using LandingPage.Service.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace LandingPage.Controllers
 {
@@ -36,16 +38,15 @@ namespace LandingPage.Controllers
             return View("~/Views/Admin/Products/Index.cshtml", listProduct);
         }
 
-        public IActionResult CreateOrUpdate([FromQuery]int? productId)
+        public async Task<IActionResult> CreateOrUpdate(int? id)
         {
             var listProductCategory = _productCategoryService.GetAll();
-            var listParentProduct = _productService.GetAllParentProduct();
-            ViewBag.ListProductCategory = listProductCategory;
-            ViewBag.ListParentProduct = listParentProduct;
+           
             CreateOrUpdateProductViewModel model = null;
-            if (productId != null && productId!=0)
+            if (id != null && id!=0)
             {
-                var prod = _productService.GetById(productId.Value);
+                var listParentProduct = _productService.GetAllParentProduct(id,"update");
+                var prod = _productService.GetById(id.Value);
                 model = new CreateOrUpdateProductViewModel()
                 {
                     Id = prod.Id,
@@ -55,19 +56,73 @@ namespace LandingPage.Controllers
                     MetaTitle = prod.MetaTitle,
                     Status = prod.Status,
                     Description = prod.Description,
-                    UrlMainImage = null,
-                    LinkImages = new string[0],
                     Name = prod.Name,
-                    ParentId = prod.ParentId,
+                    ParentCode = prod.ParentCode,
                     ProductCategoryId = prod.ProductCategoryId,
-                    ProductCode = prod.ProductCode
+                    ProductCode = prod.ProductCode, 
+                    Mode=false
                 };
+                model.ListCategory = new SelectList(listProductCategory, "Id", "Name", prod.ProductCategoryId);
+                model.ListParentPoroduct = new SelectList(listParentProduct, "Code", "CodeName", prod.ParentCode);
+                model.SubImagesBase64 = await _productService.GetListSubImageOfProduct(id.Value);
+                model.MainImageBase64 = await _productService.GetMainImageOfProduct(id.Value);
             }
             else
             {
-                model = new CreateOrUpdateProductViewModel();
+                var listParentProduct = _productService.GetAllParentProduct(null, "create");
+                model = new CreateOrUpdateProductViewModel() { 
+                    Mode = true
+                };
+                model.ListCategory = new SelectList(listProductCategory, "Id", "Name");
+                model.ListParentPoroduct = new SelectList(listParentProduct, "Code", "CodeName");
+                model.SubImagesBase64 = new List<string>();
             }
             return View("~/Views/Admin/Products/CreateOrUpdateItem.cshtml", model);
         }
+
+        [HttpPost]
+        public IActionResult SaveProduct([FromBody]ProductDto input)
+        {
+            var userId = User.Claims.FirstOrDefault(c => c.Type == "Id").Value;
+            var result = _productService.Add(input, Guid.Parse(userId));
+            if (result == true)
+            {
+                return Json(new { StatusCode = 202, Message = "Success", UrlRedirect = Url.Action("Index", "AdminProduct") });
+            }
+            return Json(new { StatusCode = 500, Message = "Error" });
+        }
+
+        [HttpPost]
+        public IActionResult UpdateProduct([FromBody]ProductDto input)
+        {
+            var userId = User.Claims.FirstOrDefault(c => c.Type == "Id").Value;
+            var result = _productService.Update(input);
+            if (result == true)
+            {
+                return Json(new { StatusCode = 202, Message = "Success", UrlRedirect = Url.Action("Index", "AdminProduct") });
+            }
+            return Json(new { StatusCode = 500, Message = "Error" });
+        }
+
+        public IActionResult ChangeStatus(int id)
+        {
+            var result = _productService.ChangeStatus(id);
+            if (result == true)
+            {
+                return RedirectToAction("Index", "AdminProduct");
+            }
+            return Json(new { StatusCode = 500, Message = "Error" });
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var result = _productService.Delete(id);
+            if (result == true)
+            {
+                return RedirectToAction("Index", "AdminProduct");
+            }
+            return Json(new { StatusCode = 500, Message = "Error" });
+        }
+
     }
 }

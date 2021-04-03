@@ -13,8 +13,15 @@
 <div class="content-wrapper">
     <div class="card" style="min-height: 381px; margin: 25px; padding: 15px;">
         <div>
-            <p>Create Blog</p>
-            <input class="hide" value="@Model.Id" id="blog-id" />
+            @if (@Model.Id != null && @Model.Id > 0)
+            {
+                <p>Update product</p>
+            }
+            else
+            {
+                <p>Create new product</p>
+            }
+            <input class="hide" value="@Model.Id" id="product-id" />
         </div>
         <div id="tabs">
             <ul>
@@ -25,30 +32,19 @@
             <div id="tabs-1">
                 <div class="input-group mb-3">
                     <label for="prod-code-input" style="width: 100%">Mã sản phẩm</label>
-                    <input type="text" id="prod-code-input" class="form-control" placeholder="Mã sản phẩm" aria-label="Product code" aria-describedby="basic-addon1" value="@Model.ProductCode">
+                    <input type="text" id="prod-code-input" class="form-control" placeholder="Mã sản phẩm" @(Model.Id!=null ? "disabled" : null ) value="@Model.ProductCode">
                 </div>
                 <div class="input-group mb-3">
                     <label for="prod-name-input" style="width: 100%">Tên sản phẩm</label>
                     <input type="text" id="prod-name-input" class="form-control" placeholder="Tên sản phẩm" aria-label="Product name" aria-describedby="basic-addon1" value="@Model.Name">
                 </div>
-                <div class="input-group mb-3">
+                <div class="input-group mb-3" style="flex-direction:column">
                     <label for="prod-category-select">Loại sản phẩm</label>
-                    <select data-palaceholder="Chọn loại sản phẩm" tabindex="3" id="prod-category-select" class="category">
-                        @foreach (var item in ViewBag.ListProductCategory)
-                        {
-                            <option value="@item.Id">@item.Name</option>
-                        }
-                    </select>
+                    @Html.DropDownList("product-category", Model.ListCategory,"Chọn loại sản phẩm", new { @class = "form-control prod-select", @id = "prod-category-select" })
                 </div>
-                <div class="input-group mb-3">
+                <div class="input-group mb-3" style="flex-direction:column">
                     <label for="prod-parent-code-select">Mã sản phẩm cha</label>
-                    <select data-palaceholder="Chọn mã sản phẩm cha" tabindex="3" id="prod-parent-code-select" class="category">
-                        <option value="0">Không có</option>
-                        @foreach (var item in ViewBag.ListParentProduct)
-                        {
-                            <option value="@item.Id">@item.Code</option>
-                        }
-                    </select>
+                    @Html.DropDownList("parent-product", Model.ListParentPoroduct, "Chọn sản phẩm cha", new { @class = "form-control prod-select", @id = "prod-parent-code-select" })
                 </div>
                 <div class="input-group mb-3">
                     <label for="prod-description-input">Mô tả</label>
@@ -65,11 +61,11 @@
             </div>
             <div id="tabs-2">
                 <div class="row main-img-container">
-                    <button type="button"  id="choose-main-img-btn" class="btn btn-primary" data-toggle="modal" data-target="#main-img-crop-dialog">
+                    <button type="button" id="choose-main-img-btn" class="btn btn-primary" data-toggle="modal" data-target="#main-img-crop-dialog">
                         Chọn ảnh chính
                     </button>
                     <div class="col-12">
-                        <img src="@Model.UrlMainImage" id="prod-main-img" />
+                        <img src="@Model.MainImageBase64" id="prod-main-img" />
                     </div>
                 </div>
                 <div class="row sub-img-container">
@@ -77,12 +73,9 @@
                         Chọn ảnh sản phẩm
                     </button>
                     <div class="col-12" id="list-sub-img">
-                        @if (Model.LinkImages != null)
+                        @foreach (var linkImg in Model.SubImagesBase64)
                         {
-                            @foreach (var linkImg in Model.LinkImages)
-                            {
-                                <img src="@linkImg" />
-                            }
+                            <img src="@linkImg" class="sub-img" />
                         }
                     </div>
                 </div>
@@ -124,7 +117,7 @@
                     <input type="file" id="update-main-image-file" />
                 </div>
                 <div>
-                    <img id="main-crop-img" src="#">
+                    <img id="main-crop-img">
                 </div>
             </div>
             <div class="modal-footer">
@@ -150,7 +143,7 @@
                     <input type="file" id="update-sub-image-file" />
                 </div>
                 <div>
-                    <img id="sub-crop-img" src="~/img/image.jpg">
+                    <img id="sub-crop-img">
                 </div>
             </div>
             <div class="modal-footer">

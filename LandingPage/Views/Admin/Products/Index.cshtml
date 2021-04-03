@@ -44,20 +44,9 @@
                                 }
                             </td>
                             <td style="text-align: center">
-
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Action
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <button class="dropdown-item" type="button">
-                                            <a class="link-btn" href="/AdminProduct/CreateOrUpdateItem?productId=@item.Id">Edit</a>
-                                        </button>
-                                        <button class="dropdown-item delete-btn" type="button" id="@item.Id">
-                                            Delete
-                                        </button>
-                                    </div>
-                                </div>
+                                <a asp-action="CreateOrUpdate" asp-route-id="@item.Id">Edit</a> |
+                                <a asp-action="ChangeStatus" asp-route-id="@item.Id">Change Status</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                             </td>
                         </tr>
                     }

@@ -4,8 +4,6 @@
     var cropImageDialog;
     var mainCropImg = $('#main-crop-img');
     var subCropImg = $('#sub-crop-img')
-    var mainImgBase64;
-    var subImgBase64 = [];
     // Config jquery tab 
     $("#tabs").tabs();
 
@@ -61,12 +59,9 @@
         content_css: ["https://fonts.googleapis.com/css?family=Roboto", "/css/blog.css"]
     })
 
-    // Config chosen select
-    $(".category").chosen();
-
     // Config cropper
     mainCropImg.cropper({
-        aspectRatio: 4 / 3,
+        aspectRatio: 6 / 5,
         minContainerHeight: 500,
         minContainerWidth: 766,
         maximize: true,
@@ -74,7 +69,7 @@
     });
 
     subCropImg.cropper({
-        aspectRatio: 4 / 3,
+        aspectRatio: 6 / 5,
         minContainerHeight: 500,
         minContainerWidth: 766,
         maximize: true,
@@ -85,7 +80,7 @@
     var subImgCropper = subCropImg.data('cropper');
 
     //===============  Binding event  ==============
-    $("#btn-create-blog").on("click", SaveProduct)
+    $("#btn-save-product").on("click", SaveProduct)
     $("#open-crop-img-btn").on("click", OpenCropImageDialog)
     $("#update-main-image-file").on("change", function (event) { HandleFiles("main") });
     $("#update-sub-image-file").on("change", function (event) { HandleFiles("sub") });
@@ -99,7 +94,7 @@
     // Save product
     function SaveProduct() {
         debugger
-        var productId = parseInt($("#blog-id").val());
+        var productId = $("#product-id").val() == "" ? null : parseInt($("#product-id").val()); ;
         var productCode = $("#prod-code-input").val();
         var productName = $("#prod-name-input").val();
         var description = $("#prod-description-textarea").val();
@@ -108,36 +103,59 @@
         var metaKeyWord = $('#meta-key-word-input').val();
         var metaDescription = $('#meta-description-input').val();
         var metaTitle = $('#meta-title-input').val();
-        var parentId = $("#prod-parent-code-select").val(); // check
-        var mainImageBase64 = mainImgBase64;
-        var productCategoryId = $('#prod-category-select').val().trim() != "" ? parseInt($('#category-select').val()) : 0;
-        var imagesBase64 = subImgBase64;
-        var blog = {
-            id: blogId,
-            title: blogTitle,
-            shortDescription: blogShortDescription,
-            urlImage: "test",
-            content: blogContent,
-            published: isPublished,
-            //blogCategoryId: blogCategoryId,
+        var parentCode = $("#prod-parent-code-select").val(); // check
+        var productCategoryId = $("#prod-category-select").val();
+        // Xử lý ảnh
+        var listImage = [];
+        var mainImageBase64 = $("#prod-main-img").attr("src");
+        if (mainImageBase64 != null) {
+            listImage.push({
+                isMainImage: true,
+                base64: mainImageBase64
+            });
+        }
+        var listSubImage = $(".sub-img");
+        for (var i = 0; i < listSubImage.length; i++) {
+            listImage.push({
+                isMainImage: false,
+                base64: listSubImage[i].src
+            })
+        }
+        // Validate
+
+        // Khởi tạo product
+        var newProduct = {
+            id: productId,
+            productCode: productCode,
+            name: productName,
+            description: description,
+            content: content,
+            status: status,
             metaKeyWord: metaKeyWord,
             metaDescription: metaDescription,
-            metaTitle: metaTitle
+            metaTitle: metaTitle,
+            parentCode: parentCode == "" ? null : parentCode,
+            productCategoryId: parseInt(productCategoryId),
+            listImage: listImage
         }
-        var url = "/AdminBlog/SaveBlog"
-        if (blogId !== null || blogId !== "") {
-            url = "/AdminBlog/UpdateBlog";
+        var url = "/AdminProduct/SaveProduct"
+        if (productId !== null) {
+            url = "/AdminProduct/UpdateProduct";
         }
         $.ajax({
             url: url,
             contentType: 'application/json',
             type: 'POST',
-            data: JSON.stringify(blog),
+            data: JSON.stringify(newProduct),
             success: function (result) {
-                window.location.href = result.urlRedirect;
+                if (result.statusCode == 202) {
+                    window.location.href = result.urlRedirect;
+                } else {
+                    Swal.fire('Đã có lỗi xảy ra');
+                }
             },
             error: function (result) {
-                Swal.fire('Đã có lỗi xảy ra')
+                Swal.fire('Đã có lỗi xảy ra');
             }
         });
     }
@@ -169,16 +187,14 @@
     function AddMainCropImageSrc() {
         var mainImageSrc = mainImgCropper.getCroppedCanvas().toDataURL("image/png");
         $('#prod-main-img').attr('src', mainImageSrc);
-        mainImgBase64 = mainImageSrc;
         $('#main-img-crop-dialog').modal('hide');
     }
 
     // Lấy ảnh sau khi crop và append vào list image
     function AddSubCropImagesSrc() {
         var subImageSrc = subImgCropper.getCroppedCanvas().toDataURL("image/png");
-        $('#list-sub-img').append("<img src='" + subImageSrc + "' />");
+        $('#list-sub-img').append("<img src='" + subImageSrc + "'  class='sub-img'/>");
         $('#sub-img-crop-dialog').modal('hide');
-        subImgBase64.push(subImageSrc);
     }
 
 })

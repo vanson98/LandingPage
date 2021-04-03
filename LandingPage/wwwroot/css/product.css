@@ -21,3 +21,6 @@ div#list-sub-img > img {
     max-width: 300px;
     margin: 7px;
 }
+.prod-select {
+    width: 100% !important;
+}

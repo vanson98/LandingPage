@@ -1,4 +1,5 @@
 ﻿<!-- Swiper-->
+@model List<ExhibitProductViewModel>
 <section class="section swiper-container swiper-slider swiper-slider-1" data-loop="true">
     <div class="swiper-wrapper context-dark text-center">
         <div class="swiper-slide" data-slide-bg="images/slide-1d.png">
@@ -136,123 +137,24 @@
         <h4 class="title-style-1 wow fadeInLeft">We Deal In</h4>
         <h2 class="wow fadeScale">Products</h2>
         <div class="isotope-wrap">
-
             <div class="row row-30 row-lg-50 isotope">
-                <div class="col-sm-6 col-md-3 col-lg-6 col-xl-4 isotope-item" data-filter="Type 1">
-                    <!-- Product-->
-                    <article class="product wow fadeInRight">
-                        <div class="product-body">
-                            <div class="product-figure">
-                                <img src="~/images/exm-product/bothuong.jpg" alt="" width="220" height="220" />
+                @foreach (var product in Model)
+                {
+                    <div class="col-sm-6 col-md-4 col-lg-3 isotope-item" data-filter="Type 1">
+                        <!-- Product-->
+                        <article class="product wow fadeInRight">
+                            <div class="product-body">
+                                <div class="product-figure">
+                                    <img src="@product.Base64" alt=""/>
+                                </div>
+                                <h5 class="product-title"><a href="@product.LinkDetailProduct">@product.ProductName</a></h5>
                             </div>
-                            <h5 class="product-title"><a href="product">Wood Powder</a></h5>
-
-                        </div>
-                        <div class="product-button-wrap">
-                            <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="product"></a></div>
-
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-md-3 col-lg-6 col-xl-4 isotope-item" data-filter="Type 1">
-                    <!-- Product-->
-                    <article class="product wow fadeInRight" data-wow-delay=".1s">
-                        <div class="product-body">
-                            <div class="product-figure">
-                                <img src="images/exm-product/hoahoi.jpg" alt=" chilli" width="220" height="220" />
+                            <div class="product-button-wrap">
+                                <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="@product.LinkDetailProduct"></a></div>
                             </div>
-                            <h5 class="product-title"><a href="product">Star Anise</a></h5>
-
-                        </div>
-                        <div class="product-button-wrap">
-                            <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="product"></a></div>
-
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-md-3 col-lg-6 col-xl-4 isotope-item" data-filter="Type 2">
-                    <!-- Product-->
-                    <article class="product wow fadeInRight" data-wow-delay=".2s">
-                        <div class="product-body">
-                            <div class="product-figure">
-                                <img src="~/images/ảnh sản phẩm/que.png" alt="" width="220" height="220" />
-                            </div>
-                            <h5 class="product-title"><a href="product">Cassia</a></h5>
-
-                        </div>
-                        <div class="product-button-wrap">
-                            <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="product"></a></div>
-
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-md-3 col-lg-6 col-xl-4 isotope-item" data-filter="Type 3">
-                    <!-- Product-->
-                    <article class="product wow fadeInRight" data-wow-delay=".3s">
-                        <div class="product-body">
-                            <div class="product-figure">
-                                <img src="~/images/ảnh sản phẩm/joss.png" alt="" width="220" height="220" />
-                            </div>
-                            <h5 class="product-title"><a href="product">Joss Powder</a></h5>
-
-                        </div>
-                        <div class="product-button-wrap">
-                            <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="product"></a></div>
-
-                        </div>
-                    </article>
-
-
-
-                </div>
-                <div class="col-sm-6 col-md-3 col-lg-6 col-xl-4 isotope-item" data-filter="Type 4">
-                    <!-- Product-->
-                    <article class="product wow fadeInRight" data-wow-delay=".3s">
-                        <div class="product-body">
-                            <div class="product-figure">
-                                <img src="images/exm-product/tamnhang.jpeg" alt="" width="220" height="220" />
-                            </div>
-                            <h5 class="product-title"><a href="product">Bamboo Sticks</a></h5>
-
-                        </div>
-                        <div class="product-button-wrap">
-                            <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="product"></a></div>
-
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-md-3 col-lg-6 col-xl-4 isotope-item" data-filter="Type 5">
-                    <!-- Product-->
-                    <article class="product wow fadeInRight" data-wow-delay=".3s">
-                        <div class="product-body">
-                            <div class="product-figure">
-                                <img src="images/exm-product/tamnhang.jpeg" alt="" width="220" height="220" />
-                            </div>
-                            <h5 class="product-title"><a href="product">Incense Sticks</a></h5>
-
-                        </div>
-                        <div class="product-button-wrap">
-                            <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="product"></a></div>
-
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-md-3 col-lg-6 col-xl-4 isotope-item" data-filter="Type 6">
-                    <!-- Product-->
-                    <article class="product wow fadeInRight" data-wow-delay=".3s">
-                        <div class="product-body">
-                            <div class="product-figure">
-                                <img src="~/images/ảnh sản phẩm/tam.png" alt="" width="220" height="220" />
-                            </div>
-                            <h5 class="product-title"><a href="product">Incense Sticks</a></h5>
-
-                        </div>
-                        <div class="product-button-wrap">
-                            <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="product"></a></div>
-
-                        </div>
-                    </article>
-                </div>
+                        </article>
+                    </div>
+                }
             </div>
         </div>
     </div>

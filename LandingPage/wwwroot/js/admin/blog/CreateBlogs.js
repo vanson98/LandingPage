@@ -120,7 +120,7 @@
         var metaTitle = $('#meta-title-input').val();
         var metaDescription = $('#meta-description-input').val();
         var metaKeyWord = $('#meta-key-word-input').val();
-        var blogId = parseInt($("#blog-id").val());
+        var blogId = $("#blog-id").val() == "" ? null : parseInt($("#blog-id").val());
         var blog = {
             id: blogId,
             title: blogTitle,
@@ -134,7 +134,7 @@
             metaTitle: metaTitle
         }
         var url = "/AdminBlog/SaveBlog"
-        if (blogId !== null || blogId !== ""){
+        if (blogId !== null){
             url = "/AdminBlog/UpdateBlog";
         }
         $.ajax({

@@ -4,14 +4,12 @@ using System.Text;
 
 namespace LandingPage.Domain.Entities
 {
-    public class ProductImage : BaseModel
+    public class ProductImage 
     {
-        public string UrlImage { get; set; }
-
+        public int Id { get; set; }
+        public string Base64 { get; set; }
         public bool IsMainImage { get; set; }
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
-
-
     }
 }
