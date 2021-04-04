@@ -1,5 +1,5 @@
-﻿<!-- Swiper-->
-@model List<ExhibitProductViewModel>
+﻿@model List<ExhibitProductCategoryViewModel>
+<!-- Swiper-->
 <section class="section swiper-container swiper-slider swiper-slider-1" data-loop="true">
     <div class="swiper-wrapper context-dark text-center">
         <div class="swiper-slide" data-slide-bg="images/slide-1d.png">
@@ -138,23 +138,35 @@
         <h2 class="wow fadeScale">Products</h2>
         <div class="isotope-wrap">
             <div class="row row-30 row-lg-50 isotope">
-                @foreach (var product in Model)
+                @foreach (var prodCate in Model)
                 {
-                    <div class="col-sm-6 col-md-4 col-lg-3 isotope-item" data-filter="Type 1">
+                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 isotope-item" data-filter="Type 1">
                         <!-- Product-->
-                        <article class="product wow fadeInRight">
+                        <article class="product  wow fadeInRight">
                             <div class="product-body">
                                 <div class="product-figure">
-                                    <img src="@product.Base64" alt=""/>
+                                    <img id="@("img-product-preview-category-"+prodCate.CategoryId)" src="@prodCate.ListExhibitProduct.First().Base64" alt="" />
                                 </div>
-                                <h5 class="product-title"><a href="@product.LinkDetailProduct">@product.ProductName</a></h5>
+                                <h5 class="product-title"><a target="_blank">@prodCate.CategoryName</a></h5>
+                            </div>
+                            <div class="sub-product-image-container">
+                                @for (var i = 0; i < prodCate.ListExhibitProduct.Count(); i++)
+                                {
+                                    <a href="@prodCate.ListExhibitProduct[i].LinkDetailProduct"
+                                       class="sub-img @(@i == 0 ? "sub-img-focus" : "")"
+                                       categoryId="@prodCate.CategoryId"
+                                       productName="@prodCate.ListExhibitProduct[i].ProductName">
+                                        <img class="img-mini-preview" src="@prodCate.ListExhibitProduct[i].Base64" />
+                                    </a>
+                                }
                             </div>
                             <div class="product-button-wrap">
-                                <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="@product.LinkDetailProduct"></a></div>
+                                <p id="@("product-name-"+prodCate.CategoryId)">@prodCate.ListExhibitProduct.First().ProductName</p>
                             </div>
                         </article>
                     </div>
                 }
+               
             </div>
         </div>
     </div>
@@ -399,8 +411,4 @@
     </div>
 
 </section>
-
-
-
 <div class="snackbars" id="form-output-global"></div>
-

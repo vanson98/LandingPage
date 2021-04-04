@@ -42,10 +42,6 @@
                     <label for="prod-category-select">Loại sản phẩm</label>
                     @Html.DropDownList("product-category", Model.ListCategory,"Chọn loại sản phẩm", new { @class = "form-control prod-select", @id = "prod-category-select" })
                 </div>
-                <div class="input-group mb-3" style="flex-direction:column">
-                    <label for="prod-parent-code-select">Mã sản phẩm cha</label>
-                    @Html.DropDownList("parent-product", Model.ListParentPoroduct, "Chọn sản phẩm cha", new { @class = "form-control prod-select", @id = "prod-parent-code-select" })
-                </div>
                 <div class="input-group mb-3">
                     <label for="prod-description-input">Mô tả</label>
                     <textarea rows="3" id="prod-description-textarea" type="text" name="ShortDescription" style="width:100%">@Model.Description</textarea>
