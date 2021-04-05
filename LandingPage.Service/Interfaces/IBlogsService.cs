@@ -13,6 +13,7 @@ namespace LandingPage.Service.Interfaces
         Task<BlogDto> GetById(int id);
         Task<int> UpdateBlog(BlogDto input);
         Task<int> Delete(int blogId);
-
+        Task<List<BlogDto>> GetAllOnView();
+        Task<BlogDto> GetDetailBlog(int id);
     }
 }

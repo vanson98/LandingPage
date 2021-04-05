@@ -1,56 +1,28 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model List<ExhibitBlogViewModel>
 <div style="width: 100%; background-color: #f5f5f5; height: auto">
     <div class="container" style="margin-top:50px">
         <div class="row">
             <div class="blog-title">
                 <h2>Blog</h2>
             </div>
-            <div class="blog-item">
-                <div class="blog-item-container">
-                    <h3>
-                        SPICY BUSINESS, SWEET STORY
-                    </h3>
-                    <div class="blog-item-content">
-                        <div class="blog-item-ct-link">
-                            <a href="#">Leave a Comment</a>/<a href="#">Blog</a>/<a href="#">By nvson</a>
+            @foreach (var blog in Model)
+            {
+                <div class="blog-item" style="margin-bottom: 20px">
+                    <div class="blog-item-container">
+                        <a  href="@blog.LinkDetail">
+                            <h3>
+                                @blog.BlogTitle
+                            </h3>
+                        </a>
+                        <div class="blog-item-content">
+                            <div style="height:20px">
+                            </div>
+                            <p>@blog.ShortDescription</p>
+                            <a href="@blog.LinkDetail">Read More >></a>
                         </div>
-                        <p>Cassia, a pungent spice used in many cuisines, has seen a surge in its imports over the last few years. The facts that it is cheaper than cinnamon, a similar spice, and that more and more consumables are using cassia as an ingredient are only driving the demand for the spice forward. Despite controversies surrounding …</p>
-                        <a href="#">Read More >></a>
                     </div>
                 </div>
-            </div>
-            <div class="blog-item">
-                <div class="blog-item-container">
-                    <h3>
-                        Getting FSSAI clearance is a big challenge
-                    </h3>
-                    <div class="blog-item-content">
-                        <div class="blog-item-ct-link">
-                            <a href="#">Leave a Comment</a>/<a href="#">Blog</a>/<a href="#">By nvson</a>
-                        </div>
-                        <p>Gopaal Ahuja (GA): Yes, as an importer, I face the challenge of getting our goods cleared by the Food Safety and Standards Authority of India (FSSAI). The other challenge is that many a times, the cassia are not completely dried by exporters before shipping, and by the time they reach us, the moisture from the products evaporates …</p>
-                        <a href="#">Read More >></a>
-                    </div>
-                </div>
-            </div>
-            <div class="blog-item">
-                <div class="blog-item-container">
-                    <h3>
-                        The Indo-ASEAN FTA allows duty-free imports
-                    </h3>
-                    <div class="blog-item-content">
-                        <div class="blog-item-ct-link">
-                            <a href="#">Leave a Comment</a>/<a href="#">Blog</a>/<a href="#">By nvson</a>
-                        </div>
-                        <p>We import from Vietnam, and also from Indonesia. There is a small quantity of cassia being grown in the southern part of India, but the production is not enough to fulfill the needs of the population here. That is the reason India imports from China and Vietnam …</p>
-                        <a href="#">Read More >></a>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </div>

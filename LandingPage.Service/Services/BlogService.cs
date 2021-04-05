@@ -54,8 +54,8 @@ namespace LandingPage.Service.Services
 
         public async Task<List<BlogDto>> GetAll()
         {
-            var listBlog = await (from b in _dbContext.Set<Blog>()
-                           join u in _dbContext.Set<AppUser>() on b.CreateUserId equals u.Id
+            var listBlog = await (from b in _dbContext.Set<Blog>().Select(b=>b)
+                           join u in _dbContext.Set<AppUser>().Select(u=>u) on b.CreateUserId equals u.Id
                            where b.IsDeleted == false 
                            select new BlogDto()
                            {
@@ -65,6 +65,21 @@ namespace LandingPage.Service.Services
                                CreatedDate = b.CreatedDate.Value.ToString("dd/MM/yyyy"),
                                Published = b.Published
                            }).ToListAsync();
+            return listBlog;
+        }
+
+        public async Task<List<BlogDto>> GetAllOnView()
+        {
+            var listBlog = await _dbContext.Set<Blog>().Where(b => b.IsDeleted == false && b.Published == true)
+                                    .Select(b => new BlogDto()
+                                    {
+                                        Id = b.Id,
+                                        MetaDescription = b.MetaDescription,
+                                        MetaKeyWord = b.MetaKeyWord,
+                                        MetaTitle = b.MetaTitle,
+                                        ShortDescription = b.ShortDescription,
+                                        Title = b.Title
+                                    }).ToListAsync();
             return listBlog;
         }
 
@@ -81,6 +96,19 @@ namespace LandingPage.Service.Services
                 MetaTitle = b.MetaTitle,
                 UrlImage = b.UrlImage
             }).FirstOrDefaultAsync();
+        }
+
+        public async Task<BlogDto> GetDetailBlog(int id)
+        {
+            var blog = await _dbContext.Set<Blog>().Where(b => b.Id == id).Select(b => new BlogDto
+            {
+                Title = b.Title,
+                Content = b.Content,
+                MetaDescription = b.MetaDescription,
+                MetaTitle = b.MetaTitle,
+                MetaKeyWord = b.MetaKeyWord
+            }).FirstOrDefaultAsync();
+            return blog;
         }
 
         public async Task<int> UpdateBlog(BlogDto input)

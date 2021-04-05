@@ -1,0 +1,18 @@
+﻿@model ExhibitDetailBlogViewModel
+    <section class="detail-section">
+        <div class="container detail-prod-container">
+            <div class="row">
+                <div style="width: 100%">
+                    <h3>
+                        @Model.Title
+                    </h3>
+                </div>
+                <div style="margin: 10px 0 20px 0">
+                    <p><a href="/Home">Home</a>/<a href="/EximaniBlog">Blog</a></p>
+                </div>
+                <div>
+                    @Html.Raw(Model.Content)
+                </div>
+            </div>
+        </div>
+    </section>
