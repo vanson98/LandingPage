@@ -1,4 +1,5 @@
-﻿<section class="breadcrumbs-custom">
+﻿@model List<ExhibitProductCategoryViewModel>
+<section class="breadcrumbs-custom">
     <div class="parallax-container" data-parallax-img="images/parallax-2.jpg">
         <div class="breadcrumbs-custom-body parallax-content context-dark">
             <div class="container">
@@ -20,105 +21,37 @@
     <div class="container">
         <div class="row row-50">
             <div class="col-lg-12 col-xl-12">
-
                 <div class="row row-30 row-lg-50">
-                    <div class="col-sm-6 col-md-3 col-lg-6 col-xl-4">
-                        <!-- Product-->
-                        <article class="product">
-                            <div class="product-body">
-                                <div class="product-figure">
-                                    <img src="~/images/ảnh sản phẩm/QUE.jpg" alt="" width="220" height="220" />
+                    @foreach (var prodCate in Model)
+                    {
+                        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                            <!-- Product-->
+                            <article class="product">
+                                <div class="product-body">
+                                    <div class="product-figure">
+                                        <img id="@("img-product-preview-category-"+prodCate.CategoryId)" src="@prodCate.ListExhibitProduct.First().Base64" alt="" />
+                                    </div>
+                                    <h5 class="product-title"><a target="_blank">@prodCate.CategoryName</a></h5>
                                 </div>
-                                <h5 class="product-title"><a href="includes/product.pdf" target="_blank">Cassia</a></h5>
-                            </div>
-                            <div class="product-button-wrap">
-                                <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="includes/product.pdf" target="_blank"></a></div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-sm-6 col-md-3 col-lg-6 col-xl-4">
-                        <!-- Product-->
-                        <article class="product">
-                            <div class="product-body">
-                                <div class="product-figure">
-                                    <img src="~/images/ảnh sản phẩm/Tam Nhang.jpg" alt="" width="220" height="220" />
+                                <div class="sub-product-image-container">
+                                    @for (var i=0; i< prodCate.ListExhibitProduct.Count(); i++)
+                                    {
+                                        <a 
+                                           href="@prodCate.ListExhibitProduct[i].LinkDetailProduct" 
+                                           class="sub-img @(@i == 0 ? "sub-img-focus" : "")"
+                                           categoryId="@prodCate.CategoryId"
+                                           productName="@prodCate.ListExhibitProduct[i].ProductName"
+                                        >
+                                            <img class="img-mini-preview" src="@prodCate.ListExhibitProduct[i].Base64" />
+                                        </a>
+                                    }
                                 </div>
-                                <h5 class="product-title"><a href="includes/product.pdf" target="_blank">Incense Sticks</a></h5>
-                                <div class="product-price-wrap">
+                                <div class="product-button-wrap">
+                                    <p id="@("product-name-"+prodCate.CategoryId)" >@prodCate.ListExhibitProduct.First().ProductName</p>
                                 </div>
-                            </div>
-                            <div class="product-button-wrap">
-                                <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="includes/product.pdf" target="_blank"></a></div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-sm-6 col-md-3 col-lg-6 col-xl-4">
-                        <!-- Product-->
-                        <article class="product">
-                            <div class="product-body">
-                                <div class="product-figure">
-                                    <img src="~/images/ảnh sản phẩm/Hoa Hoi.jpg" alt="" width="220" height="220" />
-                                </div>
-                                <h5 class="product-title"><a href="includes/product.pdf" target="_blank">Star Anise</a></h5>
-                                <div class="product-price-wrap">
-                                </div>
-                            </div>
-                            <div class="product-button-wrap">
-                                <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="includes/product.pdf" target="_blank"></a></div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-sm-6 col-md-3 col-lg-6 col-xl-4">
-                        <!-- Product-->
-                        <article class="product">
-                            <div class="product-body">
-                                <div class="product-figure">
-                                    <img src="~/images/ảnh sản phẩm/BOt.jpg" alt="" width="220" height="220" />
-                                </div>
-                                <h5 class="product-title"><a href="includes/product.pdf" target="_blank">Joss Powder</a></h5>
-                                <div class="product-price-wrap">
-                                </div>
-                            </div>
-                            <div class="product-button-wrap">
-                                <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="includes/product.pdf" target="_blank"></a></div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-sm-6 col-md-3 col-lg-6 col-xl-4">
-                        <!-- Product-->
-                        <article class="product">
-                            <div class="product-body">
-                                <div class="product-figure">
-                                    <img src="~/images/ảnh sản phẩm/Bamboo.jpg" alt="" width="220" height="220" />
-                                </div>
-                                <h5 class="product-title"><a href="includes/product.pdf" target="_blank">Bamboo Sticks</a></h5>
-                                <div class="product-price-wrap">
-                                </div>
-                            </div>
-                            <div class="product-button-wrap">
-                                <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="includes/product.pdf" target="_blank"></a></div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-sm-6 col-md-3 col-lg-6 col-xl-4">
-                        <!-- Product-->
-                        <article class="product">
-                            <div class="product-body">
-                                <div class="product-figure">
-                                    <img src="~/images/ảnh sản phẩm/BotHuong.jpg" alt="" width="220" height="220" />
-                                </div>
-                                <h5 class="product-title"><a href="includes/product.pdf" target="_blank">Wood Powder</a></h5>
-                                <div class="product-price-wrap">
-                                </div>
-                            </div>
-                            <div class="product-button-wrap">
-                                <div class="product-button"><a class="button button-secondary button-zakaria fl-bigmug-line-search74" href="includes/product.pdf" target="_blank"></a></div>
-                            </div>
-                        </article>
-                    </div>
-
+                            </article>
+                        </div>
+                    }
                 </div>
                 <div class="pagination-wrap">
 

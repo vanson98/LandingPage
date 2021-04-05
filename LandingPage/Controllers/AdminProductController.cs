@@ -30,7 +30,6 @@ namespace LandingPage.Controllers
             {
                 Id = p.Id,
                 Name = p.Name,
-                ParentCode = p.ParentCode,
                 ProductCode = p.ProductCode,
                 Status = p.Status,
                 ProductCategoryName = p.PorductCategoryName
@@ -45,7 +44,6 @@ namespace LandingPage.Controllers
             CreateOrUpdateProductViewModel model = null;
             if (id != null && id!=0)
             {
-                var listParentProduct = _productService.GetAllParentProduct(id,"update");
                 var prod = _productService.GetById(id.Value);
                 model = new CreateOrUpdateProductViewModel()
                 {
@@ -57,24 +55,20 @@ namespace LandingPage.Controllers
                     Status = prod.Status,
                     Description = prod.Description,
                     Name = prod.Name,
-                    ParentCode = prod.ParentCode,
                     ProductCategoryId = prod.ProductCategoryId,
                     ProductCode = prod.ProductCode, 
                     Mode=false
                 };
                 model.ListCategory = new SelectList(listProductCategory, "Id", "Name", prod.ProductCategoryId);
-                model.ListParentPoroduct = new SelectList(listParentProduct, "Code", "CodeName", prod.ParentCode);
                 model.SubImagesBase64 = await _productService.GetListSubImageOfProduct(id.Value);
                 model.MainImageBase64 = await _productService.GetMainImageOfProduct(id.Value);
             }
             else
             {
-                var listParentProduct = _productService.GetAllParentProduct(null, "create");
                 model = new CreateOrUpdateProductViewModel() { 
                     Mode = true
                 };
                 model.ListCategory = new SelectList(listProductCategory, "Id", "Name");
-                model.ListParentPoroduct = new SelectList(listParentProduct, "Code", "CodeName");
                 model.SubImagesBase64 = new List<string>();
             }
             return View("~/Views/Admin/Products/CreateOrUpdateItem.cshtml", model);

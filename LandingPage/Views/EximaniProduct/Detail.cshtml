@@ -1,0 +1,35 @@
+﻿@model DetailProductViewModel
+<section class="detail-prod-section">
+    <div class="container detail-prod-container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 dt-pd-container">
+                <img src="@Model.MainImageBase64"/>
+                <div class="dt-pd-simg-container">
+                    @foreach (var srcImg in Model.SubImagesBase64)
+                    {
+                        <img src="@srcImg"/>
+                    }
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div>
+                    <p><a href="/home">Home</a>/<a href="/EximaniProduct">Product</a>/@Model.Name</p>
+                </div>
+                <div class="dt-pd-name" style="margin: 20px 0">
+                    <h3 style="color: #f5543f">@Model.Name</h3>
+                </div>
+                <div class="dt-pd-description">
+                    @Model.Description
+                </div>
+                <div class="dt-pd-category" style="margin-top: 20px">
+                    <p>Category:<span>@Model.CategoryName</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 dt-pd-content">
+                 @Html.Raw(Model.Content)
+            </div>
+        </div>
+    </div>
+</section>

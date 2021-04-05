@@ -61,7 +61,7 @@
 
     // Config cropper
     mainCropImg.cropper({
-        aspectRatio: 6 / 5,
+        aspectRatio: 1 / 1,
         minContainerHeight: 500,
         minContainerWidth: 766,
         maximize: true,
@@ -69,7 +69,7 @@
     });
 
     subCropImg.cropper({
-        aspectRatio: 6 / 5,
+        aspectRatio: 1 / 1,
         minContainerHeight: 500,
         minContainerWidth: 766,
         maximize: true,
@@ -103,7 +103,6 @@
         var metaKeyWord = $('#meta-key-word-input').val();
         var metaDescription = $('#meta-description-input').val();
         var metaTitle = $('#meta-title-input').val();
-        var parentCode = $("#prod-parent-code-select").val(); // check
         var productCategoryId = $("#prod-category-select").val();
         // Xử lý ảnh
         var listImage = [];
@@ -134,7 +133,6 @@
             metaKeyWord: metaKeyWord,
             metaDescription: metaDescription,
             metaTitle: metaTitle,
-            parentCode: parentCode == "" ? null : parentCode,
             productCategoryId: parseInt(productCategoryId),
             listImage: listImage
         }

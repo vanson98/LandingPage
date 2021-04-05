@@ -36,8 +36,7 @@ namespace LandingPage.Service.Services
                     Name = entity.Name,
                     ProductCategoryId = entity.ProductCategoryId,
                     ProductCode = entity.ProductCode,
-                    Status = entity.Status,
-                    ParentCode = entity.ParentCode
+                    Status = entity.Status
                 };
                 _dbContext.Add<Product>(product);
                 _dbContext.SaveChanges();
@@ -88,13 +87,6 @@ namespace LandingPage.Service.Services
                     return false;
                 }
                 product.IsDeleted = true;
-                // Lấy toàn bộ sản phẩm con
-                var listSubProduct = _dbContext.Set<Product>().Where(p => p.ParentCode == product.ProductCode);
-                foreach (var subProduct in listSubProduct)
-                {
-                    subProduct.IsDeleted = true;
-                    _dbContext.Update<Product>(subProduct);
-                }
                 _dbContext.Update<Product>(product);
                 _dbContext.SaveChanges();
                 return true;
@@ -118,56 +110,38 @@ namespace LandingPage.Service.Services
                     ProductCode = p.ProductCode,
                     Name = p.Name,
                     Status = p.Status,
-                    ParentCode = p.ParentCode,
                     ProductCategoryId = p.ProductCategoryId,
                     PorductCategoryName = pc.Name
                 }).ToList();
             return listProduct;
         }
 
-        public List<ParentProductSelectDto> GetAllParentProduct(int? productId, string mode)
+        public List<ExhibitProductCategoryDto> GetAllProductCategoryOnView()
         {
-
-            // Lúc tạo mới
-            if (mode == "create")
+            var groupProducts = (from p in _dbContext.Set<Product>().Select(p => p).ToList()
+                               join pc in _dbContext.Set<ProductCategory>().Select(pc => pc).ToList() on p.ProductCategoryId equals pc.Id
+                               where p.IsDeleted == false && p.Status == true
+                               group p by pc into gp
+                               select gp);
+            var listExProductCategory = new List<ExhibitProductCategoryDto>();
+            foreach (var gp in groupProducts)
             {
-                // Không lấy các parent product tắt kích hoạt
-                return _dbContext.Set<Product>()
-                           .Where(p => p.IsDeleted == false && p.ParentCode == null && p.Status)
-                           .Select(p => new ParentProductSelectDto()
-                           {
-                               Code = p.ProductCode,
-                               CodeName = p.ProductCode + "-" + p.Name
-                           }).ToList();
+                var exProductCategory = new ExhibitProductCategoryDto()
+                {
+                    CategoryId = gp.Key.Id,
+                    CategoryName = gp.Key.Name,
+                    ListExhibitProduct = gp.Select(p => new ExhibitProductDto()
+                    {
+                        Base64 = _dbContext.Set<ProductImage>().Where(pi => pi.ProductId == p.Id && pi.IsMainImage == true).FirstOrDefault()?.Base64,
+                        ProductId = p.Id,
+                        ProductName = p.Name
+                    }).ToList()
+                };
+                listExProductCategory.Add(exProductCategory);
             }
-            else
-            {
-                // Lúc update
-                return _dbContext.Set<Product>()
-                          .Where(p => p.IsDeleted == false && p.ParentCode == null && p.Id != productId)
-                          .Select(p => new ParentProductSelectDto()
-                          {
-                              Code = p.ProductCode,
-                              CodeName = p.ProductCode + "-" + p.Name
-                          }).ToList();
-            }
-
-
-
+            return listExProductCategory;
         }
 
-        public List<ExhibitProductDto> GetAllProductForExhibit()
-        {
-            var listProduct = (from p in _dbContext.Set<Product>().Select(p => p)
-                               where p.IsDeleted == false && p.Status == true && p.ParentCode == null
-                               select new ExhibitProductDto()
-                               {
-                                   Base64 = _dbContext.Set<ProductImage>().Where(pi => pi.ProductId == p.Id && pi.IsMainImage == true).FirstOrDefault().Base64,
-                                   ProductId = p.Id,
-                                   ProductName = p.Name
-                               }).ToList();
-            return listProduct;
-        }
 
         public ProductDto GetById(int id)
         {
@@ -182,8 +156,7 @@ namespace LandingPage.Service.Services
                 MetaDescription = p.MetaDescription,
                 MetaKeyWord = p.MetaKeyWord,
                 MetaTitle = p.MetaTitle,
-                ProductCategoryId = p.ProductCategoryId,
-                ParentCode = p.ParentCode
+                ProductCategoryId = p.ProductCategoryId
             }).FirstOrDefault();
         }
 
@@ -201,6 +174,27 @@ namespace LandingPage.Service.Services
                    .Select(pi => pi.Base64).FirstOrDefaultAsync();
         }
 
+        public ProductDto GetProductDetailById(int productId)
+        {
+            var productDetail = (from p in  _dbContext.Set<Product>().Select(p=>p).ToList()
+                                join pc in _dbContext.Set<ProductCategory>().Select(p => p).ToList() on p.ProductCategoryId equals pc.Id
+                                where p.Id == productId
+                                select new ProductDto(){
+                                        Id = p.Id,
+                                        ProductCode = p.ProductCode,
+                                        Name = p.Name,
+                                        Description = p.Description,
+                                        Content = p.Content,
+                                        Status = p.Status,
+                                        MetaDescription = p.MetaDescription,
+                                        MetaKeyWord = p.MetaKeyWord,
+                                        MetaTitle = p.MetaTitle,
+                                        ProductCategoryId = p.ProductCategoryId,
+                                        PorductCategoryName = pc.Name
+                                }).FirstOrDefault();
+            return productDetail;
+        }
+
         public bool Update(ProductDto entity)
         {
             try
@@ -216,7 +210,6 @@ namespace LandingPage.Service.Services
                 product.MetaKeyWord = entity.MetaKeyWord;
                 product.MetaTitle = entity.MetaTitle;
                 product.Name = entity.Name;
-                product.ParentCode = entity.ParentCode;
                 product.ProductCategoryId = entity.ProductCategoryId;
                 product.Status = entity.Status;
                 // Xóa hết ảnh cũ

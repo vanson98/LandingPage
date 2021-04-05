@@ -16,7 +16,7 @@ namespace LandingPage.Domain.Entities
         public string MetaKeyWord { get; set; }
         public string MetaDescription { get; set; }
         public string MetaTitle { get; set; }
-        public string ParentCode { get; set; }
+
         [ForeignKey("ProductCategory")]
         public int ProductCategoryId { get; set; }
         public virtual ProductCategory ProductCategory { get; set; }

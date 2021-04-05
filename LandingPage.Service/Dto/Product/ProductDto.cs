@@ -15,7 +15,6 @@ namespace LandingPage.Service.Dto.Product
         public string MetaKeyWord { get; set; }
         public string MetaDescription { get; set; }
         public string MetaTitle { get; set; }
-        public string ParentCode { get; set; }
         public List<ProductImageDto> ListImage { get; set; }
         public int ProductCategoryId { get; set; }
         public string PorductCategoryName { get; set; }

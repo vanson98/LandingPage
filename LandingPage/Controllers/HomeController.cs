@@ -24,19 +24,24 @@ namespace LandingPage.Controllers
 
         public IActionResult Index()
         {
-            var listExProd = new List<ExhibitProductViewModel>();
-            var listProduct = _productService.GetAllProductForExhibit();
-            foreach (var product in listProduct)
+            var listExProdCategory = new List<ExhibitProductCategoryViewModel>();
+            var listProductCategory = _productService.GetAllProductCategoryOnView();
+            foreach (var pc in listProductCategory)
             {
-                var exProd = new ExhibitProductViewModel()
+                var exProdCate = new ExhibitProductCategoryViewModel()
                 {
-                    Base64 = product.Base64,
-                    LinkDetailProduct = Url.Action("Detail", "EximaniProduct", new { id = product.ProductId }),
-                    ProductName = product.ProductName
+                    CategoryId = pc.CategoryId,
+                    CategoryName = pc.CategoryName,
+                    ListExhibitProduct = pc.ListExhibitProduct.Select(p => new ExhibitProductViewModel()
+                    {
+                        Base64 = p.Base64,
+                        LinkDetailProduct = Url.Action("Detail", "EximaniProduct", new { id = p.ProductId, name = p.ProductName }),
+                        ProductName = p.ProductName
+                    }).ToArray()
                 };
-                listExProd.Add(exProd);
+                listExProdCategory.Add(exProdCate);
             }
-            return View(listExProd);
+            return View(listExProdCategory);
         }
        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
