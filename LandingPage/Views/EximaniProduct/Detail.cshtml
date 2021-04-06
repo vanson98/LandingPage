@@ -3,11 +3,11 @@
     <div class="container detail-prod-container">
         <div class="row">
             <div class="col-md-6 col-sm-12 dt-pd-container">
-                <img src="@Model.MainImageBase64"/>
+                <img src="@Model.MainImageBase64" />
                 <div class="dt-pd-simg-container">
                     @foreach (var srcImg in Model.SubImagesBase64)
                     {
-                        <img src="@srcImg"/>
+                        <img src="@srcImg" />
                     }
                 </div>
             </div>
@@ -28,8 +28,14 @@
         </div>
         <div class="row">
             <div class="col-12 dt-pd-content">
-                 @Html.Raw(Model.Content)
+                @Html.Raw(Model.Content)
             </div>
         </div>
     </div>
 </section>
+@section Scripts{
+    <script>
+        $(".rd-navbar-nav").children().removeClass("active");
+        $(".rd-navbar-nav li:nth-child(3)").addClass("active");
+    </script>
+}

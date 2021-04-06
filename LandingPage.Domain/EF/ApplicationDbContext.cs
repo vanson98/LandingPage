@@ -32,10 +32,9 @@ namespace LandingPage.Domain.EF
             modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens").HasKey(x => x.UserId);
         }
 
-        public DbSet<Banner> Banners { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
-        public DbSet<ContactModel> ContactModels { get; set; }
+        public DbSet<CustomerContact> CustomerContacts { get; set; }
         public DbSet<FeedBack> FeedBacks { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }

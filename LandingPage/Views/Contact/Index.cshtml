@@ -68,4 +68,9 @@
         </form>
     </div>
 </section>
-
+@section Scripts{
+    <script>
+        $(".rd-navbar-nav").children().removeClass("active");
+        $(".rd-navbar-nav li:nth-child(6)").addClass("active");
+    </script>
+}

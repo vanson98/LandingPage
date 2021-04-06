@@ -34,20 +34,18 @@
                                     <h5 class="product-title"><a target="_blank">@prodCate.CategoryName</a></h5>
                                 </div>
                                 <div class="sub-product-image-container">
-                                    @for (var i=0; i< prodCate.ListExhibitProduct.Count(); i++)
+                                    @for (var i = 0; i < prodCate.ListExhibitProduct.Count(); i++)
                                     {
-                                        <a 
-                                           href="@prodCate.ListExhibitProduct[i].LinkDetailProduct" 
+                                        <a href="@prodCate.ListExhibitProduct[i].LinkDetailProduct"
                                            class="sub-img @(@i == 0 ? "sub-img-focus" : "")"
                                            categoryId="@prodCate.CategoryId"
-                                           productName="@prodCate.ListExhibitProduct[i].ProductName"
-                                        >
+                                           productName="@prodCate.ListExhibitProduct[i].ProductName">
                                             <img class="img-mini-preview" src="@prodCate.ListExhibitProduct[i].Base64" />
                                         </a>
                                     }
                                 </div>
                                 <div class="product-button-wrap">
-                                    <p id="@("product-name-"+prodCate.CategoryId)" >@prodCate.ListExhibitProduct.First().ProductName</p>
+                                    <p id="@("product-name-"+prodCate.CategoryId)">@prodCate.ListExhibitProduct.First().ProductName</p>
                                 </div>
                             </article>
                         </div>
@@ -60,3 +58,9 @@
         </div>
     </div>
 </section>
+@section Scripts{
+    <script>
+        $(".rd-navbar-nav").children().removeClass("active");
+        $(".rd-navbar-nav li:nth-child(3)").addClass("active");
+    </script>
+}

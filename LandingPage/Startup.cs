@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 using LandingPage.Domain;
 using LandingPage.Domain.EF;
 using LandingPage.Domain.Entities;
-using LandingPage.Repository;
-using LandingPage.Repository.Interfaces;
 using LandingPage.Service.Interfaces;
 using LandingPage.Service.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;

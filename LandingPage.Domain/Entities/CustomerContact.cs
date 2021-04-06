@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace LandingPage.Domain.Entities
 {
-    public class ContactModel : BaseModel
+    public class CustomerContact : BaseModel
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

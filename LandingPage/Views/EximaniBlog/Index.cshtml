@@ -9,7 +9,7 @@
             {
                 <div class="blog-item" style="margin-bottom: 20px">
                     <div class="blog-item-container">
-                        <a  href="@blog.LinkDetail">
+                        <a href="@blog.LinkDetail">
                             <h3>
                                 @blog.BlogTitle
                             </h3>
@@ -26,5 +26,10 @@
         </div>
     </div>
 </div>
-   
 
+@section Scripts{
+    <script>
+        $(".rd-navbar-nav").children().removeClass("active");
+        $(".rd-navbar-nav li:nth-child(4)").addClass("active");
+    </script>
+}

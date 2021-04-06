@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LandingPage", "LandingPage\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LandingPage.Domain", "LandingPage.Domain\LandingPage.Domain.csproj", "{FAFA2450-8CE7-43D0-A29A-FF091010F6A6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LandingPage.Repository", "LandingPage.Repository\LandingPage.Repository.csproj", "{C89A4C9A-90CD-43D5-B498-1BE389EE72BB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LandingPage.Service", "LandingPage.Service\LandingPage.Service.csproj", "{3541C5D8-A598-4DC5-A87F-5D0AF2C099F8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LadingPage.Common", "LadingPage.Common\LadingPage.Common.csproj", "{84DD42FD-B0C1-40B1-BF7E-6DD62B2728B4}"
@@ -27,10 +25,6 @@ Global
 		{FAFA2450-8CE7-43D0-A29A-FF091010F6A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAFA2450-8CE7-43D0-A29A-FF091010F6A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAFA2450-8CE7-43D0-A29A-FF091010F6A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C89A4C9A-90CD-43D5-B498-1BE389EE72BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C89A4C9A-90CD-43D5-B498-1BE389EE72BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C89A4C9A-90CD-43D5-B498-1BE389EE72BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C89A4C9A-90CD-43D5-B498-1BE389EE72BB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3541C5D8-A598-4DC5-A87F-5D0AF2C099F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3541C5D8-A598-4DC5-A87F-5D0AF2C099F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3541C5D8-A598-4DC5-A87F-5D0AF2C099F8}.Release|Any CPU.ActiveCfg = Release|Any CPU

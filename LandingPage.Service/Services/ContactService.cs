@@ -27,15 +27,16 @@ namespace LandingPage.Service.Services
         {
             try
             {
-                var contactModel = new ContactModel()
+                var contactModel = new CustomerContact()
                 {
                     FirstName = request.FirstName,
                     LastName = request.LastName,
                     PhoneNumber = request.PhoneNumber,
                     Email = request.Email,
-                    Message = request.Message
+                    Message = request.Message,
+                    CreatedDate = DateTime.Now
                 };
-                await _dbContext.ContactModels.AddAsync(contactModel);
+                await _dbContext.CustomerContacts.AddAsync(contactModel);
                 var result = await _dbContext.SaveChangesAsync();
                 if (result == 0)
                 {
@@ -45,7 +46,7 @@ namespace LandingPage.Service.Services
             }
             catch (Exception e)
             {
-
+                return false;
                 throw e;
             }
         }
