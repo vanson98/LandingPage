@@ -14,6 +14,4 @@
         $("#product-name-" + categoryId).text(productName);
     })
 
-    // Function 
-
 })

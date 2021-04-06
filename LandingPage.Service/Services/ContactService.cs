@@ -2,8 +2,10 @@
 using LandingPage.Domain.Entities;
 using LandingPage.Service.Dto.Contact;
 using LandingPage.Service.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,9 +20,37 @@ namespace LandingPage.Service.Services
             _dbContext = dbContext;
         }
 
-        public async Task<List<CustomerContactDto>> GetContactAdminViewModels()
+        public async Task<List<CustomerContactDto>> GetAll(string searchText)
         {
-            return null;
+            return await _dbContext.CustomerContacts
+                .Where(c =>
+                    searchText == null || searchText == "" ||
+                    c.FirstName.Contains(searchText) || 
+                    c.LastName.Contains(searchText) ||
+                    c.PhoneNumber.Contains(searchText) ||
+                    c.Email.Contains(searchText) 
+                )
+                .OrderByDescending(c=>c.CreatedDate)
+                .Select(c => new CustomerContactDto()
+                {
+                    Email = c.Email,
+                    FullName = c.FirstName + " " + c.LastName,
+                    PhoneNumber = c.PhoneNumber,
+                    CreatedDate = c.CreatedDate.Value,
+                    Id = c.Id
+                }).ToListAsync();
+        }
+
+        public async Task<CustomerContactDto> GetById(int id)
+        {
+            return await _dbContext.CustomerContacts.Where(c => c.Id == id).Select(c => new CustomerContactDto()
+            {
+                Email = c.Email,
+                FullName = c.FirstName + c.LastName,
+                PhoneNumber = c.PhoneNumber,
+                CreatedDate = c.CreatedDate.Value,
+                Message = c.Message
+            }).FirstOrDefaultAsync();
         }
 
         public async Task<bool> SaveCustomerContact(CustomerContactDto request)

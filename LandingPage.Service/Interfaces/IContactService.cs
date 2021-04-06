@@ -9,8 +9,8 @@ namespace LandingPage.Service.Interfaces
     public interface IContactService
     {
         Task<bool> SaveCustomerContact(CustomerContactDto request);
-        Task<List<CustomerContactDto>> GetContactAdminViewModels();
-       
+        Task<List<CustomerContactDto>> GetAll(string searchText);
+        Task<CustomerContactDto> GetById(int id);
 
     }
 }

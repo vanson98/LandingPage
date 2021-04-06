@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LandingPage.Controllers
 {
-    public class AboutController : Controller
+    public class EximaniAboutController : Controller
     {
         public IActionResult Index()
         {

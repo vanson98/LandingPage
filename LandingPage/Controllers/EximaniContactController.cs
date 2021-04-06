@@ -9,11 +9,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LandingPage.Controllers
 {
-    public class ContactController : Controller
+    public class EximaniContactController : Controller
     {
         private readonly IContactService _contactService;
 
-        public ContactController(IContactService contactService)
+        public EximaniContactController(IContactService contactService)
         {
             _contactService = contactService;
         }

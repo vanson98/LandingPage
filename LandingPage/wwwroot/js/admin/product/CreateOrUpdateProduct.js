@@ -6,7 +6,7 @@
     var subCropImg = $('#sub-crop-img')
     // Config jquery tab 
     $("#tabs").tabs();
-
+    
     // Config tiny CME
     $('#prod-content-textarea').tinymce({
         height: 350,

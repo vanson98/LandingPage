@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LandingPage.Models;
 using LandingPage.Service.Dto;
 using LandingPage.Service.Interfaces;
 using LandingPage.Service.Services;
@@ -11,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LandingPage.Controllers
 {
+    [Authorize]
     public class AdminContactController : Controller
     {
         private readonly IContactService _contactService;
@@ -19,15 +21,26 @@ namespace LandingPage.Controllers
             _contactService = contactService;
         }
 
-        public async Task<IActionResult> GetContactList()
+        public async Task<IActionResult> ContactList([FromQuery]string SearchText)
         {
-            var userId = HttpContext.Session.GetString("userId");
-            if (userId == null)
+            var listContact = await _contactService.GetAll(SearchText);
+            ViewBag.SearchText = SearchText;
+            var data = listContact.Select((c,index) => new ContactListItemViewModel()
             {
-                return RedirectToAction("Login", "Login");
-            }
-            var model = await _contactService.GetContactAdminViewModels();
-            return View(model);
+                Email = c.Email,
+                Index = index+1,
+                FullName = c.FullName,
+                PhoneNumber = c.PhoneNumber,
+                CreatedDate = c.CreatedDate.ToString("dd/MM/yyyy hh:mm"),
+                Id = c.Id
+            }).ToList();
+            return View("~/Views/Admin/Contacts/Index.cshtml", data);
+        }
+
+        public async Task<IActionResult> Detail([FromQuery]int id)
+        {
+            var contact = await _contactService.GetById(id);
+            return Json(contact);
         }
     }
 }

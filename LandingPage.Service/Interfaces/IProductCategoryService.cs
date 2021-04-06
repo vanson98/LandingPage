@@ -7,6 +7,9 @@ namespace LandingPage.Service.Interfaces
 {
     public interface IProductCategoryService
     {
-        List<ProductCategoryDto> GetAll();
+        bool Add(ProductCategoryDto input);
+        bool Update(ProductCategoryDto input);
+        bool Delete(int id);
+        List<ProductCategoryDto> GetAll(string searchText);
     }
 }
