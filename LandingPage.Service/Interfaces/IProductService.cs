@@ -17,7 +17,7 @@ namespace LandingPage.Service.Interfaces
         Task<string> GetMainImageOfProduct(int productId);
         Task<List<string>> GetListSubImageOfProduct(int productId);
         bool ChangeStatus(int productId);
-        List<ExhibitProductCategoryDto> GetAllProductCategoryOnView();
+        List<ExhibitProductCategoryDto> GetAllProductByCategoryOnView();
         ProductDto GetProductDetailById(int productId);
     }
 }

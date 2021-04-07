@@ -60,8 +60,8 @@ namespace LandingPage.Controllers
                     Mode=false
                 };
                 model.ListCategory = new SelectList(listProductCategory, "Id", "Name", prod.ProductCategoryId);
-                model.SubImagesBase64 = await _productService.GetListSubImageOfProduct(id.Value);
-                model.MainImageBase64 = await _productService.GetMainImageOfProduct(id.Value);
+                model.SubImagesUrl = await _productService.GetListSubImageOfProduct(id.Value);
+                model.MainImageUrl = await _productService.GetMainImageOfProduct(id.Value);
             }
             else
             {
@@ -69,7 +69,7 @@ namespace LandingPage.Controllers
                     Mode = true
                 };
                 model.ListCategory = new SelectList(listProductCategory, "Id", "Name");
-                model.SubImagesBase64 = new List<string>();
+                model.SubImagesUrl = new List<string>();
             }
             return View("~/Views/Admin/Products/CreateOrUpdateItem.cshtml", model);
         }

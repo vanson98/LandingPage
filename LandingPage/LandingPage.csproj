@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\ie8-panel\" />
+    <Folder Include="wwwroot\eximani-product-images\" />
     <Folder Include="wwwroot\images\products\" />
     <Folder Include="wwwroot\upload\blog-asset\" />
   </ItemGroup>

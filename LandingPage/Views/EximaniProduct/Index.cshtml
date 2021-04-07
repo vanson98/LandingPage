@@ -29,7 +29,7 @@
                             <article class="product">
                                 <div class="product-body">
                                     <div class="product-figure">
-                                        <img id="@("img-product-preview-category-"+prodCate.CategoryId)" src="@prodCate.ListExhibitProduct.First().Base64" alt="" />
+                                        <img id="@("img-product-preview-category-"+prodCate.CategoryId)" src="@prodCate.ListExhibitProduct.First().UrlMainImage" alt="" />
                                     </div>
                                     <h5 class="product-title"><a target="_blank">@prodCate.CategoryName</a></h5>
                                 </div>
@@ -40,7 +40,7 @@
                                            class="sub-img @(@i == 0 ? "sub-img-focus" : "")"
                                            categoryId="@prodCate.CategoryId"
                                            productName="@prodCate.ListExhibitProduct[i].ProductName">
-                                            <img class="img-mini-preview" src="@prodCate.ListExhibitProduct[i].Base64" />
+                                            <img class="img-mini-preview" src="@prodCate.ListExhibitProduct[i].UrlMainImage" />
                                         </a>
                                     }
                                 </div>

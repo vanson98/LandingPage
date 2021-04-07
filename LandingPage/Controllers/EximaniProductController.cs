@@ -20,7 +20,7 @@ namespace LandingPage.Controllers
         public IActionResult Index()
         {
             var listExProdCategory = new List<ExhibitProductCategoryViewModel>();
-            var listProductCategory = _productService.GetAllProductCategoryOnView();
+            var listProductCategory = _productService.GetAllProductByCategoryOnView();
             foreach (var pc in listProductCategory)
             {
                 var exProdCate = new ExhibitProductCategoryViewModel()
@@ -28,7 +28,7 @@ namespace LandingPage.Controllers
                     CategoryId = pc.CategoryId,
                     CategoryName = pc.CategoryName,
                     ListExhibitProduct = pc.ListExhibitProduct.Select(p=>new ExhibitProductViewModel() { 
-                        Base64 = p.Base64,
+                        UrlMainImage = p.UrlMainImage,
                         LinkDetailProduct = Url.Action("Detail", "EximaniProduct", new { id = p.ProductId, name = p.ProductName }),
                         ProductName = p.ProductName
                     }).ToArray()

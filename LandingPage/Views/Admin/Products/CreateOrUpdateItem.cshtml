@@ -61,7 +61,7 @@
                         Chọn ảnh chính
                     </button>
                     <div class="col-12">
-                        <img src="@Model.MainImageBase64" id="prod-main-img" />
+                        <img src="@Model.MainImageUrl" id="prod-main-img" />
                     </div>
                 </div>
                 <div class="row sub-img-container">
@@ -69,7 +69,7 @@
                         Chọn ảnh sản phẩm
                     </button>
                     <div class="col-12" id="list-sub-img">
-                        @foreach (var linkImg in Model.SubImagesBase64)
+                        @foreach (var linkImg in Model.SubImagesUrl)
                         {
                             <img src="@linkImg" class="sub-img" />
                         }

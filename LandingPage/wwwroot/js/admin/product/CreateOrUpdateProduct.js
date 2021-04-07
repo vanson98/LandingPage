@@ -107,7 +107,7 @@
         // Xử lý ảnh
         var listImage = [];
         var mainImageBase64 = $("#prod-main-img").attr("src");
-        if (mainImageBase64 != null) {
+        if (mainImageBase64 != null && mainImageBase64 != "") {
             listImage.push({
                 isMainImage: true,
                 base64: mainImageBase64
@@ -115,10 +115,13 @@
         }
         var listSubImage = $(".sub-img");
         for (var i = 0; i < listSubImage.length; i++) {
-            listImage.push({
-                isMainImage: false,
-                base64: listSubImage[i].src
-            })
+            debugger
+            if (listSubImage[i].src != null && listSubImage[i].src != "") {
+                listImage.push({
+                    isMainImage: false,
+                    base64: listSubImage[i].src
+                })
+            }
         }
         // Validate
 

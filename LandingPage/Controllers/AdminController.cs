@@ -43,7 +43,7 @@ namespace LandingPage.Controllers
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, user.Email),
-                        new Claim("FullName",user.FirstName+" "+user.LastName),
+                        new Claim("FullName",user.FullName),
                         new Claim("Id",user.Id.ToString())
                     };
                     var claimsIdentity = new ClaimsIdentity(
