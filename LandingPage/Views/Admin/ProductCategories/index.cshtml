@@ -1,4 +1,4 @@
-﻿@model List<ContactListItemViewModel>
+﻿@model List<ProductCategoryViewModel>
 @{
     Layout = "_AdminLayout";
 }
@@ -6,51 +6,43 @@
 <div class="content-wrapper">
     <div class="card" style="min-height: 381px; margin: 25px; padding: 15px;">
         <div style="display: flex; margin: 3px 10px; align-items: center">
-            <h4 style="flex-grow: 1">Contact List</h4>
+            <h4 style="flex-grow: 1">Product Categories</h4>
         </div>
-        <form asp-action="ContactList" asp-controller="AdminContact" method="get">
+        <form asp-action="Index" asp-controller="AdminProductCategory" method="get">
             <div class="row" style="margin: 15px 0">
                 <div class="col-11">
-                    <input type="text" class="form-control" placeholder="Search field" style="flex-grow: 1" id="search-field-input" name="SearchText" value="@ViewBag.SearchText" />
+                    <input type="text" class="form-control" placeholder="Search field" style="flex-grow: 1" id="search-field-input" name="searchText" value="@ViewBag.SearchText" />
                 </div>
                 <div class="col-1">
                     <button type="submit" class="btn btn-primary" id="search-btn" style="width: 100%">Search</button>
                 </div>
             </div>
         </form>
+        <div class="row" style="margin-bottom: 10px">
+            <div class="col-12">
+                <a class="btn btn-primary" asp-action="CreateOrUpdate" style="width: 120px;float:right" >Create</a>
+            </div>
+        </div>
         <div class="table-container">
-            <table id="blog-table" class="table table-striped">
+            <table id="pc-table" class="table table-striped">
                 <thead>
                     <tr>
                         <th style="width: 5%">STT</th>
-                        <th style="width: 30%">FullName</th>
-                        <th>Email</th>
-                        <th>PhoneNumber</th>
-                        <th style="text-align: center;width: 150px">CreatedDate</th>
+                        <th>Product Category Name</th>
+                        <th style="width: 57%">Description</th>
                         <th style="text-align:center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Select((value, index) => new { value, index }))
                     {
-                        <tr id="record-@item.Id">
-                            <td>@item.Index</td>
-                            <td>@item.FullName</td>
-                            <td>@item.Email</td>
-                            <td>@item.PhoneNumber</td>
-                            <td style="text-align: center">@item.CreatedDate</td>
-
+                        <tr>
+                            <td>@(item.index+1)</td>
+                            <td>@item.value.Name</td>
+                            <td>@item.value.Description</td>
                             <td style="text-align: center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Action
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <button class="dropdown-item view-detail-contact-btn" type="button" contactId="@item.Id" data-toggle="modal" data-target="#contact-detail-modal">
-                                            ViewDetail
-                                        </button>
-                                    </div>
-                                </div>
+                                <a asp-action="CreateOrUpdate" asp-route-id="@item.value.Id">Edit</a> |
+                                <a asp-action="Delete" asp-route-id="@item.value.Id">Delete</a>
                             </td>
                         </tr>
                     }
@@ -59,42 +51,3 @@
         </div>
     </div>
 </div>
-
-<!-- Modal Crop Sub Product Image -->
-<div class="modal fade" id="contact-detail-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Contact Detail</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" style="min-width:650px;min-height:500px">
-                <div class="row">
-                    <div><strong>CustomerName: </strong><p id="ctm-name"></p></div>
-                </div>
-                <div class="row">
-                    <div><strong>Email: </strong><p id="ctm-email"></div>
-                </div>
-                <div class="row">
-                    <div><strong>PhoneNumber: </strong><p id="ctm-phone"></div>
-                </div>
-                <div class="row">
-                    <div><strong>Message: </strong><p id="ctm-message"></div>
-                </div>
-                <div class="row">
-                    <div><strong>CreatedDate: </strong><p id="ctm-createdDate"></div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-@section Scripts
-{
-    <script type="text/javascript" src="~/js/admin/contact/index.js"></script>
-}

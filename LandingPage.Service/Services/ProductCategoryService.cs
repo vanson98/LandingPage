@@ -18,12 +18,14 @@ namespace LandingPage.Service.Services
             _dbContext = dbContext;
         }
 
-        public bool Add(ProductCategoryDto input)
+        public bool Add(ProductCategoryDto input,Guid creatUserId)
         {
             var pc = new ProductCategory()
             {
                 Name = input.Name,
-                Description = input.Description
+                Description = input.Description,
+                CreateUserId = creatUserId,
+                CreatedDate = DateTime.Now,
             };
             _dbContext.ProductCategories.Add(pc);
             var result = _dbContext.SaveChanges();
@@ -42,6 +44,16 @@ namespace LandingPage.Service.Services
             return _dbContext.SaveChanges() > 0 ? true : false;
         }
 
+        public ProductCategoryDto Get(int id)
+        {
+            return _dbContext.ProductCategories.Where(pc => pc.Id == id).Select(pc => new ProductCategoryDto()
+            {
+                Id = pc.Id,
+                Name = pc.Name,
+                Description = pc.Description
+            }).FirstOrDefault();
+        }
+
         public List<ProductCategoryDto> GetAll(string searchText)
         {
             return _dbContext.ProductCategories
@@ -50,6 +62,7 @@ namespace LandingPage.Service.Services
                     searchText == null ||
                     pc.Name.Contains(searchText) || 
                     pc.Description.Contains(searchText))
+                .Where(pc=>pc.IsDeleted==false)
                 .Select(pc => new ProductCategoryDto()
                 {
                     Description = pc.Description,

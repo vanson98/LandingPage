@@ -39,7 +39,7 @@ namespace LandingPage.Controllers
 
         public async Task<IActionResult> CreateOrUpdate(int? id)
         {
-            var listProductCategory = _productCategoryService.GetAll();
+            var listProductCategory = _productCategoryService.GetAll(null);
            
             CreateOrUpdateProductViewModel model = null;
             if (id != null && id!=0)
