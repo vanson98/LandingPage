@@ -57,7 +57,6 @@ namespace LandingPage.Controllers
                     Name = prod.Name,
                     ProductCategoryId = prod.ProductCategoryId,
                     ProductCode = prod.ProductCode, 
-                    Mode=false
                 };
                 model.ListCategory = new SelectList(listProductCategory, "Id", "Name", prod.ProductCategoryId);
                 model.SubImagesUrl = await _productService.GetListSubImageOfProduct(id.Value);
@@ -65,9 +64,7 @@ namespace LandingPage.Controllers
             }
             else
             {
-                model = new CreateOrUpdateProductViewModel() { 
-                    Mode = true
-                };
+                model = new CreateOrUpdateProductViewModel();
                 model.ListCategory = new SelectList(listProductCategory, "Id", "Name");
                 model.SubImagesUrl = new List<string>();
             }

@@ -23,8 +23,5 @@ namespace LandingPage.Models
         public int ProductCategoryId { get; set; }
         public List<string> SubImagesUrl { get; set; }
         public SelectList ListCategory { get; set; }
-        public SelectList ListParentPoroduct { get; set; }
-        // true - create ; false - update
-        public bool Mode { get; set; }
     }
 }

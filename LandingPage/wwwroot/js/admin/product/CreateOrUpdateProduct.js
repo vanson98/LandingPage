@@ -3,7 +3,8 @@
     // Property 
     var cropImageDialog;
     var mainCropImg = $('#main-crop-img');
-    var subCropImg = $('#sub-crop-img')
+    var subCropImg = $('#sub-crop-img');
+    var productId = $("#product-id").val() == "" ? null : parseInt($("#product-id").val());;
     // Config jquery tab 
     $("#tabs").tabs();
     
@@ -94,7 +95,6 @@
     // Save product
     function SaveProduct() {
         debugger
-        var productId = $("#product-id").val() == "" ? null : parseInt($("#product-id").val()); ;
         var productCode = $("#prod-code-input").val();
         var productName = $("#prod-name-input").val();
         var description = $("#prod-description-textarea").val();
@@ -105,26 +105,7 @@
         var metaTitle = $('#meta-title-input').val();
         var productCategoryId = $("#prod-category-select").val();
         // Xử lý ảnh
-        var listImage = [];
-        var mainImageBase64 = $("#prod-main-img").attr("src");
-        if (mainImageBase64 != null && mainImageBase64 != "") {
-            listImage.push({
-                isMainImage: true,
-                base64: mainImageBase64
-            });
-        }
-        var listSubImage = $(".sub-img");
-        for (var i = 0; i < listSubImage.length; i++) {
-            debugger
-            if (listSubImage[i].src != null && listSubImage[i].src != "") {
-                listImage.push({
-                    isMainImage: false,
-                    base64: listSubImage[i].src
-                })
-            }
-        }
-        // Validate
-
+        var listImage = HandleImage(productId);
         // Khởi tạo product
         var newProduct = {
             id: productId,
@@ -161,6 +142,37 @@
         });
     }
 
+    // Convert toàn bộ ảnh sang base64
+    function HandleImage(productId) {
+        var listImgBase64
+        if (productId == null) {
+            var mainImageBase64 = $("#prod-main-img").attr("src");
+            if (mainImageBase64 != null && mainImageBase64 != "") {
+                listImage.push({
+                    isMainImage: true,
+                    base64: mainImageBase64
+                });
+            }
+            var listSubImage = $(".sub-img");
+            for (var i = 0; i < listSubImage.length; i++) {
+                debugger
+                if (listSubImage[i].src != null && listSubImage[i].src != "") {
+                    listImage.push({
+                        isMainImage: false,
+                        base64: listSubImage[i].src
+                    })
+                }
+            }
+        } else {
+
+        }
+       
+    }
+
+    function GetBase64OfImage() {
+
+    }
+
     // Xử lý file
     function HandleFiles(type) {
         var file;
@@ -189,6 +201,7 @@
         var mainImageSrc = mainImgCropper.getCroppedCanvas().toDataURL("image/png");
         $('#prod-main-img').attr('src', mainImageSrc);
         $('#main-img-crop-dialog').modal('hide');
+        if(pro)
     }
 
     // Lấy ảnh sau khi crop và append vào list image
