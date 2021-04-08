@@ -60,8 +60,11 @@
                     <button type="button" id="choose-main-img-btn" class="btn btn-primary" data-toggle="modal" data-target="#main-img-crop-dialog">
                         Chọn ảnh chính
                     </button>
-                    <div class="col-12">
-                        <img src="@Model.MainImageUrl" id="prod-main-img" />
+                    <div class="col-12" id="prod-main-img-container">
+                        @if (@Model.MainImageUrl != null)
+                        {
+                            <img src="@Model.MainImageUrl" id="prod-main-img" product-id="@Model.Id" />
+                        }
                     </div>
                 </div>
                 <div class="row sub-img-container">
@@ -71,7 +74,7 @@
                     <div class="col-12" id="list-sub-img">
                         @foreach (var linkImg in Model.SubImagesUrl)
                         {
-                            <img src="@linkImg" class="sub-img" product-id=""/>
+                            <img src="@linkImg" class="sub-img"  product-id="@Model.Id"/>
                         }
                     </div>
                 </div>

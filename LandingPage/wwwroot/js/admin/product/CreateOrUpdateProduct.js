@@ -143,10 +143,11 @@
     }
 
     // Convert toàn bộ ảnh sang base64
-    function HandleImage(productId) {
-        var listImgBase64
+    function HandleImage() {
         if (productId == null) {
+            var mainImg = $("#prod-main-img")
             var mainImageBase64 = $("#prod-main-img").attr("src");
+
             if (mainImageBase64 != null && mainImageBase64 != "") {
                 listImage.push({
                     isMainImage: true,
@@ -169,8 +170,14 @@
        
     }
 
-    function GetBase64OfImage() {
-
+    function getBase64ImageFromUrl(img) {
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        var dataURL = canvas.toDataURL("image/png");
+        return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
     }
 
     // Xử lý file
@@ -199,9 +206,9 @@
     // Lấy ảnh sau khi crop và gán vào src cho main image
     function AddMainCropImageSrc() {
         var mainImageSrc = mainImgCropper.getCroppedCanvas().toDataURL("image/png");
+        $("#prod-main-img-container").
         $('#prod-main-img').attr('src', mainImageSrc);
         $('#main-img-crop-dialog').modal('hide');
-        if(pro)
     }
 
     // Lấy ảnh sau khi crop và append vào list image
