@@ -32,7 +32,7 @@
             <div id="tabs-1">
                 <div class="input-group mb-3">
                     <label for="prod-code-input" style="width: 100%">Mã sản phẩm</label>
-                    <input type="text" id="prod-code-input" class="form-control" placeholder="Mã sản phẩm" @(Model.Id!=null ? "disabled" : null ) value="@Model.ProductCode">
+                    <input type="text" id="prod-code-input" class="form-control" placeholder="Mã sản phẩm" @(Model.Id != null ? "disabled" : null ) value="@Model.ProductCode">
                 </div>
                 <div class="input-group mb-3">
                     <label for="prod-name-input" style="width: 100%">Tên sản phẩm</label>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="input-group mb-3" style="flex-direction:column">
                     <label for="prod-category-select">Loại sản phẩm</label>
-                    @Html.DropDownList("product-category", Model.ListCategory,"Chọn loại sản phẩm", new { @class = "form-control prod-select", @id = "prod-category-select" })
+                    @Html.DropDownList("product-category", Model.ListCategory, "Chọn loại sản phẩm", new { @class = "form-control prod-select", @id = "prod-category-select" })
                 </div>
                 <div class="input-group mb-3">
                     <label for="prod-description-input">Mô tả</label>
@@ -74,7 +74,11 @@
                     <div class="col-12" id="list-sub-img">
                         @foreach (var linkImg in Model.SubImagesUrl)
                         {
-                            <img src="@linkImg" class="sub-img"  product-id="@Model.Id"/>
+                            <div>
+                                <img src="@linkImg" class="sub-img" product-id="@Model.Id" />
+                                <button class="btn btn-warning" onclick="DeleteImage(event)">Delete</button>
+                            </div>
+
                         }
                     </div>
                 </div>

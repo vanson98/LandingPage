@@ -14,10 +14,10 @@ namespace LandingPage.Service.Interfaces
         bool Add(ProductDto entity, Guid createUserId);
         bool Update(ProductDto entity);
         bool Delete(int Id);
-        Task<string> GetMainImageOfProduct(int productId);
-        Task<List<string>> GetListSubImageOfProduct(int productId);
+        string GetMainImageOfProduct(int productId);
+        Task<List<string>> GetListSubImageOfProduct(int productId,bool isGetAll);
         bool ChangeStatus(int productId);
         List<ExhibitProductCategoryDto> GetAllProductByCategoryOnView();
-        ProductDto GetProductDetailById(int productId);
+        ProductDto GetProductDetailById(int? productId,string seoName);
     }
 }

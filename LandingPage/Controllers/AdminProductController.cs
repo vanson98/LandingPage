@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace LandingPage.Controllers
 {
     [Authorize]
+    [DisableRequestSizeLimit]
     public class AdminProductController : Controller
     {
         private IProductService _productService;
@@ -37,14 +38,14 @@ namespace LandingPage.Controllers
             return View("~/Views/Admin/Products/Index.cshtml", listProduct);
         }
 
-        public async Task<IActionResult> CreateOrUpdate(int? id)
+        public async Task<IActionResult> CreateOrUpdate([FromQuery]int? productId)
         {
             var listProductCategory = _productCategoryService.GetAll(null);
            
             CreateOrUpdateProductViewModel model = null;
-            if (id != null && id!=0)
+            if (productId != null && productId!=0)
             {
-                var prod = _productService.GetById(id.Value);
+                var prod = _productService.GetById(productId.Value);
                 model = new CreateOrUpdateProductViewModel()
                 {
                     Id = prod.Id,
@@ -59,8 +60,8 @@ namespace LandingPage.Controllers
                     ProductCode = prod.ProductCode, 
                 };
                 model.ListCategory = new SelectList(listProductCategory, "Id", "Name", prod.ProductCategoryId);
-                model.SubImagesUrl = await _productService.GetListSubImageOfProduct(id.Value);
-                model.MainImageUrl = await _productService.GetMainImageOfProduct(id.Value);
+                model.SubImagesUrl = await _productService.GetListSubImageOfProduct(productId.Value,false);
+                model.MainImageUrl = _productService.GetMainImageOfProduct(productId.Value);
             }
             else
             {
@@ -95,9 +96,9 @@ namespace LandingPage.Controllers
             return Json(new { StatusCode = 500, Message = "Error" });
         }
 
-        public IActionResult ChangeStatus(int id)
+        public IActionResult ChangeStatus([FromQuery]int productId)
         {
-            var result = _productService.ChangeStatus(id);
+            var result = _productService.ChangeStatus(productId);
             if (result == true)
             {
                 return RedirectToAction("Index", "AdminProduct");
@@ -105,9 +106,9 @@ namespace LandingPage.Controllers
             return Json(new { StatusCode = 500, Message = "Error" });
         }
 
-        public IActionResult Delete(int id)
+        public IActionResult Delete([FromQuery]int productId)
         {
-            var result = _productService.Delete(id);
+            var result = _productService.Delete(productId);
             if (result == true)
             {
                 return RedirectToAction("Index", "AdminProduct");

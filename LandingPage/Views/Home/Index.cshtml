@@ -147,7 +147,7 @@
                                 <div class="product-figure">
                                     <img id="@("img-product-preview-category-"+prodCate.CategoryId)" src="@prodCate.ListExhibitProduct.First().UrlMainImage" alt="" />
                                 </div>
-                                <h5 class="product-title"><a target="_blank">@prodCate.CategoryName</a></h5>
+                                <h5 class="product-title"><a>@prodCate.CategoryName</a></h5>
                             </div>
                             <div class="sub-product-image-container">
                                 @for (var i = 0; i < prodCate.ListExhibitProduct.Count(); i++)

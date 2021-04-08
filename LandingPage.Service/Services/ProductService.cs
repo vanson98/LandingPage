@@ -46,21 +46,7 @@ namespace LandingPage.Service.Services
                 _dbContext.Add<Product>(product);
                 _dbContext.SaveChanges();
                 var productSeoName = product.Name.GetSeoName();
-                foreach (var item in entity.ListImage)
-                {
-                    var productImage = new ProductImage()
-                    {
-                        Url = null,
-                        IsMainImage = item.IsMainImage,
-                        ProductId = product.Id
-                    };
-                    _dbContext.ProductImages.Add(productImage);
-                    _dbContext.SaveChanges();
-                    productImage.Url = ConvertBase64ToFile(item.Base64,productImage.Id,productSeoName);
-                    _dbContext.ProductImages.Update(productImage);
-                    _dbContext.SaveChanges();
-                };
-               
+                SaveProductImage(product.Id, productSeoName, entity.ListImage);
                 return true;
             }
             catch (Exception e)
@@ -69,7 +55,7 @@ namespace LandingPage.Service.Services
             }
 
         }
-
+        
         public bool ChangeStatus(int productId)
         {
             try
@@ -142,7 +128,7 @@ namespace LandingPage.Service.Services
                     CategoryName = gp.Key.Name,
                     ListExhibitProduct = gp.Select(p => new ExhibitProductDto()
                     {
-                        UrlMainImage = _dbContext.Set<ProductImage>().Where(pi => pi.ProductId == p.Id && pi.IsMainImage == true).FirstOrDefault()?.Url,
+                        UrlMainImage = GetMainImageOfProduct(p.Id),
                         ProductId = p.Id,
                         ProductName = p.Name
                     }).ToList()
@@ -173,25 +159,25 @@ namespace LandingPage.Service.Services
             return product;
         }
 
-        public async Task<List<string>> GetListSubImageOfProduct(int productId)
+        public async Task<List<string>> GetListSubImageOfProduct(int productId, bool isGetAll)
         {
             return await _dbContext.Set<ProductImage>()
-                    .Where(pi => pi.ProductId == productId && !pi.IsMainImage)
+                    .Where(pi => pi.ProductId == productId && (isGetAll || !pi.IsMainImage))
                     .Select(pi => @"/eximani-product-images/"+pi.Url).ToListAsync();
         }
 
-        public async Task<string> GetMainImageOfProduct(int productId)
+        public string GetMainImageOfProduct(int productId)
         {
-            return await _dbContext.Set<ProductImage>()
+            return _dbContext.Set<ProductImage>()
                    .Where(pi => pi.ProductId == productId && pi.IsMainImage)
-                   .Select(pi => @"/eximani-product-images/" + pi.Url).FirstOrDefaultAsync();
+                   .Select(pi => @"/eximani-product-images/" + pi.Url).FirstOrDefault();
         }
 
-        public ProductDto GetProductDetailById(int productId)
+        public ProductDto GetProductDetailById(int? productId,string seoName)
         {
             var productDetail = (from p in  _dbContext.Set<Product>().Select(p=>p).ToList()
                                 join pc in _dbContext.Set<ProductCategory>().Select(p => p).ToList() on p.ProductCategoryId equals pc.Id
-                                where p.Id == productId
+                                where p.Id == productId || p.Name.GetSeoName() == seoName
                                 select new ProductDto(){
                                         Id = p.Id,
                                         ProductCode = p.ProductCode,
@@ -217,38 +203,9 @@ namespace LandingPage.Service.Services
                 {
                     return false;
                 }
-                var productImages = _dbContext.ProductImages.Where(pi => pi.ProductId == product.Id).Select(pi => pi).ToList();
-                // Xóa toàn bộ ảnh cũ 
-                foreach (var pi in productImages)
-                {
-                    if (pi.Url != null)
-                    {
-                        var fullPath = Path.Combine(_hostingEnvironment.WebRootPath, @"eximani-product-images", pi.Url);
-                        if (File.Exists(fullPath))
-                        {
-                            File.Delete(fullPath);
-                        }
-                    }
-                   
-                }
-                _dbContext.ProductImages.RemoveRange(productImages);
-                _dbContext.SaveChanges();
-                // Thêm lại toàn bộ ảnh mới
                 var productSeoName = product.Name.GetSeoName();
-                foreach (var item in entity.ListImage)
-                {
-                    var productImage = new ProductImage()
-                    {
-                        Url = null,
-                        IsMainImage = item.IsMainImage,
-                        ProductId = product.Id
-                    };
-                    _dbContext.ProductImages.Add(productImage);
-                    _dbContext.SaveChanges();
-                    productImage.Url = ConvertBase64ToFile(item.Base64, productImage.Id, productSeoName);
-                    _dbContext.ProductImages.Update(productImage);
-                    _dbContext.SaveChanges();
-                };
+                RemoveAllProductImage(product.Id);
+                SaveProductImage(product.Id, productSeoName, entity.ListImage);
                 product.Content = entity.Content;
                 product.Description = entity.Description;
                 product.MetaDescription = entity.MetaDescription;
@@ -266,6 +223,42 @@ namespace LandingPage.Service.Services
                 return false;
             }
 
+        }
+        private void RemoveAllProductImage(int productId)
+        {
+            var productImages = _dbContext.ProductImages.Where(pi => pi.ProductId == productId).Select(pi => pi).ToList();
+            // Xóa toàn bộ ảnh cũ 
+            foreach (var pi in productImages)
+            {
+                if (pi.Url != null)
+                {
+                    var fullPath = Path.Combine(_hostingEnvironment.WebRootPath, @"eximani-product-images", pi.Url);
+                    if (File.Exists(fullPath))
+                    {
+                        File.Delete(fullPath);
+                    }
+                }
+            }
+            _dbContext.ProductImages.RemoveRange(productImages);
+            _dbContext.SaveChanges();
+        }
+
+        private void SaveProductImage(int productId, string productSeoName, List<ProductImageDto> listImage)
+        {
+            foreach (var item in listImage)
+            {
+                var productImage = new ProductImage()
+                {
+                    Url = null,
+                    IsMainImage = item.IsMainImage,
+                    ProductId = productId
+                };
+                _dbContext.ProductImages.Add(productImage);
+                _dbContext.SaveChanges();
+                productImage.Url = ConvertBase64ToFile(item.Base64, productImage.Id, productSeoName);
+                _dbContext.ProductImages.Update(productImage);
+                _dbContext.SaveChanges();
+            };
         }
 
         private string ConvertBase64ToFile(string base64Data, int productId, string productSeoName)

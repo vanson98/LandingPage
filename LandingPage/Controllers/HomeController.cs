@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using LandingPage.Models;
 using Microsoft.AspNetCore.Authorization;
 using LandingPage.Service.Interfaces;
+using LadingPage.Common.Utility;
 
 namespace LandingPage.Controllers
 {
@@ -35,7 +36,7 @@ namespace LandingPage.Controllers
                     ListExhibitProduct = pc.ListExhibitProduct.Select(p => new ExhibitProductViewModel()
                     {
                         UrlMainImage = p.UrlMainImage,
-                        LinkDetailProduct = Url.Action("Detail", "EximaniProduct", new { id = p.ProductId, name = p.ProductName }),
+                        LinkDetailProduct = Url.Action("Detail", "EximaniProduct", new { name = p.ProductName.GetSeoName() }),
                         ProductName = p.ProductName
                     }).ToArray()
                 };

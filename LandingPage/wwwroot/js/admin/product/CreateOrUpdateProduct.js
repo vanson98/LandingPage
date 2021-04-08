@@ -7,7 +7,7 @@
     var productId = $("#product-id").val() == "" ? null : parseInt($("#product-id").val());;
     // Config jquery tab 
     $("#tabs").tabs();
-    
+
     // Config tiny CME
     $('#prod-content-textarea').tinymce({
         height: 350,
@@ -95,17 +95,18 @@
     // Save product
     function SaveProduct() {
         debugger
+        $("#btn-save-product").prop('disabled', true);
         var productCode = $("#prod-code-input").val();
         var productName = $("#prod-name-input").val();
         var description = $("#prod-description-textarea").val();
         var content = tinymce.get("prod-content-textarea").getContent();
-        var status = $('#prod-status-checkbox').is(":checked"); 
+        var status = $('#prod-status-checkbox').is(":checked");
         var metaKeyWord = $('#meta-key-word-input').val();
         var metaDescription = $('#meta-description-input').val();
         var metaTitle = $('#meta-title-input').val();
         var productCategoryId = $("#prod-category-select").val();
         // Xử lý ảnh
-        var listImage = HandleImage(productId);
+        var listImage = GetAllImageBase64();
         // Khởi tạo product
         var newProduct = {
             id: productId,
@@ -143,41 +144,49 @@
     }
 
     // Convert toàn bộ ảnh sang base64
-    function HandleImage() {
-        if (productId == null) {
-            var mainImg = $("#prod-main-img")
-            var mainImageBase64 = $("#prod-main-img").attr("src");
-
-            if (mainImageBase64 != null && mainImageBase64 != "") {
-                listImage.push({
-                    isMainImage: true,
-                    base64: mainImageBase64
-                });
-            }
-            var listSubImage = $(".sub-img");
-            for (var i = 0; i < listSubImage.length; i++) {
-                debugger
-                if (listSubImage[i].src != null && listSubImage[i].src != "") {
-                    listImage.push({
-                        isMainImage: false,
-                        base64: listSubImage[i].src
-                    })
-                }
-            }
+    function GetAllImageBase64() {
+        var listImageBase64 = [];
+        var mainImg = $("#prod-main-img")
+        var mainImageBase64 = null;
+        // Xử lý ảnh chính
+        if (mainImg.attr("product-id") == null) {
+            mainImageBase64 = $("#prod-main-img").attr("src");
         } else {
-
+            mainImageBase64 = getBase64ImageFromUrl(document.getElementById("prod-main-img"));
         }
-       
+        if (mainImageBase64 != null && mainImageBase64 != "") {
+            listImageBase64.push({
+                isMainImage: true,
+                base64: mainImageBase64
+            });
+        }
+        // Xử lý ảnh phụ
+        var listSubImage = $(".sub-img");
+        for (var i = 0; i < listSubImage.length; i++) {
+            var subImgBase64 = null;
+            if ($(listSubImage[i]).attr("product-id") == null) {
+                subImgBase64 = listSubImage[i].src
+            } else {
+                subImgBase64 = getBase64ImageFromUrl(listSubImage[i])
+            }
+            if (subImgBase64 != null && subImgBase64 != "") {
+                listImageBase64.push({
+                    isMainImage: false,
+                    base64: subImgBase64
+                })
+            }
+        }
+        return listImageBase64;
     }
 
     function getBase64ImageFromUrl(img) {
         var canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
         var ctx = canvas.getContext("2d");
         ctx.drawImage(img, 0, 0);
         var dataURL = canvas.toDataURL("image/png");
-        return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+        return dataURL;
     }
 
     // Xử lý file
@@ -206,16 +215,28 @@
     // Lấy ảnh sau khi crop và gán vào src cho main image
     function AddMainCropImageSrc() {
         var mainImageSrc = mainImgCropper.getCroppedCanvas().toDataURL("image/png");
-        $("#prod-main-img-container").
-        $('#prod-main-img').attr('src', mainImageSrc);
+        var newMainImage = "<img src='" + mainImageSrc + "' id='prod-main-img'/>"
+        $("#prod-main-img-container").html(newMainImage);
         $('#main-img-crop-dialog').modal('hide');
     }
 
     // Lấy ảnh sau khi crop và append vào list image
     function AddSubCropImagesSrc() {
         var subImageSrc = subImgCropper.getCroppedCanvas().toDataURL("image/png");
-        $('#list-sub-img').append("<img src='" + subImageSrc + "'  class='sub-img'/>");
+        var domContainerImg = `
+             <div>
+                <img src='${  subImageSrc }'  class='sub-img'/>
+                <button class="btn btn-warning">Delete</button>
+             </div>
+        `
+        $('#list-sub-img').append(domContainerImg);
         $('#sub-img-crop-dialog').modal('hide');
     }
-
 })
+
+
+function DeleteImage(e) {
+    debugger
+    var caller = e.target;
+    $(caller).parent().remove();
+}
