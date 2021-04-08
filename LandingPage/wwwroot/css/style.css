@@ -20776,16 +20776,56 @@ html#ecwid_html body#ecwid_body .ec-size.ec-size--m .ec-store .details-gallery__
 
 /*Manufacture Standard*/
 .manufacture-standard {
-    height: 120px;
+    text-align: center;
     flex-direction: column;
     margin: 99px 0 !important;
 }
 
+@media (max-width: 768px) {
+    .manufacture-introduce {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .manufacture-introduce-left{
+        margin-bottom:28px;
+    }
 
+    .manufacture-slide-right-card-content {
+        margin: 0px !important;
+        padding: 20px !important;
+    }
+        .manufacture-slide-right-card-content > div {
+            text-align: center !important;
+            margin: 24px !important;
+        }
+        .manufacture-slide-right-card-content span {
+            width: 50% !important;
+            margin: auto !important;
+            margin-top: 10px !important;
+        }
+
+    .manufacture-slide-left .col-md-4{
+        order: 10 ;
+    }
+
+    .manufacture-slide-left-card-content {
+        padding: 20px !important;
+        margin: 0px !important;
+    }
+        .manufacture-slide-left-card-content > div {
+            text-align: center !important;
+            margin: 24px !important;
+        }
+
+        .manufacture-slide-left-card-content span {
+            width: 50% !important;
+            margin: auto !important;
+            margin-top: 10px !important;
+        }
+}
 
 .manufacture-slide-right, .manufacture-slide-left {
     max-width: 1140px;
-    height: 530px;
     margin: auto;
     align-items: center;
 }
@@ -20798,7 +20838,6 @@ html#ecwid_html body#ecwid_body .ec-size.ec-size--m .ec-store .details-gallery__
 
 .manufacture-slide-right-card-content {
     width: 100%;
-    height: 410px;
     display: flex;
     align-items: center;
     text-align: left;
@@ -20810,7 +20849,6 @@ html#ecwid_html body#ecwid_body .ec-size.ec-size--m .ec-store .details-gallery__
 
 .manufacture-slide-left-card-content {
     width: 100%;
-    height: 410px;
     display: flex;
     align-items: center;
     text-align: left;
