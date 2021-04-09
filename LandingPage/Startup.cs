@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using LandingPage.Domain;
 using LandingPage.Domain.EF;
 using LandingPage.Domain.Entities;
+using LandingPage.EmailService;
 using LandingPage.Service.Interfaces;
 using LandingPage.Service.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -33,6 +34,12 @@ namespace LandingPage
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Get config mail
+            var emailConfig = Configuration
+               .GetSection("EmailConfiguration")
+               .Get<EmailConfiguration>();
+            services.AddSingleton(emailConfig);
+            // Add Controller
             services.AddControllersWithViews();
             // Sử dụng DbContext
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -95,6 +102,7 @@ namespace LandingPage
             services.AddScoped<IBlogsService, BlogService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductCategoryService, ProductCategoryService>();
+            services.AddScoped<IEmailSender, EmailSender>();
         }
 
     }

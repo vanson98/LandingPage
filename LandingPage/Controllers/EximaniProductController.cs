@@ -30,7 +30,7 @@ namespace LandingPage.Controllers
                     CategoryName = pc.CategoryName,
                     ListExhibitProduct = pc.ListExhibitProduct.Select(p=>new ExhibitProductViewModel() { 
                         UrlMainImage = p.UrlMainImage,
-                        LinkDetailProduct = Url.Action("Detail", "EximaniProduct", new {name = p.ProductName.GetSeoName()}),
+                        LinkDetailProduct = Url.Action("Detail", "EximaniProduct", new {name = p.ProductName.GetSeoName()+"-"+p.ProductId}),
                         ProductName = p.ProductName
                     }).ToArray()
                 };
@@ -41,7 +41,8 @@ namespace LandingPage.Controllers
 
         public async Task<IActionResult> Detail(string name)
         {
-            var product = _productService.GetProductDetailById(null,name);
+            var productId = Int32.Parse(name.Split("-").Last());
+            var product = _productService.GetProductDetailById(productId);
             var detailProductVM = new DetailProductViewModel()
             {
                 CategoryName = product.PorductCategoryName,

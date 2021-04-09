@@ -173,11 +173,11 @@ namespace LandingPage.Service.Services
                    .Select(pi => @"/eximani-product-images/" + pi.Url).FirstOrDefault();
         }
 
-        public ProductDto GetProductDetailById(int? productId,string seoName)
+        public ProductDto GetProductDetailById(int productId)
         {
             var productDetail = (from p in  _dbContext.Set<Product>().Select(p=>p).ToList()
                                 join pc in _dbContext.Set<ProductCategory>().Select(p => p).ToList() on p.ProductCategoryId equals pc.Id
-                                where p.Id == productId || p.Name.GetSeoName() == seoName
+                                where p.Id == productId
                                 select new ProductDto(){
                                         Id = p.Id,
                                         ProductCode = p.ProductCode,

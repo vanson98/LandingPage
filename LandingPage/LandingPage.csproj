@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LandingPage.EmailService\LandingPage.EmailService.csproj" />
     <ProjectReference Include="..\LandingPage.Service\LandingPage.Service.csproj" />
   </ItemGroup>
 

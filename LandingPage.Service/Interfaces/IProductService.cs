@@ -18,6 +18,6 @@ namespace LandingPage.Service.Interfaces
         Task<List<string>> GetListSubImageOfProduct(int productId,bool isGetAll);
         bool ChangeStatus(int productId);
         List<ExhibitProductCategoryDto> GetAllProductByCategoryOnView();
-        ProductDto GetProductDetailById(int? productId,string seoName);
+        ProductDto GetProductDetailById(int productId);
     }
 }

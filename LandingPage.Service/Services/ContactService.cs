@@ -53,7 +53,7 @@ namespace LandingPage.Service.Services
             }).FirstOrDefaultAsync();
         }
 
-        public async Task<bool> SaveCustomerContact(CustomerContactDto request)
+        public async Task<CustomerContact> SaveCustomerContact(CustomerContactDto request)
         {
             try
             {
@@ -66,17 +66,17 @@ namespace LandingPage.Service.Services
                     Message = request.Message,
                     CreatedDate = DateTime.Now
                 };
-                await _dbContext.CustomerContacts.AddAsync(contactModel);
+                var ct = await _dbContext.CustomerContacts.AddAsync(contactModel);
                 var result = await _dbContext.SaveChangesAsync();
                 if (result == 0)
                 {
-                    return false;
+                    return null;
                 }
-                return true;
+                return contactModel;
             }
             catch (Exception e)
             {
-                return false;
+                return null;
                 throw e;
             }
         }
