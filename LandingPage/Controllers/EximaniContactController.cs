@@ -21,8 +21,7 @@ namespace LandingPage.Controllers
             _emailSender = emailSender;
         }
 
-
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             return View();
         }
@@ -43,10 +42,6 @@ namespace LandingPage.Controllers
             var message = new Message("Khách đăng kí nhận thông tin", mailContent);
             await _emailSender.SendEmailAsync(message);
             return View("Index");
-        }
-        public async Task<IActionResult> ContactList()
-        {
-            return View();
         }
     }
 }

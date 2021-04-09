@@ -68,5 +68,9 @@
 </div>
 @section Scripts
 {
+    <script>
+        $(".nav-sidebar li").children().removeClass("active");
+        $(".nav-sidebar li:nth-child(1)>a").addClass("active");
+    </script>
     <script type="text/javascript" src="~/js/admin/blog/index.js"></script>
 }

@@ -36,7 +36,7 @@ namespace LandingPage.Controllers
                     ListExhibitProduct = pc.ListExhibitProduct.Select(p => new ExhibitProductViewModel()
                     {
                         UrlMainImage = p.UrlMainImage,
-                        LinkDetailProduct = Url.Action("Detail", "EximaniProduct", new { name = p.ProductName.GetSeoName() }),
+                        LinkDetailProduct = Url.Action("Detail", "EximaniProduct", new { name = p.ProductName.GetSeoName() + "-" + p.ProductId }),
                         ProductName = p.ProductName
                     }).ToArray()
                 };

@@ -214,24 +214,6 @@ jQueryAjaxPost = form => {
         reloadJs2.src = '/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js';
         $("body").append(reloadJs2);
         
-        $('#data-table').DataTable({
-            stateSave: true,
-            "bDestroy": true,
-            "language": {
-                "search": "Tìm Kiếm:",
-                "lengthMenu": "Hiển thị _MENU_ bản ghi",
-                "emptyTable": "Bảng không có dữ liệu",
-                "info": "Hiển thị từ _START_ đến _END_ của _TOTAL_ bản ghi",
-                "infoEmpty": "Hiển thị 0 bản ghi",
-                "zeroRecords": "Không có bản ghi nào được tìm thấy",
-                "paginate": {
-                    "next": ">",
-                    "previous": "<"
-                }
-            },
-            lengthMenu: [10, 15, 20, 30,40],
-        });
-        
     } catch(e){
         console.log(e);
     }
@@ -258,47 +240,11 @@ jQueryAjaxDelete = form => {
         } catch (e) {
             console.log(e);
         }
-        $('#data-table').DataTable({
-            stateSave: true,
-            "bDestroy": true,
-            "language": {
-                "search": "Tìm Kiếm:",
-                "lengthMenu": "Hiển thị _MENU_ bản ghi",
-                "emptyTable": "Bảng không có dữ liệu",
-                "info": "Hiển thị từ _START_ đến _END_ của _TOTAL_ bản ghi",
-                "infoEmpty": "Hiển thị 0 bản ghi",
-                "zeroRecords": "Không có bản ghi nào được tìm thấy",
-                "paginate": {
-                    "next": ">",
-                    "previous": "<"
-                }
-            },
-            lengthMenu: [10, 15, 20, 30, 40],
-        });
     }
     //Tránh việc chạy vào sự kiện submit
     return false;
 }
-    $(document).ready(function () {
-        $('#data-table').DataTable({
-            stateSave: true,
-            "bDestroy": true,
-            "language": {
-                "search": "Tìm Kiếm:",
-                "lengthMenu": "Hiển thị _MENU_ bản ghi",
-                "emptyTable": "Bảng không có dữ liệu",
-                "info": "Hiển thị từ _START_ đến _END_ của _TOTAL_ bản ghi",
-                "infoEmpty": "Hiển thị 0 bản ghi",
-                "zeroRecords": "Không có bản ghi nào được tìm thấy",
-                "paginate": {
-                    "next": ">",
-                    "previous": "<"
-                },
-            },
-            lengthMenu: [10, 15, 20, 30, 40],
-        });
-        
-    });
+    
 $("#add-attr").click(function () {
     var item = $(".attribute").first().clone().addClass('attribute-item');
     item.show();

@@ -5,33 +5,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - LandingPage</title>
+    <!-- Layout admin -->
+    <link rel="stylesheet" href="~/css/layout-admin.css" />
+    <!-- Toastr -->
     <link rel="stylesheet" href="~/plugins/toastr/toastr.css" />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="~/css/layout-admin.css" />
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
-    <!-- Tempusdominus Bbootstrap 4 -->
-    <link rel="stylesheet" href="~/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="~/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="~/plugins/daterangepicker/daterangepicker.css">
-    <!-- summernote -->
-    <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.css">
-    <!-- DateTime Picker -->
-    <link rel="stylesheet" href="~/css/bootstrap-datepicker.css">
     <!-- Jquery UI-->
     <link href="~/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" />
     <!--Sweet alert 2-->
     <link href="~/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
-    <!-- Chosen -->
-    <link href="~/plugins/chosen/chosen.css" rel="stylesheet" />
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     @*Page Style*@
@@ -49,36 +34,15 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a asp-action="Index" asp-controller="Dashboard" class="nav-link">Trang chủ</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
                     <a asp-action="Logout" asp-controller="Login" class="nav-link">Đăng xuất</a>
                 </li>
             </ul>
 
         </nav>
-        <!-- /.navbar -->
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            @*<a href="index3.html" class="brand-link">
-                    <img src="~/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                         style="opacity: .8">
-                    <span class="brand-text font-weight-light">Admin</span>
-                </a>*@
-
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    @*<div class="image">
-                            <img src="~/images/@Context.Session.GetString("avatar")" class="img-circle elevation-2" alt="User Image">
-                        </div>*@
-                    <div class="info">
-                        @*<a href="#" class="d-block">@Context.Session.GetString("userName")</a>*@
-                    </div>
-                </div>
-
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -104,14 +68,14 @@
                                 <p>Quản lý contact</p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview">
+                        @*<li class="nav-item has-treeview">
                             <a asp-action="ListUser" asp-controller="Admin" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Quản lý tài khoản
                                 </p>
                             </a>
-                        </li>
+                        </li>*@
                         <li class="nav-item">
                             <a asp-action="Index" asp-controller="AdminProductCategory" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
@@ -120,16 +84,11 @@
                         </li>
                     </ul>
                 </nav>
-                <!-- /.sidebar-menu -->
             </div>
-            <!-- /.sidebar -->
         </aside>
 
-        <!-- Content Wrapper. Contains page content -->
-
         @RenderBody()
-        <!-- /.content-wrapper -->
-        <!-- Control Sidebar -->
+
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
         </aside>
@@ -157,47 +116,19 @@
     <script src="~/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="~/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-        $.widget.bridge('uibutton', $.ui.button)
-    </script>
     <!-- Bootstrap 4 -->
     <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- ChartJS -->
-    <script src="~/plugins/chart.js/Chart.min.js"></script>
-    <!-- Sparkline -->
-    <script src="~/plugins/sparklines/sparkline.js"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="~/plugins/jquery-knob/jquery.knob.min.js"></script>
-    <!-- daterangepicker -->
-    <script src="~/plugins/moment/moment.min.js"></script>
-    <script src="~/plugins/daterangepicker/daterangepicker.js"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script src="~/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-    <!-- Summernote -->
-    <script src="~/plugins/summernote/summernote-bs4.min.js"></script>
-    <!-- overlayScrollbars -->
-    <script src="~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script src="~/dist/js/adminlte.js"></script>
 
     <!-- AdminLTE for demo purposes -->
     <script src="~/dist/js/demo.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="~/js/layout-admin.js"></script>
     <script src="~/plugins/notify/notify.min.js"></script>
     <script src="~/plugins/sweetalert2/sweetalert2.all.min.js"></script>
-
-    <script src="~/js/bootstrap-datepicker.js"></script>
-    <script src="~/js/datepicker.js"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-
     <!-- Tiny MCE -->
     <script src="/plugins/tinymce/tinymce.min.js"></script>
     <script src="/plugins/tinymce/jquery.tinymce.min.js"></script>
-    <script type="text/javascript" src="~/plugins/chosen/chosen.jquery.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

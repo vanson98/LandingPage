@@ -20,7 +20,7 @@
         </form>
         <div class="row" style="margin-bottom: 10px">
             <div class="col-12">
-                <a class="btn btn-primary" asp-action="CreateOrUpdate" style="width: 120px;float:right" >Create</a>
+                <a class="btn btn-primary" asp-action="CreateOrUpdate" style="width: 120px;float:right">Create</a>
             </div>
         </div>
         <div class="table-container">
@@ -51,3 +51,10 @@
         </div>
     </div>
 </div>
+@section Scripts
+{
+    <script>
+        $(".nav-sidebar li").children().removeClass("active");
+        $(".nav-sidebar li:nth-child(5)>a").addClass("active");
+    </script>
+}

@@ -7,14 +7,14 @@
 }
 @section Styles
 {
-    <link rel="stylesheet" href="~/plugins/cropper/cropper.min.css"/>
-    <link rel="stylesheet" href="~/css/blog.css"/>
+    <link rel="stylesheet" href="~/plugins/cropper/cropper.min.css" />
+    <link rel="stylesheet" href="~/css/blog.css" />
 }
 <div class="content-wrapper">
     <div class="card" style="min-height: 381px; margin: 25px; padding: 15px;">
         <div>
             <p>Create Blog</p>
-            <input class="hide" value="@Model.Id" id="blog-id"/>
+            <input class="hide" value="@Model.Id" id="blog-id" />
         </div>
         <div id="tabs">
             <ul>
@@ -27,28 +27,28 @@
                     <input type="text" id="title-input" class="form-control" placeholder="Blog title" aria-label="Blog title" aria-describedby="basic-addon1" value="@Model.Title">
                 </div>
                 @*<div class="input-group mb-3">
-                    <input type="file" id="update-image-file"/>
-                    <button class="btn btn-primary" id="cut-img-btn">Cắt ảnh</button>
-                    <div style="height: 348px;width: 100%; margin: 20px 0">
-                        <div style="height: 100%;width: 100%">
-                            <img style="max-width: 100%;"
-                                 id="img-cropper"
-                                 src="~/images/about-1-143x114.jpg"/>
+                        <input type="file" id="update-image-file"/>
+                        <button class="btn btn-primary" id="cut-img-btn">Cắt ảnh</button>
+                        <div style="height: 348px;width: 100%; margin: 20px 0">
+                            <div style="height: 100%;width: 100%">
+                                <img style="max-width: 100%;"
+                                     id="img-cropper"
+                                     src="~/images/about-1-143x114.jpg"/>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <img id="blog-avatar" />
-                    </div>
-                </div>*@
+                        <div>
+                            <img id="blog-avatar" />
+                        </div>
+                    </div>*@
                 @*<div class="input-group mb-3">
-                    <label for="category-select">Blog category</label>
-                    <select data-palaceholder="Choose category" tabindex="3" id="category-select" class="category">
-                        @foreach (var item in ViewBag.BlogCategories)
-                        {
-                            <option value="@item.Id">@item.Name</option>
-                        }
-                    </select>
-                </div>*@
+                        <label for="category-select">Blog category</label>
+                        <select data-palaceholder="Choose category" tabindex="3" id="category-select" class="category">
+                            @foreach (var item in ViewBag.BlogCategories)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                    </div>*@
                 <div class="input-group mb-3">
                     <label for="short-description">ShortDescription</label>
                     <textarea rows="3" id="short-description-input" type="text" name="ShortDescription" style="width:100%">@Model.ShortDescription</textarea>
@@ -58,7 +58,7 @@
                     <textarea id="content-textarea">@Model.Content</textarea>
                 </div>
                 <div class="form-check form-check-inline mt-3">
-                    <input class="form-check-input" type="checkbox" id="publish-checkbox" @(Model.Published?"checked='checked'":"")>
+                    <input class="form-check-input" type="checkbox" id="publish-checkbox" @(Model.Published ? "checked='checked'" : "")>
                     <label class="form-check-label" for="inlineCheckbox1">Published</label>
                 </div>
             </div>
@@ -85,6 +85,10 @@
 
 @section Scripts
 {
+    <script>
+        $(".nav-sidebar li").children().removeClass("active");
+        $(".nav-sidebar li:nth-child(1)>a").addClass("active");
+    </script>
     <script type="text/javascript" src="~/plugins/cropper/cropper.min.js"></script>
     <script type="text/javascript" src="~/plugins/cropper/jquery-cropper.min.js"></script>
     <script type="text/javascript" src="~/js/admin/blog/CreateBlogs.js"></script>

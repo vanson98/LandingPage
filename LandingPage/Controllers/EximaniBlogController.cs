@@ -1,4 +1,5 @@
-﻿using LandingPage.Models;
+﻿using LadingPage.Common.Utility;
+using LandingPage.Models;
 using LandingPage.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -23,7 +24,7 @@ namespace LandingPage.Controllers
             var data = listBlog.Select(b=>new ExhibitBlogViewModel() { 
                 BlogTitle = b.Title,
                 ShortDescription = b.ShortDescription,
-                LinkDetail = Url.Action("Detail", "EximaniBlog", new { id = b.Id, name = b.Title }),
+                LinkDetail = Url.Action("Detail", "EximaniBlog", new { id = b.Id, name = b.Title.GetSeoName() }),
             }).ToList();
             return View(data);
         }
