@@ -3,11 +3,11 @@
     <div class="container detail-prod-container">
         <div class="row">
             <div class="col-md-6 col-sm-12 dt-pd-container">
-                <img src="@Model.MainImageBase64" />
+                <img src="@Model.MainImageBase64" id="main-img-preview"/>
                 <div class="dt-pd-simg-container">
-                    @foreach (var srcImg in Model.SubImagesBase64)
+                    @foreach (var srcImg in Model.SubImagesBase64.Select((value,index)=>new { value, index }))
                     {
-                        <img src="@srcImg" />
+                        <img src="@srcImg.value"  class="sub-dt-image @(srcImg.index == 0 ? "focus-detail-img" : "")" />
                     }
                 </div>
             </div>

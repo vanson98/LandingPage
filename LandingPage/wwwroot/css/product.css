@@ -17,7 +17,16 @@
     max-width: 300px;
     margin-top: 20px;
 }
-div#list-sub-img > img {
+#list-sub-img {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,250px));
+    grid-gap: 15px 10px;
+}
+    #list-sub-img > div {
+        display: flex;
+        flex-direction: column;
+    }
+div#list-sub-img img {
     max-width: 300px;
     margin: 7px;
 }

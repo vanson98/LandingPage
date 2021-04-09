@@ -30,12 +30,12 @@ namespace LandingPage.Controllers
             }).ToList();
             return View("~/Views/Admin/ProductCategories/Index.cshtml", listProductCategory);
         }
-        public IActionResult CreateOrUpdate(int? id)
+        public IActionResult CreateOrUpdate([FromQuery]int? productCategoryId)
         {
             var productCategory = new CreateOrUpdateProductCategoryViewModel();
-            if (id != null)
+            if (productCategoryId != null)
             {
-                var pc = _productCategoryService.Get(id.Value);
+                var pc = _productCategoryService.Get(productCategoryId.Value);
                 productCategory.Id = pc.Id;
                 productCategory.Name = pc.Name;
                 productCategory.Description = pc.Description;
@@ -62,9 +62,9 @@ namespace LandingPage.Controllers
             return Json(new { StatusCode = 500, Message = "Error" });
         }
 
-        public IActionResult Delete(int id)
+        public IActionResult Delete([FromQuery]int productCategoryId)
         {
-            var result = _productCategoryService.Delete(id);
+            var result = _productCategoryService.Delete(productCategoryId);
             if (result == true)
             {
                 return RedirectToAction("Index", "AdminProductCategory");

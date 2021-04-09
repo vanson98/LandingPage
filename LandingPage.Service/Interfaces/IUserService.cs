@@ -11,5 +11,6 @@ namespace LandingPage.Service.Interfaces
     {
         Task<UserDto> Authenticate(UserLoginDto userLoginDto);
         Task<bool> Register(RegisterRequestDto request);
+        //Task<> Add()
     }
 }

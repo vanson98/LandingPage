@@ -41,8 +41,8 @@
                             <td>@item.value.Name</td>
                             <td>@item.value.Description</td>
                             <td style="text-align: center">
-                                <a asp-action="CreateOrUpdate" asp-route-id="@item.value.Id">Edit</a> |
-                                <a asp-action="Delete" asp-route-id="@item.value.Id">Delete</a>
+                                <a asp-action="CreateOrUpdate" asp-route-productCategoryId="@item.value.Id">Edit</a> |
+                                <a asp-action="Delete" asp-route-productCategoryId="@item.value.Id">Delete</a>
                             </td>
                         </tr>
                     }

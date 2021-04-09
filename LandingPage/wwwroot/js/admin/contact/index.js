@@ -5,7 +5,7 @@
         var contactId = $(this).attr("contactId");
         debugger
         $.ajax({
-            url: "/AdminContact/Detail?id=" + contactId,
+            url: "/AdminContact/Detail?contactId=" + contactId,
             type: 'GET',
             success: function (result) {
                 $("#ctm-name").text(result.fullName);

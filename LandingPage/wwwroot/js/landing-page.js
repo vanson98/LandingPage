@@ -13,5 +13,12 @@
         // Set name cho tên sản phẩm
         $("#product-name-" + categoryId).text(productName);
     })
-
+    $(".sub-dt-image").hover(function () {
+        $(this).parent().children().removeClass("focus-detail-img");
+        $(this).addClass("focus-detail-img");
+        // Lấy ra src của sub image
+        var srcSubImage = $(this).attr("src");
+        // Set src cho ảnh chính
+        $("#main-img-preview").attr("src", srcSubImage);
+    })
 })

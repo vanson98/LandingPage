@@ -19,12 +19,9 @@ namespace LandingPage.Models
         public string MetaDescription { get; set; }
         public string MetaTitle { get; set; }
         public string ParentCode { get; set; }
-        public string MainImageBase64 { get; set; }
+        public string MainImageUrl { get; set; }
         public int ProductCategoryId { get; set; }
-        public List<string> SubImagesBase64 { get; set; }
+        public List<string> SubImagesUrl { get; set; }
         public SelectList ListCategory { get; set; }
-        public SelectList ListParentPoroduct { get; set; }
-        // true - create ; false - update
-        public bool Mode { get; set; }
     }
 }

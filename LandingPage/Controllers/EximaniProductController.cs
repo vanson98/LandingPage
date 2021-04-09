@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LadingPage.Common.Utility;
 using LandingPage.Models;
 using LandingPage.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +21,7 @@ namespace LandingPage.Controllers
         public IActionResult Index()
         {
             var listExProdCategory = new List<ExhibitProductCategoryViewModel>();
-            var listProductCategory = _productService.GetAllProductCategoryOnView();
+            var listProductCategory = _productService.GetAllProductByCategoryOnView();
             foreach (var pc in listProductCategory)
             {
                 var exProdCate = new ExhibitProductCategoryViewModel()
@@ -28,8 +29,8 @@ namespace LandingPage.Controllers
                     CategoryId = pc.CategoryId,
                     CategoryName = pc.CategoryName,
                     ListExhibitProduct = pc.ListExhibitProduct.Select(p=>new ExhibitProductViewModel() { 
-                        Base64 = p.Base64,
-                        LinkDetailProduct = Url.Action("Detail", "EximaniProduct", new { id = p.ProductId, name = p.ProductName }),
+                        UrlMainImage = p.UrlMainImage,
+                        LinkDetailProduct = Url.Action("Detail", "EximaniProduct", new {name = p.ProductName.GetSeoName()+"-"+p.ProductId}),
                         ProductName = p.ProductName
                     }).ToArray()
                 };
@@ -38,9 +39,10 @@ namespace LandingPage.Controllers
             return View(listExProdCategory);
         }
 
-        public async Task<IActionResult> Detail(int id)
+        public async Task<IActionResult> Detail(string name)
         {
-            var product = _productService.GetProductDetailById(id);
+            var productId = Int32.Parse(name.Split("-").Last());
+            var product = _productService.GetProductDetailById(productId);
             var detailProductVM = new DetailProductViewModel()
             {
                 CategoryName = product.PorductCategoryName,
@@ -48,8 +50,8 @@ namespace LandingPage.Controllers
                 Description = product.Description,
                 Name = product.Name
             };
-            detailProductVM.MainImageBase64 = await _productService.GetMainImageOfProduct(id);
-            detailProductVM.SubImagesBase64 = await _productService.GetListSubImageOfProduct(id);
+            detailProductVM.MainImageBase64 = _productService.GetMainImageOfProduct(product.Id.Value);
+            detailProductVM.SubImagesBase64 = await _productService.GetListSubImageOfProduct(product.Id.Value,true);
             // Lấy sản phẩm liên quan
             //var listSubProduct = _productService.();
             //foreach (var subProd in listSubProduct)

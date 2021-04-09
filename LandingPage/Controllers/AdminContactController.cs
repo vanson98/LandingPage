@@ -37,9 +37,9 @@ namespace LandingPage.Controllers
             return View("~/Views/Admin/Contacts/Index.cshtml", data);
         }
 
-        public async Task<IActionResult> Detail([FromQuery]int id)
+        public async Task<IActionResult> Detail([FromQuery]int contactId)
         {
-            var contact = await _contactService.GetById(id);
+            var contact = await _contactService.GetById(contactId);
             return Json(contact);
         }
     }
