@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LadingPage.Common\LadingPage.Common.csproj" />
     <ProjectReference Include="..\LandingPage.Domain\LandingPage.Domain.csproj" />
   </ItemGroup>
 
