@@ -159,6 +159,10 @@
 
 @section Scripts
 {
+    <script>
+        $(".nav-sidebar li").children().removeClass("active");
+        $(".nav-sidebar li:nth-child(2)>a").addClass("active");
+    </script>
     <script type="text/javascript" src="~/plugins/cropper/cropper.min.js"></script>
     <script type="text/javascript" src="~/plugins/cropper/jquery-cropper.min.js"></script>
     <script type="text/javascript" src="~/js/admin/product/CreateOrUpdateProduct.js"></script>

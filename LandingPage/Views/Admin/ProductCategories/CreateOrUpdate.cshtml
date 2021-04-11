@@ -30,9 +30,16 @@
                 <label for="pc-description">Desctiption</label>
                 <textarea maxlength="255" type="text" name="Description" class="form-control" id="pc-description" placeholder="Description">@Model.Description</textarea>
             </div>
-            <input type="number" hidden value="@Model.Id" name="Id"/>
+            <input type="number" hidden value="@Model.Id" name="Id" />
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
 </div>
+@section Scripts
+{
+    <script>
+        $(".nav-sidebar li").children().removeClass("active");
+        $(".nav-sidebar li:nth-child(5)>a").addClass("active");
+    </script>
+}
 

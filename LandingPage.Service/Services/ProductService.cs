@@ -198,7 +198,7 @@ namespace LandingPage.Service.Services
         {
             try
             {
-                var product = _dbContext.Find<Product>(entity.Id);
+                var product = _dbContext.Products.Where(p=>p.Id == entity.Id).FirstOrDefault();
                 if (product == null)
                 {
                     return false;
