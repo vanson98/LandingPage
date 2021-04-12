@@ -2,6 +2,10 @@
 @{
     Layout = null;
 }
+@{
+    var message = ViewBag.Message;
+}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,7 +57,7 @@
                                             Login
                                         </button>
                                     </form>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -73,7 +77,12 @@
 
     <!-- Custom scripts for all pages-->
     <script src="/js/sb-admin-2.min.js"></script>
-
+    <script type="text/javascript">
+        var message = '@message';
+        if(message){
+            alert(message);
+        }
+    </script>
 </body>
 
 </html>

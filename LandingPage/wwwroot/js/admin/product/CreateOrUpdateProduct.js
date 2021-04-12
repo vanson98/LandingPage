@@ -236,7 +236,6 @@
 
 
 function DeleteImage(e) {
-    debugger
     var caller = e.target;
     $(caller).parent().remove();
 }
