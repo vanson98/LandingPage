@@ -6703,7 +6703,7 @@ textarea.textarea-lg {
     }
 
 .footer-creative-2 {
-    background-image: url(../images/bg-pattern-3.jpg);
+    background-image: url(../eximani-images/bg-pattern-3.jpg);
     background-repeat: repeat;
     background-size: auto;
     background-color: #404147;
@@ -8200,7 +8200,7 @@ textarea.textarea-lg {
     text-align: center;
     border: 10px solid #f3f7f8;
     padding: 30px 15px 90px;
-    background-image: url(../images/dairy-farm/promo-1-1149x474.jpg);
+    background-image: url(../eximani-images/dairy-farm/promo-1-1149x474.jpg);
     background-position: 50% 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -9100,7 +9100,7 @@ html:not(.ie-10):not(.ie-11):not(.ie-edge) .team-karen-header svg {
 }
 
 html.boxed body {
-    background: #e1e1e1 url(../images/bg-pattern-boxed.html) repeat fixed;
+    background: #e1e1e1 url(../eximani-images/bg-pattern-boxed.html) repeat fixed;
 }
 
 @media (min-width: 1630px) {
@@ -10219,7 +10219,7 @@ html [class*='section-'].section-top-0 {
 }
 
 .bg-image-1 {
-    background-image: url(../images/bg-pattern-1.jpg);
+    background-image: url(../eximani-images/bg-pattern-1.jpg);
     background-repeat: repeat;
     background-size: auto;
     background-color: #f5f5f5;
@@ -10238,12 +10238,12 @@ html [class*='section-'].section-top-0 {
     background-repeat: no-repeat;
     background-position: 50%;
     background-color: #f5543f;
-    background-image: url(../images/bg-about-1.jpg);
+    background-image: url(../eximani-images/bg-about-1.jpg);
     z-index: -1;
 }
 
 .bg-image-3 {
-    background-image: url(../images/exm-product/bg-pattern-2.jpg);
+    background-image: url(../eximani-images/bg-pattern-2.jpg);
     background-repeat: repeat;
     background-size: cover;
     background-color: #f5f5f5;
@@ -10270,7 +10270,7 @@ html [class*='section-'].section-top-0 {
 }
 
 .bg-image-5 {
-    background-image: url(../images/bg-pattern-3.jpg);
+    background-image: url(../eximani-images/bg-pattern-3.jpg);
     background-repeat: repeat;
     background-size: auto;
     background-color: #404147;
@@ -13836,7 +13836,7 @@ html.rd-navbar-fixed-linked .page {
         background-size: auto;
         background-repeat: repeat;
         background-color: #f5543f;
-        background-image: url(../images/bg-pattern-1.jpg);
+        background-image: url(../eximani-images/bg-pattern-1.jpg);
         opacity: .25;
         z-index: -1;
     }
@@ -14931,7 +14931,7 @@ html.rd-navbar-fixed-linked .page {
 }
 
 .swiper-slide-1:before {
-    background-image: url('~/wwwroot/images/slide-1.jpg');
+    background-image: url('~/wwwroot/eximani-images/slide-1.jpg');
     background-repeat: no-repeat;
     background-position: 50% 0;
     background-size: cover;
@@ -18522,15 +18522,15 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .lg-outer .lg-has-vimeo .lg-video-play {
-    background: url(../images/vimeo-play.png) no-repeat;
+    background: url(../eximani-images/vimeo-play.png) no-repeat;
 }
 
 .lg-outer .lg-has-vimeo:hover .lg-video-play {
-    background: url(../images/vimeo-play.png) 0 -58px no-repeat;
+    background: url(../eximani-images/vimeo-play.png) 0 -58px no-repeat;
 }
 
 .lg-outer .lg-has-html5 .lg-video-play {
-    background: url(../images/video-play.png) no-repeat;
+    background: url(../eximani-images/video-play.png) no-repeat;
     height: 64px;
     margin-left: -32px;
     margin-top: -32px;
@@ -18543,11 +18543,11 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .lg-outer .lg-has-youtube .lg-video-play {
-    background: url(../images/youtube-play.png) no-repeat;
+    background: url(../eximani-images/youtube-play.png) no-repeat;
 }
 
 .lg-outer .lg-has-youtube:hover .lg-video-play {
-    background: url(../images/youtube-play.png) 0 -60px no-repeat;
+    background: url(../eximani-images/youtube-play.png) 0 -60px no-repeat;
 }
 
 .lg-outer .lg-video-object {
@@ -19000,7 +19000,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     }
 
     .lg-outer .lg-item {
-        background: url(../images/loading.gif) center center no-repeat;
+        background: url(../eximani-images/loading.gif) center center no-repeat;
         display: none !important;
     }
 
@@ -19859,7 +19859,7 @@ html:not(.ie-11):not(.ios) .parallax-disabled {
 }
 
 .slick-loading .slick-list {
-    background: #fff url("../images/ajax-loader.gif") center center no-repeat;
+    background: #fff url("../eximani-images/ajax-loader.gif") center center no-repeat;
 }
 
 /* Icons */
@@ -20733,7 +20733,7 @@ html#ecwid_html body#ecwid_body .ec-size.ec-size--m .ec-store .details-gallery__
 
 /*manufacture Page CSS*/
 .manufacture-title-container {
-    background-image: url(../images/manufacture-bg.jpg);
+    background-image: url(../eximani-images/manufacture-bg.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -20898,7 +20898,7 @@ html#ecwid_html body#ecwid_body .ec-size.ec-size--m .ec-store .details-gallery__
 }
 
 .parallax-container-bg{
-    background-image: url("../images/aboutcover.jpg");
+    background-image: url("../eximani-images/aboutcover.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
