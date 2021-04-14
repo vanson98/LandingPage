@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using LandingPage.Models;
-using Microsoft.AspNetCore.Authorization;
 using LandingPage.Service.Interfaces;
 using LadingPage.Common.Utility;
-using System.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace LandingPage.Controllers
 {
@@ -17,17 +15,22 @@ namespace LandingPage.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private IProductService _productService;
+        private IConfiguration Configuration;
 
-        public HomeController(ILogger<HomeController> logger, IProductService productService)
+        public HomeController(ILogger<HomeController> logger, 
+            IProductService productService, 
+            IConfiguration configuration)
         {
             _logger = logger;
             _productService = productService;
+            Configuration = configuration;
         }
 
         public IActionResult Index()
-        {
-            ViewBag.KeyWords = ConfigurationManager.AppSettings["HomeKeyWords"];
-            ViewBag.Descriptions = ConfigurationManager.AppSettings["HomeDescription"];
+        { 
+            ViewBag.Title = Configuration["SeoConfig:Home:Title"];
+            ViewBag.KeyWords = Configuration["SeoConfig:Home:KeyWords"];
+            ViewBag.Descriptions = Configuration["SeoConfig:Home:Description"];
             var listExProdCategory = new List<ExhibitProductCategoryViewModel>();
             var listProductCategory = _productService.GetAllProductByCategoryOnView();
             foreach (var pc in listProductCategory)

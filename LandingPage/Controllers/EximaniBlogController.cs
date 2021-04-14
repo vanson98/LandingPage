@@ -2,6 +2,7 @@
 using LandingPage.Models;
 using LandingPage.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +13,18 @@ namespace LandingPage.Controllers
     public class EximaniBlogController : Controller
     {
         private readonly IBlogsService _blogService;
-
-        public EximaniBlogController(IBlogsService blogService)
+        private IConfiguration Configuration;
+        public EximaniBlogController(IBlogsService blogService, IConfiguration configuration)
         {
             _blogService = blogService;
+            Configuration = configuration;
         }
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.Title = Configuration["SeoConfig:Blogs:Title"];
+            ViewBag.KeyWords = Configuration["SeoConfig:Blogs:KeyWords"];
+            ViewBag.Descriptions = Configuration["SeoConfig:Blogs:Description"];
             var listBlog = await _blogService.GetAllOnView();
             var data = listBlog.Select(b=>new ExhibitBlogViewModel() { 
                 BlogTitle = b.Title,
