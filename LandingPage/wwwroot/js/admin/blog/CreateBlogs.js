@@ -111,7 +111,6 @@
     }
     // Tạo mới blog
     function CreateNewBlog() {
-        debugger
         var blogTitle = $('#title-input').val();
         //var blogCategoryId = $('#category-select').val().trim() != "" ? parseInt($('#category-select').val()) : 0;
         var blogShortDescription = $('#short-description-input').val();

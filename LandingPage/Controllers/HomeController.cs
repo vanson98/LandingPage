@@ -9,6 +9,7 @@ using LandingPage.Models;
 using Microsoft.AspNetCore.Authorization;
 using LandingPage.Service.Interfaces;
 using LadingPage.Common.Utility;
+using System.Configuration;
 
 namespace LandingPage.Controllers
 {
@@ -25,6 +26,8 @@ namespace LandingPage.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.KeyWords = ConfigurationManager.AppSettings["HomeKeyWords"];
+            ViewBag.Descriptions = ConfigurationManager.AppSettings["HomeDescription"];
             var listExProdCategory = new List<ExhibitProductCategoryViewModel>();
             var listProductCategory = _productService.GetAllProductByCategoryOnView();
             foreach (var pc in listProductCategory)
