@@ -48,6 +48,9 @@ namespace LandingPage.Controllers
         {
             var productId = Int32.Parse(name.Split("-").Last());
             var product = _productService.GetProductDetailById(productId);
+            ViewBag.Title = product.MetaTitle;
+            ViewBag.KeyWords = product.MetaKeyWord;
+            ViewBag.Descriptions = product.MetaDescription;
             var detailProductVM = new DetailProductViewModel()
             {
                 CategoryName = product.PorductCategoryName,

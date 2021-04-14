@@ -37,13 +37,13 @@ namespace LandingPage.Controllers
         public async Task<IActionResult> Detail(int id)
         {
             var blog = await _blogService.GetDetailBlog(id);
+            ViewBag.Title = blog.MetaTitle;
+            ViewBag.KeyWords = blog.MetaKeyWord;
+            ViewBag.Descriptions = blog.MetaDescription;
             var blogDetail =  new ExhibitDetailBlogViewModel()
             {
                 Content = blog.Content,
-                Title = blog.Title,
-                MetaDescription = blog.MetaDescription,
-                MetaKeyWord = blog.MetaKeyWord,
-                MetaTitle = blog.MetaTitle
+                Title = blog.Title
             };
             return View(blogDetail);
         }
