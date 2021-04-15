@@ -7,6 +7,7 @@ using LandingPage.Models;
 using LandingPage.Service.Dto.Contact;
 using LandingPage.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace LandingPage.Controllers
 {
@@ -14,15 +15,19 @@ namespace LandingPage.Controllers
     {
         private readonly IContactService _contactService;
         private readonly IEmailSender _emailSender;
-
-        public EximaniContactController(IContactService contactService, IEmailSender emailSender)
+        private IConfiguration Configuration;
+        public EximaniContactController(IContactService contactService, IEmailSender emailSender, IConfiguration configuration)
         {
             _contactService = contactService;
             _emailSender = emailSender;
+            Configuration = configuration;
         }
 
         public IActionResult Index()
         {
+            ViewBag.Title = Configuration["SeoConfig:Contact:Title"];
+            ViewBag.KeyWords = Configuration["SeoConfig:Contact:KeyWords"];
+            ViewBag.Descriptions = Configuration["SeoConfig:Contact:Description"];
             return View();
         }
 

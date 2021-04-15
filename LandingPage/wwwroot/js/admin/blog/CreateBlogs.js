@@ -57,8 +57,6 @@
         ],
         content_css: ["https://fonts.googleapis.com/css?family=Roboto", "/css/blog.css"]
     })
-    // Config chosen select
-    $(".category").chosen();
     // Config crop image dialog 
     cropImageDialog = $("#crop-img-dialog").dialog({
         autoOpen: false,
