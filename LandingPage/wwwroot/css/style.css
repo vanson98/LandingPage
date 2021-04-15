@@ -8,7 +8,7 @@
 .bg-gray-700 h1,
 .bg-gray-3 h1,
 .bg-brown-1 h1,
-.bg-primary h1, .context-dark h2, .bg-gray-700 h2, .bg-gray-3 h2, .bg-brown-1 h2, .bg-primary h2, .context-dark h3, .bg-gray-700 h3, .bg-gray-3 h3, .bg-brown-1 h3, .bg-primary h3, .context-dark h4, .bg-gray-700 h4, .bg-gray-3 h4, .bg-brown-1 h4, .bg-primary h4, .context-dark h5, .bg-gray-700 h5, .bg-gray-3 h5, .bg-brown-1 h5, .bg-primary h5, .context-dark h6, .bg-gray-700 h6, .bg-gray-3 h6, .bg-brown-1 h6, .bg-primary h6, .context-dark [class^='heading-'], .bg-gray-700 [class^='heading-'], .bg-gray-3 [class^='heading-'], .bg-brown-1 [class^='heading-'], .bg-primary [class^='heading-'] {
+.bg-primary h1, .context-dark h2, .bg-gray-700 h2, .bg-gray-3 h2, .bg-brown-1 h2, .bg-primary h2, .context-dark h3, .bg-gray-700 h3, .bg-gray-3 h3, .bg-brown-1 h3, .bg-primary h3, .context-dark h4, .bg-gray-700 h4, .bg-gray-3 h4, .bg-brown-1 h4, .bg-primary h4, .context-dark h5, .bg-gray-700 h5, .bg-gray-3 h5, .bg-brown-1 h5, .bg-primary h5, .context-dark h6, .bg-gray-700 h6, .bg-gray-3 h6, .bg-brown-1 h6, .bg-primary h6, .context-dark [class^='heading-'], .bg-gray-700 [class^='heading-'], .bg-gray-3 [class^='heading-'], .bg-brown-1 [class^='heading-'] {
     color: #ffffff;
 }
 
@@ -30,7 +30,7 @@
         color: #ffffff;
     }
 
-        .context-dark p.rights a:hover, .bg-gray-700 p.rights a:hover, .bg-gray-3 p.rights a:hover, .bg-brown-1 p.rights a:hover, .bg-primary p.rights a:hover {
+        .context-dark p.rights a:hover, .bg-primary, .bg-gray-700 p.rights a:hover, .bg-gray-3 p.rights a:hover, .bg-brown-1 p.rights a:hover, .bg-primary p.rights a:hover {
             color: #e9da5d;
         }
 
@@ -10235,10 +10235,10 @@ html [class*='section-'].section-top-0 {
     bottom: 45px;
     left: 0;
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;   
     background-position: 50%;
     background-color: #f5543f;
-    background-image: url(../eximani-images/bg-about-1.jpg);
+    background-image: url(../eximani-images/history.jpg);
     z-index: -1;
 }
 
