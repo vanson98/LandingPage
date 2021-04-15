@@ -6,20 +6,25 @@ using LadingPage.Common.Utility;
 using LandingPage.Models;
 using LandingPage.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace LandingPage.Controllers
 {
     public class EximaniProductController : Controller
     {
         private IProductService _productService;
-
-        public EximaniProductController(IProductService productService)
+        private IConfiguration Configuration;
+        public EximaniProductController(IProductService productService, IConfiguration configuration)
         {
             _productService = productService;
+            Configuration = configuration;
         }
 
         public IActionResult Index()
         {
+            ViewBag.Title = Configuration["SeoConfig:Product:Title"];
+            ViewBag.KeyWords = Configuration["SeoConfig:Product:KeyWords"];
+            ViewBag.Descriptions = Configuration["SeoConfig:Product:Description"];
             var listExProdCategory = new List<ExhibitProductCategoryViewModel>();
             var listProductCategory = _productService.GetAllProductByCategoryOnView();
             foreach (var pc in listProductCategory)
@@ -43,6 +48,9 @@ namespace LandingPage.Controllers
         {
             var productId = Int32.Parse(name.Split("-").Last());
             var product = _productService.GetProductDetailById(productId);
+            ViewBag.Title = product.MetaTitle;
+            ViewBag.KeyWords = product.MetaKeyWord;
+            ViewBag.Descriptions = product.MetaDescription;
             var detailProductVM = new DetailProductViewModel()
             {
                 CategoryName = product.PorductCategoryName,
