@@ -21019,4 +21019,8 @@ img.focus-detail-img {
     border: 2px solid;
     padding: 2px;
 }
-    
+.eximani-about-info p {
+    text-indent: 20px;
+    font-size: 16px;
+    color: #4a4a4a;
+}

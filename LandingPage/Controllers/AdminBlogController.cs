@@ -24,6 +24,7 @@ namespace LandingPage.Controllers
        
         public async Task<ActionResult> Index()
         {
+            ViewBag.Title = "Blog Manager";
             var data = await _blogsService.GetAll();
             var listBlog = data.Select(b => new BlogViewModel()
             {
@@ -38,6 +39,7 @@ namespace LandingPage.Controllers
 
         public async Task<IActionResult> CreateOrUpdateItem([FromQuery]int? blogId)
         {
+            ViewBag.Title = "Create Or Update Blog";
             CreateOrUpdateBlogViewModel model = null ;
             if (blogId != null && blogId!=0)
             {

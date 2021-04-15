@@ -1438,6 +1438,8 @@
 					},
 					success: function (result) {
 						debugger
+						$("#btn-contact-submit").prop('disabled', false);
+						$('.alert').alert();
 						if (isNoviBuilder)
 							return;
 

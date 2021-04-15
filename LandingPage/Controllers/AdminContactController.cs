@@ -23,6 +23,7 @@ namespace LandingPage.Controllers
 
         public async Task<IActionResult> ContactList([FromQuery]string SearchText)
         {
+            ViewBag.Title = "Contact Manager";
             var listContact = await _contactService.GetAll(SearchText);
             ViewBag.SearchText = SearchText;
             var data = listContact.Select((c,index) => new ContactListItemViewModel()
