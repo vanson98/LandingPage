@@ -1,31 +1,36 @@
 ﻿@model List<ExhibitBlogViewModel>
-<div style="width: 100%; background-color: #f5f5f5; height: auto">
-    <div class="container" style="margin-top:50px">
-        <div class="row">
-            <div class="blog-title">
-                <h2>Blog</h2>
+    <div style="width: 100%; background-color: #f5f5f5; height: auto">
+        <div class="parallax-container" data-parallax-img="eximani-images/bg-pattern-2.jpg">
+            <div class="breadcrumbs-custom-body parallax-content context-dark">
+                <div class="container">
+                    <h2 class="breadcrumbs-custom-title" style="text-align:center>Blogs</h2>
+                </div>
             </div>
-            @foreach (var blog in Model)
-            {
-                <div class="blog-item" style="margin-bottom: 20px">
-                    <div class="blog-item-container">
-                        <a href="@blog.LinkDetail">
-                            <h3 style="text-transform: none">
-                                @blog.BlogTitle
-                            </h3>
-                        </a>
-                        <div class="blog-item-content">
-                            <div style="height:20px">
+        </div>
+        <div class="container" style="margin-top:50px">
+            <div class="row">
+
+                @foreach (var blog in Model)
+                {
+                    <div class="blog-item" style="margin-bottom: 20px">
+                        <div class="blog-item-container">
+                            <a href="@blog.LinkDetail">
+                                <h3 style="text-transform: none">
+                                    @blog.BlogTitle
+                                </h3>
+                            </a>
+                            <div class="blog-item-content">
+                                <div style="height:20px">
+                                </div>
+                                <p>@blog.ShortDescription</p>
+                                <a href="@blog.LinkDetail">Read More >></a>
                             </div>
-                            <p>@blog.ShortDescription</p>
-                            <a href="@blog.LinkDetail">Read More >></a>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
     </div>
-</div>
 
 @section Scripts{
     <script>
