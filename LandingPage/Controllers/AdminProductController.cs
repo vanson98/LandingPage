@@ -26,6 +26,7 @@ namespace LandingPage.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Title = "Product Manager";
             var data = _productService.GetAll();
             var listProduct = data.Select(p => new ProductViewModel()
             {
@@ -40,6 +41,7 @@ namespace LandingPage.Controllers
 
         public async Task<IActionResult> CreateOrUpdate([FromQuery]int? productId)
         {
+            ViewBag.Title = "Create Or Update Product";
             var listProductCategory = _productCategoryService.GetAll(null);
            
             CreateOrUpdateProductViewModel model = null;

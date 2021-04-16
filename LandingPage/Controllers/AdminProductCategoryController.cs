@@ -22,6 +22,7 @@ namespace LandingPage.Controllers
 
         public IActionResult Index(string searchText)
         {
+            ViewBag.Title = "Product Categories";
             ViewBag.SearchText = searchText;
             var listProductCategory = _productCategoryService.GetAll(searchText).Select(pc=> new ProductCategoryViewModel() { 
                 Id = pc.Id,
@@ -32,6 +33,7 @@ namespace LandingPage.Controllers
         }
         public IActionResult CreateOrUpdate([FromQuery]int? productCategoryId)
         {
+            ViewBag.Title = "Create Or Update Product Category";
             var productCategory = new CreateOrUpdateProductCategoryViewModel();
             if (productCategoryId != null)
             {
