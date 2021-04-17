@@ -17,6 +17,7 @@
     <link href="~/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" />
     <!--Sweet alert 2-->
     <link href="~/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <link rel="icon" href="/Eximani.ico" type="image/x-icon">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     @*Page Style*@
@@ -34,7 +35,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a asp-action="Login" asp-controller="Admin" class="nav-link">Đăng xuất</a>
+                    <a href="#" id="btn-logout" class="nav-link">Đăng xuất</a>
                 </li>
             </ul>
 
@@ -129,6 +130,18 @@
     <!-- Tiny MCE -->
     <script src="/plugins/tinymce/tinymce.min.js"></script>
     <script src="/plugins/tinymce/jquery.tinymce.min.js"></script>
+    <script>
+        $("#btn-logout").on("click", function () {
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                var eqPos = cookie.indexOf("=");
+                var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+            window.location.href = "/admin/login";
+        });
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

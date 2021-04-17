@@ -94,7 +94,6 @@
     }
     // Save product
     function SaveProduct() {
-        debugger
         $("#btn-save-product").prop('disabled', true);
         var productCode = $("#prod-code-input").val();
         var productName = $("#prod-name-input").val();
