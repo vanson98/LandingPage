@@ -43,6 +43,14 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Sidebar -->
             <div class="sidebar">
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="~/eximani-images/avatar.png" class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block">Admin</a>
+                    </div>
+                </div>
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -69,13 +77,13 @@
                             </a>
                         </li>
                         @*<li class="nav-item has-treeview">
-                            <a asp-action="ListUser" asp-controller="Admin" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
-                                    Quản lý tài khoản
-                                </p>
-                            </a>
-                        </li>*@
+                    <a asp-action="ListUser" asp-controller="Admin" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Quản lý tài khoản
+                        </p>
+                    </a>
+                </li>*@
                         <li class="nav-item">
                             <a asp-action="Index" asp-controller="AdminProductCategory" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
