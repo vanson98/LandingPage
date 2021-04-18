@@ -43,8 +43,8 @@ namespace CTH.QuizSystem.Web.Controllers
             // Setup CMS paths to suit your environment (we usually inject settings for these)
             _systemRootPath = env.ContentRootPath;
             _tempPath = _systemRootPath + "\\wwwroot\\upload\\temp";
-            _filesRootPath = "/wwwroot/upload/blog-asset";
-            _filesRootVirtual = "/upload/blog-asset";
+            _filesRootPath = "/wwwroot/upload";
+            _filesRootVirtual = "/upload";
             // Load Fileman settings
             LoadSettings();
         }
