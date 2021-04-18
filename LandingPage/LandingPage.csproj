@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Nullable>annotations</Nullable>
     <LangVersion>preview</LangVersion>
+    <UserSecretsId>2f7f55de-4e89-47bb-beaa-b76b2835afe5</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
