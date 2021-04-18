@@ -3,7 +3,7 @@
     <div class="parallax-container" data-parallax-img="eximani-images/parallax-2.jpg">
         <div class="breadcrumbs-custom-body parallax-content context-dark">
             <div class="container">
-                <h2 class="breadcrumbs-custom-title">Products</h2>
+                <h1 style="font-size: 55px" class="breadcrumbs-custom-title">Products</h1>
             </div>
         </div>
     </div>
@@ -26,12 +26,18 @@
                     {
                         <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3" style="min-height: 466px"> 
                             <!-- Product-->
-                            <article class="product">
+                            <article class="product  wow fadeInRight">
                                 <div class="product-body">
                                     <div class="product-figure">
-                                        <img id="@("img-product-preview-category-"+prodCate.CategoryId)" src="@prodCate.ListExhibitProduct.First().UrlMainImage" alt="" />
+                                        <a href="@prodCate.ListExhibitProduct.First().LinkDetailProduct"
+                                           title="@prodCate.ListExhibitProduct.First().ProductName">
+                                            <img id="@("img-product-preview-category-"+prodCate.CategoryId)"
+                                                 src="@prodCate.ListExhibitProduct.First().UrlMainImage"
+                                                 alt="@prodCate.ListExhibitProduct.First().ProductName"
+                                                 title="@prodCate.ListExhibitProduct.First().ProductName" />
+                                        </a>
                                     </div>
-                                    <h5 class="product-title"><a target="_blank">@prodCate.CategoryName</a></h5>
+                                    <h5 class="product-title"><a>@prodCate.CategoryName</a></h5>
                                 </div>
                                 <div class="sub-product-image-container">
                                     @for (var i = 0; i < prodCate.ListExhibitProduct.Count(); i++)
@@ -39,13 +45,21 @@
                                         <a href="@prodCate.ListExhibitProduct[i].LinkDetailProduct"
                                            class="sub-img @(@i == 0 ? "sub-img-focus" : "")"
                                            categoryId="@prodCate.CategoryId"
-                                           productName="@prodCate.ListExhibitProduct[i].ProductName">
-                                            <img class="img-mini-preview" src="@prodCate.ListExhibitProduct[i].UrlMainImage" />
+                                           productName="@prodCate.ListExhibitProduct[i].ProductName"
+                                           title="@prodCate.ListExhibitProduct[i].ProductName">
+                                            <img class="img-mini-preview"
+                                                 src="@prodCate.ListExhibitProduct[i].UrlMainImage"
+                                                 alt="@prodCate.ListExhibitProduct[i].ProductName"
+                                                 title="@prodCate.ListExhibitProduct[i].ProductName" />
                                         </a>
                                     }
                                 </div>
                                 <div class="product-button-wrap">
-                                    <p id="@("product-name-"+prodCate.CategoryId)">@prodCate.ListExhibitProduct.First().ProductName</p>
+                                    <a id="@("product-name-"+prodCate.CategoryId)"
+                                       href="@prodCate.ListExhibitProduct.First().LinkDetailProduct"
+                                       title="@prodCate.ListExhibitProduct.First().ProductName">
+                                        @prodCate.ListExhibitProduct.First().ProductName
+                                    </a>
                                 </div>
                             </article>
                         </div>

@@ -5,7 +5,7 @@
     <div class="parallax-container" data-parallax-img="eximani-images/bg-pattern-2.jpg">
         <div class="breadcrumbs-custom-body parallax-content context-dark">
             <div class="container">
-                <h2 class="breadcrumbs-custom-title">Contact Us</h2>
+                <h1 style="font-size: 55px; font-weight: 600" class="breadcrumbs-custom-title">Contact Us</h1>
             </div>
         </div>
     </div>
@@ -25,7 +25,7 @@
             <h3 class="title-classic-title">Get in touch</h3>
             <p class="title-classic-subtitle">We are available 24/7 by fax, e-mail or by phone. You can also use our <br class="d-none d-lg-block">quick contact form to ask a question about our products.</p>
         </div>
-        <form id="contact-form" class="rd-form rd-mailform" data-form-output="form-output-global" asp-action="ReceiveContact" asp-controller="EximaniContact" data-form-type="contact" method="post">
+        <div id="contact-form" class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" >
             <div class="row row-20 row-md-30">
                 <div class="col-lg-8">
                     <div class="row row-20 row-md-30">
@@ -62,8 +62,8 @@
                     </div>
                 </div>
             </div>
-            <button id="btn-contact-submit" class="button button-lg button-secondary button-zakaria" type="submit">Send Message</button>
-        </form>
+            <button id="btn-contact-submit" class="button button-lg button-secondary button-zakaria">Send Message</button>
+        </div>
     </div>
 </section>
 @section Scripts{
@@ -71,9 +71,5 @@
         $(".rd-navbar-nav").children().removeClass("active");
         $(".rd-navbar-nav li:nth-child(6)").addClass("active");
     </script>
-    <script>
-        $('form#contact-form').submit(function () {
-            $(this).find(':button[type=submit]').prop('disabled', true);
-        });
-    </script>
+    <script src="~/js/contact.js"></script>
 }

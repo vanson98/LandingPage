@@ -32,8 +32,8 @@ namespace LandingPage.Controllers
                 Index = index+1,
                 FullName = c.FullName,
                 PhoneNumber = c.PhoneNumber,
-                CreatedDate = c.CreatedDate.ToString("dd/MM/yyyy hh:mm"),
-                Id = c.Id
+                CreatedDate = c.CreatedDate.Value.ToString("dd/MM/yyyy hh:mm"),
+                Id = c.Id.Value
             }).ToList();
             return View("~/Views/Admin/Contacts/Index.cshtml", data);
         }

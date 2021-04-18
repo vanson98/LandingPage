@@ -80,19 +80,19 @@
                                 <!-- RD Navbar Brand-->
                                 <div class="rd-navbar-brand ">
                                     <!--Brand-->
-                                    <a href="/Home">
+                                    <a href="/Home" title="Home">
                                         <img class="brand-logo-dark" src="~/eximani-images/eximani-icon.png" alt="" width="180" height="60" />
                                     </a>
                                 </div>
                             </div>
                             <div class="rd-navbar-nav-wrap">
                                 <ul class="rd-navbar-nav">
-                                    <li class="rd-nav-item active"><a class="rd-nav-link" href="/home">Home</a></li>
-                                    <li class="rd-nav-item "><a class="rd-nav-link" href="/EximaniAbout">About</a></li>
-                                    <li class="rd-nav-item "><a class="rd-nav-link" href="/EximaniProduct">Product</a></li>
-                                    <li class="rd-nav-item"><a class="rd-nav-link" href="/EximaniBlog" target="_self">Blogs</a></li>
-                                    <li class="rd-nav-item "><a class="rd-nav-link" href="/EximaniManufactor">Manufactory</a></li>
-                                    <li class="rd-nav-item "><a class="rd-nav-link" href="/EximaniContact">Contact</a></li>
+                                    <li class="rd-nav-item active"><a class="rd-nav-link" title="Home" href="/home">Home</a></li>
+                                    <li class="rd-nav-item "><a class="rd-nav-link" title="About" href="/EximaniAbout">About</a></li>
+                                    <li class="rd-nav-item "><a class="rd-nav-link" title="Product" href="/EximaniProduct">Product</a></li>
+                                    <li class="rd-nav-item"><a class="rd-nav-link" title="Blogs" href="/EximaniBlog" target="_self">Blogs</a></li>
+                                    <li class="rd-nav-item "><a class="rd-nav-link" title="Manufactory" href="/EximaniManufactor">Manufactory</a></li>
+                                    <li class="rd-nav-item "><a class="rd-nav-link" title="Contact" href="/EximaniContact">Contact</a></li>
                                 </ul>
                             </div>
 
@@ -125,10 +125,10 @@
                                     <p>Get Social</p>
                                     <div>
                                         <ul class="list-inline list-social list-inline-sm">
-                                            <li><a class="icon mdi mdi-facebook" href="https://www.facebook.com/Eximani"></a></li>
-                                            <li><a class="icon mdi mdi-twitter" href="#"></a></li>
-                                            <li><a class="icon mdi mdi-instagram" href="#"></a></li>
-                                            <li><a class="icon mdi mdi-google-plus" href="#"></a></li>
+                                            <li><a class="icon mdi mdi-facebook" title="facebook" href="https://www.facebook.com/Eximani"></a></li>
+                                            <li><a class="icon mdi mdi-twitter" title="twitter" href="#"></a></li>
+                                            <li><a class="icon mdi mdi-instagram" title="Instagram" href="#"></a></li>
+                                            <li><a class="icon mdi mdi-google-plus" title="Google Plus" href="#"></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -141,7 +141,7 @@
                                     <div class="unit unit-spacing-sm flex-column flex-md-row">
                                         <div class="unit-left"><span class="icon mdi mdi-map-marker"></span></div>
                                         <div class="unit-body">
-                                            <a href="#">
+                                            <a href="#" title="Eximani Address">
                                                 Head Office Address: No 803 Hong Ha Street, Chuong Duong Ward, Hoan Kiem District, Ha Noi, Viet Nam
                                             </a>
                                         </div>
@@ -151,7 +151,7 @@
                                     <div class="unit unit-spacing-sm flex-column flex-md-row">
                                         <div class="unit-left"><span class="icon mdi mdi-phone"></span></div>
                                         <div class="unit-body">
-                                            <a href="#">
+                                            <a href="#" title="Contact Info">
                                                 CEO - Mr. Giang Le
                                                 +8493444983 (Whatsapp/Zalo/Viber) <br />
                                                 Sales Manager - Ms. Lynn
@@ -164,7 +164,7 @@
                                     <div class="unit unit-spacing-sm flex-column flex-md-row">
                                         <div class="unit-left"><span class="icon mdi mdi-email-outline"></span></div>
                                         <div class="unit-body">
-                                            <a href="mailto:#">ceo@eximani.com</a>
+                                            <a title="Eximani Mail" href="mailto:#">ceo@eximani.com</a>
                                         </div>
                                         <br />
               
@@ -174,7 +174,7 @@
                                     <div class="unit unit-spacing-sm flex-column flex-md-row">
                                         <div class="unit-left"><span class="icon mdi mdi-email-outline"></span></div>
                                         <div class="unit-body">
-                                            <a href="mailto:#">giangltceo@eximani.com</a>
+                                            <a title="Eximani Mail" href="mailto:#">giangltceo@eximani.com</a>
                                         </div>
                                         <br />
 
@@ -186,15 +186,15 @@
                             <h4 class="footer-classic-title">Newsletter</h4>
                             <p>Subscribe to our newsletter to receive weekly news, updates, special offers, and exclusive discounts.</p>
                             <!-- RD Mailform-->
-                            <form class="rd-form rd-mailform rd-form-inline rd-form-inline-2" data-form-output="form-output-global" data-form-type="subscribe" method="post" action="/Contact/ReceiveEmail">
+                            <div class="rd-form rd-mailform rd-form-inline rd-form-inline-2" data-form-output="form-output-global" data-form-type="subscribe">
                                 <div class="form-wrap">
                                     <input class="form-input" id="subscribe-form-2-email" type="email" name="email" />
                                     <label class="form-label" for="subscribe-form-2-email">Enter your e-mail</label>
                                 </div>
                                 <div class="form-button">
-                                    <button class="button button-icon-2 button-zakaria button-secondary" type="submit"><span class="fl-bigmug-line-paper122"></span></button>
+                                    <button class="button button-icon-2 button-zakaria button-secondary" id="subscribe-mail-btn"><span class="fl-bigmug-line-paper122"></span></button>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
