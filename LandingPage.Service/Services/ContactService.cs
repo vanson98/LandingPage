@@ -20,6 +20,22 @@ namespace LandingPage.Service.Services
             _dbContext = dbContext;
         }
 
+        public bool Delete(int id)
+        {
+            var contact = _dbContext.CustomerContacts.Find(id);
+            if (contact != null)
+            {
+                _dbContext.CustomerContacts.Remove(contact);
+                var result = _dbContext.SaveChanges();
+                return result > 0 ? true : false;
+            }
+            else
+            {
+                return false;
+            }
+           
+        }
+
         public async Task<List<CustomerContactDto>> GetAll(string searchText)
         {
             return await _dbContext.CustomerContacts

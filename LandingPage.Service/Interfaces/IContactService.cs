@@ -12,6 +12,6 @@ namespace LandingPage.Service.Interfaces
         Task<CustomerContact> SaveCustomerContact(CustomerContactDto request);
         Task<List<CustomerContactDto>> GetAll(string searchText);
         Task<CustomerContactDto> GetById(int id);
-
+        bool Delete(int id);
     }
 }

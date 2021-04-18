@@ -43,5 +43,25 @@ namespace LandingPage.Controllers
             var contact = await _contactService.GetById(contactId);
             return Json(contact);
         }
+        public IActionResult Delete([FromQuery]int id)
+        {
+            try
+            {
+                var rerult = _contactService.Delete(id);
+                if (rerult)
+                {
+                    return Json(new { Status = 200, Message = "Delete Success" });
+                }
+                else
+                {
+                    return Json(new { Status = 500, Message = "Delete Error" });
+                }
+            }
+            catch (Exception)
+            {
+
+                return Json(new { Status = 500, Message = "Delete Error" });
+            }
+        }
     }
 }
