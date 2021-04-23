@@ -611,3 +611,7 @@ a.dashboard {
     padding: 20px;
     border-radius: 5px;
 }
+div#mceu_50 {
+    max-height: 400px;
+    overflow: auto;
+}

@@ -82,8 +82,8 @@ namespace LandingPage.Service.Services
                 {
                     return false;
                 }
-                product.IsDeleted = true;
-                _dbContext.Update<Product>(product);
+                RemoveAllProductImage(product.Id);
+                _dbContext.Products.Remove(product);
                 _dbContext.SaveChanges();
                 return true;
             }

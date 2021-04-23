@@ -1,24 +1,30 @@
 ﻿@model ExhibitDetailBlogViewModel
-<section class="detail-section">
-    <div class="container detail-prod-container">
-        <div class="row">
-            <div style="width: 100%">
-                <h1 style="text-transform: none;font-size:36px;font-weight:600 ">
-                    @Model.Title
-                </h1>
-            </div>
-            <div style="margin: 10px 0 20px 0">
-                <p><a href="/Home">Home</a>/<a href="/EximaniBlog">Blog</a></p>
-            </div>
-            <div>
-                @Html.Raw(Model.Content)
+    <style type="text/css">
+        h1,h2,h3,h4,h5,h6{
+            text-transform: none !important;
+            font-size: 1.17em;
+        }
+    </style>
+    <section class="detail-section">
+        <div class="container detail-prod-container">
+            <div class="row">
+                <div style="width: 100%">
+                    <h1 style="text-transform: none;font-size:36px;font-weight:600 ">
+                        @Model.Title
+                    </h1>
+                </div>
+                <div style="margin: 10px 0 20px 0">
+                    <p><a href="/Home">Home</a>/<a href="/EximaniBlog">Blog</a></p>
+                </div>
+                <div>
+                    @Html.Raw(Model.Content)
+                </div>
             </div>
         </div>
-    </div>
-</section>
-@section Scripts{
-    <script>
-        $(".rd-navbar-nav").children().removeClass("active");
-        $(".rd-navbar-nav li:nth-child(4)").addClass("active");
-    </script>
-}
+    </section>
+    @section Scripts{
+        <script>
+            $(".rd-navbar-nav").children().removeClass("active");
+            $(".rd-navbar-nav li:nth-child(4)").addClass("active");
+        </script>
+    }

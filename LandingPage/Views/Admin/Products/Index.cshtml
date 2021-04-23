@@ -44,7 +44,7 @@
                             <td style="text-align: center">
                                 <a asp-action="CreateOrUpdate" asp-route-productId="@item.Id">Edit</a> |
                                 <a asp-action="ChangeStatus" asp-route-productId="@item.Id">Change Status</a> |
-                                <a asp-action="Delete" asp-route-productId="@item.Id">Delete</a>
+                                <a href="#" class="btn-delete-product" id="@item.Id">Delete</a>
                             </td>
                         </tr>
                     }
@@ -60,4 +60,5 @@
         $(".nav-sidebar li").children().removeClass("active");
         $(".nav-sidebar li:nth-child(2)>a").addClass("active");
     </script>
+    <script type="text/javascript" src="~/js/admin/product/Index.js"></script>
 }

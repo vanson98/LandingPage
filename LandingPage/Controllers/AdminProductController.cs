@@ -113,7 +113,7 @@ namespace LandingPage.Controllers
             var result = _productService.Delete(productId);
             if (result == true)
             {
-                return RedirectToAction("Index", "AdminProduct");
+                return Json(new { StatusCode = 200, Message = "Success" });
             }
             return Json(new { StatusCode = 500, Message = "Error" });
         }

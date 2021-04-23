@@ -86,7 +86,6 @@ namespace LandingPage.Controllers
             return Json(new { StatusCode = 500, Message = "Error" });
         }
 
-        [HttpDelete]
         public async Task<IActionResult> DeleteBlog([FromQuery]int blogId)
         {
             var result = await _blogsService.Delete(blogId);

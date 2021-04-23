@@ -43,12 +43,11 @@ namespace LandingPage.Service.Services
         public async Task<int> Delete(int blogId)
         {
             var blog = _dbContext.Find<Blog>(blogId);
+            _dbContext.Blogs.Remove(blog);
             if (blog == null)
             {
                 return -1;
             }
-            blog.IsDeleted = true;
-            _dbContext.Update<Blog>(blog);
             return await _dbContext.SaveChangesAsync();
         }
 

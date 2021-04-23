@@ -44,17 +44,23 @@
                             )
                             $("#record-" + contactId).remove();
                         } else {
-                            Swal.fire('Đã có lỗi xảy ra')
+                            Swal.fire(
+                                'Error!',
+                                'An error has occurred',
+                                'error'
+                            )
                         }
                     },
                     error: function (result) {
-                        Swal.fire('Đã có lỗi xảy ra')
+                        Swal.fire(
+                            'Error!',
+                            'An error has occurred',
+                            'error'
+                        )
                     }
                 });
                
             }
         })
-
-        
     }
 });
