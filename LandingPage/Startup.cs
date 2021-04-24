@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCore.SEOHelper;
 using LandingPage.Domain;
 using LandingPage.Domain.EF;
 using LandingPage.Domain.Entities;
@@ -80,6 +81,7 @@ namespace LandingPage
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseXMLSitemap(env.ContentRootPath);
             app.UseAuthentication();
             app.UseRouting();
             app.UseAuthorization();

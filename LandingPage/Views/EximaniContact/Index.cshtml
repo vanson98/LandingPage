@@ -1,6 +1,4 @@
-﻿@model LandingPage.Models.ContactViewModel
-
-
+﻿@model ReCaptcha 
 <section class="breadcrumbs-custom">
     <div class="parallax-container" data-parallax-img="eximani-images/bg-pattern-2.jpg">
         <div class="breadcrumbs-custom-body parallax-content context-dark">
@@ -25,31 +23,31 @@
             <h3 class="title-classic-title">Get in touch</h3>
             <p class="title-classic-subtitle">We are available 24/7 by fax, e-mail or by phone. You can also use our <br class="d-none d-lg-block">quick contact form to ask a question about our products.</p>
         </div>
-        <div id="contact-form" class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" >
+        <div id="contact-form" class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact">
             <div class="row row-20 row-md-30">
                 <div class="col-lg-8">
                     <div class="row row-20 row-md-30">
                         <div class="col-sm-6">
                             <div class="form-wrap">
-                                <input class="form-input" id="contact-first-name-2" asp-for="FirstName" type="text" name="firstName"/>
+                                <input class="form-input" id="contact-first-name-2" type="text" name="firstName" />
                                 <label class="form-label" for="contact-first-name-2">First Name</label>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-wrap">
-                                <input class="form-input" id="contact-last-name-2" asp-for="LastName" type="text" name="lastName"/>
+                                <input class="form-input" id="contact-last-name-2" type="text" name="lastName" />
                                 <label class="form-label" for="contact-last-name-2">Last Name</label>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-wrap">
-                                <input class="form-input" id="contact-email-2" asp-for="Email" type="email" name="email"/>
+                                <input class="form-input" id="contact-email-2" type="email" name="email" />
                                 <label class="form-label" for="contact-email-2">E-mail</label>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-wrap">
-                                <input class="form-input" id="contact-phone-2" asp-for="PhoneNumber" type="text" name="phoneNumber"/>
+                                <input class="form-input" id="contact-phone-2" type="text" name="phoneNumber" />
                                 <label class="form-label" for="contact-phone-2">Phone</label>
                             </div>
                         </div>
@@ -58,10 +56,14 @@
                 <div class="col-lg-4">
                     <div class="form-wrap">
                         <label class="form-label" for="contact-message-2">Message</label>
-                        <textarea class="form-input textarea-lg" id="contact-message-2" asp-for="Message" name="message"></textarea>
+                        <textarea class="form-input textarea-lg" id="contact-message-2" name="message"></textarea>
                     </div>
                 </div>
             </div>
+            <div style="margin-top: 20px" id="dvCaptcha"></div>
+            <input type="hidden" id="hfCaptcha" />
+            <span id="rfvCaptcha" class="error" style="display:none;color: red;">Captcha validation is required.</span>
+            <br />
             <button id="btn-contact-submit" class="button button-lg button-secondary button-zakaria">Send Message</button>
         </div>
     </div>
@@ -71,5 +73,39 @@
         $(".rd-navbar-nav").children().removeClass("active");
         $(".rd-navbar-nav li:nth-child(6)").addClass("active");
     </script>
+    <script>
+        var onloadCallback = function () {
+            grecaptcha.render('dvCaptcha', {
+                'sitekey': '@Model.SiteKey',
+                'callback': function (response) { 
+                    var captchaReponse = {
+                        response: response
+                    }
+                    $.ajax({
+                        type: "POST",
+                        url: "/EximaniContact/VerifyResponseCaptcha",
+                        data: JSON.stringify(captchaReponse),
+                        contentType: "application/json",
+                        dataType: "json",
+                        success: function (r) {
+                            var captchaResponse = jQuery.parseJSON(r.response);
+                            if (captchaResponse.success) {
+                                $("#btn-contact-submit").prop('disabled', false);
+                                $("#hfCaptcha").val(captchaResponse.success);
+                                $("#rfvCaptcha").hide();
+                            } else {
+                                $("#btn-contact-submit").prop('disabled', true);
+                                $("#hfCaptcha").val("");
+                                $("#rfvCaptcha").show();
+                                var error = captchaResponse["error-codes"][0];
+                                $("#rfvCaptcha").html("RECaptcha error. " + error);
+                            }
+                        }
+                    });
+                }
+            });
+        };
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
     <script src="~/js/contact.js"></script>
 }

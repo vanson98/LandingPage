@@ -38,7 +38,7 @@
             $("#btn-contact-submit").prop('disabled', false);
             alert(resultValidate);
         }
-       
+
     });
 
     function validateForm() {
@@ -46,6 +46,7 @@
         var lastName = $("#contact-last-name-2").val();
         var email = $("#contact-email-2").val();
         var phoneNumber = $("#contact-phone-2").val();
+        var verifyRecaptchaStatus = $("#hfCaptcha").val();
         //if (firstName == null || firstName.trim() == "") {
         //    return "First Name is required.";
         //} else if (lastName == null || lastName.trim() == "") {
@@ -53,9 +54,16 @@
         //} else
         if (email == null || email.trim() == "") {
             return "Email is required."
-        }else if (!validateEmail(email)) {
+        } else if (!validateEmail(email)) {
             return "Email is not valid.";
-        } {
+        } else if (phoneNumber.trim() != null && phoneNumber.trim() != "") {
+            if (!validatePhoneNumber(phoneNumber)) {
+                return "PhoneNumber is not valid.";
+            }
+        } if (verifyRecaptchaStatus == null || verifyRecaptchaStatus == "") {
+            $("#rfvCaptcha").show();
+            return "Captcha validation is required."
+        } else {
             return null;
         }
     }
@@ -65,9 +73,9 @@
         return re.test(email);
     }
 
-    function validatePhoneNumber(inputtxt) {
+    function validatePhoneNumber(phoneNumber) {
         var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-        if (inputtxt.value.match(phoneno)) {
+        if (phoneNumber.match(phoneno)) {
             return true;
         }
         else {

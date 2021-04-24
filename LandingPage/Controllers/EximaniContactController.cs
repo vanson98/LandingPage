@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using LandingPage.EmailService;
 using LandingPage.Models;
@@ -28,7 +29,7 @@ namespace LandingPage.Controllers
             ViewBag.Title = Configuration["SeoConfig:Contact:Title"];
             ViewBag.KeyWords = Configuration["SeoConfig:Contact:KeyWords"];
             ViewBag.Descriptions = Configuration["SeoConfig:Contact:Description"];
-            return View();
+            return View(new ReCaptcha());
         }
 
         [HttpPost]
@@ -47,7 +48,7 @@ namespace LandingPage.Controllers
                             <div><strong>Sent Date: </strong>{customerContact.CreatedDate.Value.ToString("dd/MM/yyyy HH:mm:ss")}</div>
                         ";
                 var message = new Message("Khách đăng kí nhận thông tin", mailContent);
-                await _emailSender.SendEmailAsync(message);
+                _emailSender.SendEmailAsync(message);
                 return Json(new { Status = 200, Message = "Success" });
             }
             catch (Exception)
@@ -55,6 +56,15 @@ namespace LandingPage.Controllers
                 return Json(new { Status = 500, Message = "Error" });
             }
             
+        }
+
+        [HttpPost]
+        public JsonResult VerifyResponseCaptcha([FromBody]RecaptchaResponseDto input)
+        {
+            ReCaptcha recaptcha = new ReCaptcha();
+            string url = "https://www.google.com/recaptcha/api/siteverify?secret=" + recaptcha.SecretKey + "&response=" + input.Response;
+            recaptcha.Response = (new WebClient()).DownloadString(url);
+            return Json(recaptcha);
         }
     }
 }
