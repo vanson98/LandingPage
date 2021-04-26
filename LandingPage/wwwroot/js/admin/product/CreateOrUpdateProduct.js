@@ -137,7 +137,19 @@
                 }
             },
             error: function (result) {
-                Swal.fire('Đã có lỗi xảy ra');
+                if (result.status == 401 || result.status == 403) {
+                    Swal.fire(
+                        'Lỗi!',
+                        'Đã hết phiên đăng nhập, yêu cầu bạn đăng nhập lại',
+                        'error'
+                    )
+                } else {
+                    Swal.fire(
+                        'Lỗi!',
+                        'Đã có lỗi sảy ra',
+                        'error'
+                    )
+                }
             }
         });
     }

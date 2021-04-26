@@ -50,7 +50,7 @@ namespace LandingPage.Controllers
                         claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     var authProperties = new AuthenticationProperties
                     {
-                        ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30),
+                        ExpiresUtc = DateTimeOffset.UtcNow.AddDays(8),
                         IsPersistent = true
                     };
                     await HttpContext.SignInAsync(
