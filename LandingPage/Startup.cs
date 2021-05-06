@@ -57,9 +57,11 @@ namespace LandingPage
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
+                    options.Cookie.Name = "UserLoginCookie";
                     options.LoginPath = new PathString("/Admin/Login");
                     options.AccessDeniedPath = new PathString("/Admin/Login");
                     options.SlidingExpiration = true;
+                    options.ExpireTimeSpan = TimeSpan.FromDays(8);
                 });
 
             // Cấu hình Dependency Injection 
