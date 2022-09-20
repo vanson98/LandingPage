@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20210406050142_RenameContactTable.cs" />
     <Compile Remove="Migrations\20210406050142_RenameContactTable.Designer.cs" />
+    <Compile Remove="Migrations\20220918145734_dbv1.cs" />
+    <Compile Remove="Migrations\20220918145734_dbv1.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
