@@ -11,8 +11,11 @@
                 $("#ctm-name").text(result.fullName);
                 $("#ctm-email").text(result.email);
                 $("#ctm-phone").text(result.phoneNumber);
-                $("#ctm-message").text(result.message);
-                $("#ctm-createdDate").text(result.createdDate);
+                $("#ctm-ticket-type").text(result.ticketType);
+                $("#ctm-ticket-amount").text(result.ticketAmount);
+                $("#ctm-address").text(result.address);
+                $("#ctm-question").text(result.question);
+                $("#ctm-created-date").text(result.createdDate);
             },
             error: function (result) {
                 if (result.status == 401 || result.status == 403) {

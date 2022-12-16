@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LandingPage.Models;
 using LandingPage.Service.Dto;
+using LandingPage.Service.Dto.Contact;
 using LandingPage.Service.Interfaces;
 using LandingPage.Service.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -26,16 +27,8 @@ namespace LandingPage.Controllers
             ViewBag.Title = "Contact Manager";
             var listContact = await _contactService.GetAll(SearchText);
             ViewBag.SearchText = SearchText;
-            var data = listContact.Select((c,index) => new ContactListItemViewModel()
-            {
-                Email = c.Email,
-                Index = index+1,
-                FullName = c.FullName,
-                PhoneNumber = c.PhoneNumber,
-                CreatedDate = c.CreatedDate.Value.ToString("dd/MM/yyyy hh:mm"),
-                Id = c.Id.Value
-            }).ToList();
-            return View("~/Views/Admin/Contacts/Index.cshtml", data);
+           
+            return View("~/Views/Admin/Contacts/Index.cshtml", listContact);
         }
 
         public async Task<IActionResult> Detail([FromQuery]int contactId)
@@ -62,6 +55,11 @@ namespace LandingPage.Controllers
 
                 return Json(new { Status = 500, Message = "Delete Error" });
             }
+        }
+        public IActionResult Add([FromForm] SaveContactModel input)
+        {
+            var result = _contactService.SaveCustomerContact(input);
+            return Json(result);    
         }
     }
 }

@@ -57,7 +57,7 @@ namespace LandingPage.Controllers
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         new ClaimsPrincipal(claimsIdentity),
                         authProperties);
-                    return RedirectToAction("Index", "AdminBlog");
+                    return RedirectToAction("ContactList", "AdminContact");
                 }
                 else
                 {

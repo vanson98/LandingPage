@@ -1,436 +1,542 @@
-﻿@model List<ExhibitProductCategoryViewModel>
-<!-- Swiper-->
-<section class="section swiper-container swiper-slider swiper-slider-1" data-loop="true">
-    <div class="swiper-wrapper context-dark text-center">
-        <div class="swiper-slide" data-slide-bg="eximani-images/slide-1d-compressed.jpg">
-            <div class="swiper-slide-caption section-md">
-                <div class="container">
-                    <h1 style="font-size: 36px" class="swiper-title-3" data-caption-animate="fadeInLeft" data-caption-delay="200">Welcome to EXIMANI VIETNAM</h1>
-                    <h1 class="swiper-title-1" data-caption-animate="fadeScale" data-caption-delay="100" style=" font-size: 55px;font-weight: 600">
-                        QUALITY YOU CAN TRUST
-                    </h1>
-                    @*<h3 class="swiper-title-2" data-caption-animate="fadeInRight" data-caption-delay="200">Grown with Us</h3>*@
-                    <div class="button-wrap" data-caption-animate="fadeInUp" data-caption-delay="300"><a class="button button-lg button-shadow-3 button-secondary button-zakaria" asp-controller="EximaniContact" asp-action="Index">Enquire Now</a></div>
+﻿@using LadingPage.Common.Enums
+@using LadingPage.Common.Enums.Extension
+<div class="landing-page relative">
+    <img src="./img/decor.png" alt="" class="absolute decor-body" />
+    <div>
+        <section class="banner relative">
+            <img src="./img/bg-banner.png"
+                 alt=""
+                 class="bg-banner relative w-full" />
+            <img src="./img/text-banner.png"
+                 alt=""
+                 class="text-banner absolute" />
+            <div class="wrapper-person absolute w-full">
+                <div class="row relative list-up">
+                    <div class="col-6 relative">
+                        <img src="./img/person_1.png"
+                             alt=""
+                             class="img-person1 absolute" />
+                    </div>
+                    <div class="col-6 relative">
+                        <img src="./img/person_2.png"
+                             alt=""
+                             class="img-person2 absolute" />
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="swiper-slide" data-slide-bg="eximani-images/slide-2d-compressed.jpg">
-            <div class="swiper-slide-caption section-md">
-                <div class="container">
-                    <h4 class="swiper-title-3" data-caption-animate="fadeInLeft" data-caption-delay="200">HIGH-QUALITY PRODUCTS</h4>
-                    <h1 class="swiper-title-1" data-caption-animate="fadeScale" data-caption-delay="100">COMPETITIVE PRICE</h1>
-                    <h3 class="swiper-title-2" data-caption-animate="fadeInRight" data-caption-delay="200">WITHOUT QUALITY SACRIFICE</h3>
-                    <div class="button-wrap" data-caption-animate="fadeInUp" data-caption-delay="300"><a class="button button-lg button-shadow-3 button-secondary button-zakaria" asp-controller="EximaniContact" asp-action="Index">Enquire Now</a></div>
+            <div class="row absolute list-down" style="top: 67%">
+                <div class="col-4 relative">
+                    <img src="./img/person_3.png"
+                         alt=""
+                         class="absolute img-person" />
+                </div>
+                <div class="col-4 relative">
+                    <img src="./img/person_4.png"
+                         alt=""
+                         class="absolute img-person" />
+                </div>
+                <div class="col-4 relative">
+                    <img src="./img/person_5.png"
+                         alt=""
+                         class="absolute img-person" />
                 </div>
             </div>
-        </div>
-        <div class="swiper-slide" data-slide-bg="eximani-images/slide-3d-compressed.jpg">
-            <div class="swiper-slide-caption section-md">
-                <div class="container">
-                    <h4 class="swiper-title-3" data-caption-animate="fadeInLeft" data-caption-delay="200">
-                        EXIMANI VIETNAM'S BUSINESS OPINION:
-                    </h4>
-                    <h2 class="swiper-title-1" data-caption-animate="fadeScale" data-caption-delay="100">
-                        “GIVING VALUE WILL GET FAITH BACK”
-                    </h2>
-                    <div class="button-wrap" data-caption-animate="fadeInUp" data-caption-delay="300"><a class="button button-lg button-shadow-3 button-secondary button-zakaria" asp-controller="EximaniContact" asp-action="Index">Enquire Now</a></div>
+        </section>
+
+        <section class="information max-width">
+            <div class="infor-address">
+                <div class="box row">
+                    <div class="col-7 d-flex align-items-center">
+                        <img src="./img/location.svg" alt="" />
+                        <div class="text">
+                            Hanoi Towers, 49 Hai Bà Trưng,
+                            <br />Hoàn Kiếm, Hà Nội
+                        </div>
+                    </div>
+                    <div class="col-5 d-flex align-items-center">
+                        <img src="./img/watch.svg" alt="" />
+                        <div class="text">
+                            <div>14:00 - 18:00,</div>
+                            <div>Thứ 7 <span>ngày</span> 17/12/2022</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Swiper Pagination-->
-    <div class="swiper-pagination"></div>
-    <!-- Swiper Navigation-->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-</section>
-<!-- About Us-->
-<section class="section section-inset-2 bg-default text-md-left">
-    <div class="container">
-        <div class="row row-30 align-items-center justify-content-center justify-content-xl-between">
-            <div class="col-sm-6 col-md-5 col-lg-6 wow fadeInLeft" style="display: flex;justify-content: center; align-items: center">
-                <img src="~/eximani-images/Eximani.png" alt="eximani-logo" style="width:62%" />
+
+            <div class="reason">
+                <div class="relative" style="z-index: 1">
+                    <img src="./img/back-decor.png" alt="" class="back absolute" />
+                    <div class="box">
+                        <div class="decor absolute">
+                            <img src="./img/front-decor.png" alt="" class="front" />
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="number">01</div>
+                            <div class="text">
+                                Khi mà việc chạy Ads ngày càng trở nên tốn kém và kém hiệu
+                                quả
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative" style="z-index: 1">
+                    <img src="./img/back-decor.png" alt="" class="back absolute" />
+                    <div class="box">
+                        <div class="decor absolute">
+                            <img src="./img/front-decor.png" alt="" class="front" />
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="number">02</div>
+                            <div class="text">
+                                Khi mà nội dung hay chưa chắc còn giữ chân được người xem
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative" style="z-index: 1">
+                    <img src="./img/back-decor.png" alt="" class="back absolute" />
+                    <div class="box">
+                        <div class="decor absolute">
+                            <img src="./img/front-decor.png" alt="" class="front" />
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="number">03</div>
+                            <div class="text">
+                                Khi mà hình ảnh đẹp đầu tư bao công sức tương tác còn không
+                                bằng một video 10s
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-7 col-lg-6 col-xl-5">
-                <h4 class="title-style-1 wow fadeInRight">A Few Words About Eximani</h4>
-                <h2 class="wow fadeInRight" data-wow-delay=".1s">About us</h2>
-                <p class="offset-top-md-20 wow fadeInRight" data-wow-delay=".2s">We - EXIMANI VIETNAM Co., LTD is the leading supplier and manufacturer of Raw Incense Stick, Raw Materials (Joss Powder, Wood Powder, Black/ White Premix Powder, Bamboo Stick) and Spices ( Cassia and Star Anise ) to customers in India, Dominican Republic, Bangladesh, Indonesia, Philippines,Malaysia, Sri Lanka, Pakistan, Panama... from small manufacturers to big over the world.</p>
-                <div class="group-xl group-middle d-md-flex justify-content-md-between wow fadeInRight" data-wow-delay=".3s">
+
+            <div class="result">
+                <div class="box">
+                    <img src="./img/arrowPink.svg" alt="" width="16px" />
+                    Livestream đã trở thành phương pháp bán hàng yêu thích của nhiều
+                    các nhãn hàng. Nhưng Livestream thu hút và giữ chân người xem để
+                    ra đơn lại là một vấn đề không hề đơn giản, vậy chúng ta cần làm
+                    gì để nổi bật giữa biển người đang Live hằng ngày?
+                </div>
+            </div>
+
+            <div class="five-truths">
+                <div class="box-title d-flex align-items-center">
+                    <div class="number">05</div>
+                    <div class="title-text">
+                        <div class="title-text-up">
+                            sự thật của người bán hàng hiện nay CẦN ĐƯỢC GIẢI QUYẾT
+                        </div>
+                        <div class="title-text-down">
+                            Vấn đề nhức nhối mà 90% người làm kinh doanh đang gặp phải
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content">
                     <div>
-                        <div class="group-xl group-middle">
-                            <a class="button button-sm button-icon-3 button-secondary button-zakaria" asp-controller="EximaniAbout" asp-action="Index"><span class="mdi mdi-arrow-right"></span></a>
-                            <div class="team-navy">
-                                <div class="team-navy-name"><a asp-controller="EximaniAbout" asp-action="Index">Mr. Giang Le</a></div>
-                                <div class="team-navy-status">Founder</div>
+                        <img src="./img/arrowPink.svg" alt="" width="16px" />
+                        Nhà nhà bán hàng, người người bán hàng
+                    </div>
+
+                    <div>
+                        <img src="./img/arrowPink.svg" alt="" width="16px" />
+                        Bán hàng trên mọi nền tảng từ FB, TikTok, IG, Zalo
+                    </div>
+
+                    <div>
+                        <img src="./img/arrowPink.svg" alt="" width="16px" />
+                        Có người một ngày ngàn đơn cũng có người cả ngày vài đơn hoặc 0
+                        đơn nào
+                    </div>
+
+                    <div>
+                        <img src="./img/arrowPink.svg" alt="" width="16px" />
+                        Có người đầu tư rất nhiều tiền vào hình ảnh, content nhưng không
+                        có kết quả, tương tác thua những video ngắn vài chục giây
+                    </div>
+
+                    <div>
+                        <img src="./img/arrowPink.svg" alt="" width="16px" />
+                        Có người ngày ngày đổ 1 núi tiền vào chạy ADS cũng chỉ như “muối
+                        bỏ biển”
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="text-center">
+            <button>
+                <a href="#form">ĐĂNG KÝ NGAY</a>
+            </button>
+        </div>
+
+        <section class="quote relative">
+            <img src="./img/bg-quote.png" alt="" class="w-full" />
+            <div class="box-text-quote absolute">
+                <img src="./img/quote.svg" alt="" class="absolute icon-quote" />
+                <p>
+                    Nhằm giúp các nhãn hàng khỏi loay hoay tìm ra giải pháp cho sản
+                    phẩm của mình. WORKSHOP "ĐỪNG ĐỂ BẢN THÂN LỖI THỜI" sẽ thảo luận
+                    về xu thế mới trên thị trường đó là bán hàng trên LlVE STREAM - Độ
+                    hiệu quả cao mà lại tiết kiệm chi phí
+                </p>
+                <p>
+                    Livestream đã dần trở thành phương pháp bán hàng yêu thích của các
+                    doanh nghiệp. Tuy nhiên, Livestream làm sao để thu hút, giữ chân
+                    người xem và chuyển đổi ra đơn lại là một vấn đề không hề đơn giản
+                </p>
+                <p>
+                    Vậy chúng ta cần làm gì để nổi bật giữa “biển người” đang
+                    livestream cạnh tranh khốc liệt hằng ngày?
+                </p>
+            </div>
+        </section>
+
+        <div class="meeting-content">
+            <div class="relative" style="z-index: 1">
+                <img src="./img/back-decor.png" alt="" class="back absolute" />
+                <div class="box">
+                    <div class="decor absolute">
+                        <img src="./img/front-decor.png" alt="" class="front" />
+                    </div>
+                    <div class="title text-center">Nội dung buổi hội thảo</div>
+                    <div>
+                        <img src="./img/arrowPink.svg" alt="" width="16px" />
+                        Kiến thức về cách khai thác livestream trên các nền tảng
+                    </div>
+                    <div>
+                        <img src="./img/arrowPink.svg" alt="" width="16px" />
+                        Thuật toán cập nhật mới nhất từ các nền tảng MXH hiện nay
+                    </div>
+                    <div>
+                        <img src="./img/arrowPink.svg" alt="" width="16px" />
+                        Chia sẻ công thức livestream ngàn đơn:
+                    </div>
+                    <div class="sub-box">
+                        <div>
+                            <img src="./img/arrowGreen.svg" alt="" width="10px" />
+                            Quy trình livestream khép kín
+                        </div>
+                        <div>
+                            <img src="./img/arrowGreen.svg" alt="" width="10px" />
+                            Xây dựng tối ưu bộ máy nhân sự vận hành mô hình livestream
+                        </div>
+
+                        <div>
+                            <img src="./img/arrowGreen.svg" alt="" width="10px" />
+                            Cách xử lý khủng hoảng truyền thông, trả lời xử lý các comment
+                            tiêu cực,tình huống bất ngờ trong khi livestream
+                        </div>
+                        <div>
+                            <img src="./img/arrowGreen.svg" alt="" width="10px" />
+                            Cách tối ưu chuyển hóa đơn hàng trong livestream làm sao tỉ lệ
+                            ra đơn hàng được cao nhất
+                        </div>
+                        <div>
+                            <img src="./img/arrowGreen.svg" alt="" width="10px" />
+                            10 công cụ livestream vạn đơn thực chiến mà không 1 streamer
+                            nào muốn cho bạn biết
+                        </div>
+                        <div>
+                            <img src="./img/arrowGreen.svg" alt="" width="10px" />
+                            Các loại máy móc công nghệ cần có của 1 nhà bán hàng
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button>
+                <a href="#form">ĐĂNG KÝ NGAY</a>
+            </button>
+        </div>
+
+        <div class="benefit">
+            <div class="title text-center">
+                <img src="./img/loi_ich.png" alt="" />
+            </div>
+            <div class="benefit-list">
+                <div class="benefit-item d-flex align-items-center">
+                    <div class="number">01</div>
+                    <div class="text">
+                        Nắm bắt được các tính năng khi livestream trên các nền tảng, các
+                        ưu nhược điểm mà mỗi nền 01 tảng mang lại
+                    </div>
+                </div>
+
+                <div class="benefit-item d-flex align-items-center">
+                    <div class="number">02</div>
+                    <div class="text">
+                        Thấu hiểu & xây dựng tổng quan các nội dung livestream, các phễu
+                        tiếp cận khách hàng như 02 chia sẻ kiến thức, giao lưu, bán
+                        hàng…
+                    </div>
+                </div>
+
+                <div class="benefit-item d-flex align-items-center">
+                    <div class="number">03</div>
+                    <div class="text">
+                        Hiểu rõ các thuật toán phân phối livestream trên các kênh mạng
+                        xã hội, áp dụng trực tiếp 03 cho kênh livestream của bản thân
+                    </div>
+                </div>
+
+                <div class="benefit-item d-flex align-items-center">
+                    <div class="number">04</div>
+                    <div class="text">
+                        Tiếp cận quy trình livestream ngàn đơn và xây dựng đội ngũ vận
+                        hành, các công cụ hỗ trợ 04 livestream
+                    </div>
+                </div>
+
+                <div class="benefit-item d-flex align-items-center">
+                    <div class="number">05</div>
+                    <div class="text">
+                        Hỏi đáp trực tiếp các vấn đề của bản thân với diễn giả, tham gia
+                        giao lưu, học hỏi cùng mọi người trong hội trường
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button>
+                <a href="#form">ĐĂNG KÝ NGAY</a>
+            </button>
+        </div>
+
+        <div class="participant">
+            <div class="title text-center">
+                <img src="./img/participant.png" alt="" />
+            </div>
+            <div class="relative">
+                <div class="participant-item item_1">
+                    <div class="box text-center">
+                        <div class="number">01</div>
+                        <div class="text">
+                            Hội thảo dành cho các bạn chưa kinh doanh hoặc muốn khởi
+                            nghiệp bằng KDOL với nhiều ngành nghề như thời trang, mỹ phẩm,
+                            đồ gia dụng… cần tìm hiểu về hướng đi livestream bán hàng
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="participant-item item_2">
+                        <div class="box text-center">
+                            <div class="number">02</div>
+                            <div class="text">
+                                Những chủ shop, chủ thương hiệu kinh doanh truyền thống,
+                                muốn thay đổi tiếp cận thị trường bằng hình thức livestream
+                            </div>
+                        </div>
+                    </div>
+                    <div class="participant-item item_3">
+                        <div class="box text-center">
+                            <div class="number">03</div>
+                            <div class="text">
+                                Những ai muốn cải thiện khả năng livestream và mở rộng kênh
+                                bán hàng
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<!-- Services-->
-<section class="parallax-container" style="font-family: " Lato", -apple-system, BlinkMacSystemFont, "Segoe UI" , Roboto, "Helvetica Neue" , Arial, sans-serif";>
-    <div class="parallax-content section-xxl context-dark">
-        <div class="container">
-            <div class="row row-30 box-ordered">
-                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".1s">
-                    <article class="box-icon-modern" style="text-align: center; !important">
-                        <div class="box-icon-modern-header">
-                            <img src="eximani-images/quality.svg" alt="quality" style="height: 75px;">
-                        </div>
-                        <h4 class="box-icon-modern-title"><a style="color: #f9520b;" href="#">Top Service<br /></a></h4>
-                        <p class="box-icon-modern-text">
-                            With a team of professional staff, with long-term experience in the export field, we are committed to providing customers with the best service.
-                        </p>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".1s">
-                    <article class="box-icon-modern" style="text-align: center; !important">
-                        <div class="box-icon-modern-header">
-                            <img src="eximani-images/spchatluong.jpg" alt="spchatluong" style="height: 75px;">
-                        </div>
-                        <h4 class="box-icon-modern-title"><a href="#">High-quality Products</a></h4>
-                        <p class="box-icon-modern-text">EXIMANI Products exported to foreign markets Eximani are always highly appreciated by partners for their quality, maintaining customers' faith in many parts of the world.</p>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".1s">
-                    <article class="box-icon-modern" style="text-align: center; !important">
-                        <div class="box-icon-modern-header">
-                            <img src="eximani-images/price.png" alt="price" style="height: 75px;">
-                        </div>
-                        <h4 class="box-icon-modern-title"><a href="#">Competitive Price</a></h4>
-                        <p class="box-icon-modern-text">To be able to bring products abroad while ensuring the profitability of customers, we always provide products with the most suitable prices.</p>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".1s">
-                    <article class="box-icon-modern" style="text-align: center; !important">
-                        <div class="box-icon-modern-header">
-                            <img src="eximani-images/process.jpg" alt="process" style="height: 75px;">
-                        </div>
-                        <h4 class="box-icon-modern-title"><a href="#">Standard Process</a></h4>
-                        <p class="box-icon-modern-text">To ensure time delivery, we always find ways to optimize the process of applying for customs clearance at Vietnam Customs.</p>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".1s">
-                    <article class="box-icon-modern" style="text-align: center; !important">
-                        <div class="box-icon-modern-header">
-                            <img src="eximani-images/hethongsxtt.jpg" alt="hethongsxtt" style="height: 75px;">
-                        </div>
-                        <h4 class="box-icon-modern-title"><a href="#">Advanced production system</a></h4>
-                        <p class="box-icon-modern-text">In order to provide customers with the right quantity and quality, we have a system of factories with advanced technology in all provinces in Vietnam.</p>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".1s">
-                    <article class="box-icon-modern" style="text-align: center; !important">
-                        <div class="box-icon-modern-header">
-                            <img src="eximani-images/time.png" alt="time" style="height: 75px;">
-                        </div>
-                        <h4 class="box-icon-modern-title"><a href="#">Synchronized Logistics</a></h4>
-                        <p class="box-icon-modern-text">Logistics system ensures product quality from the factory until the product reaches the customer</p>
-                    </article>
-                </div>
 
+        <div class="text-center">
+            <button>
+                <a href="#form">ĐĂNG KÝ NGAY</a>
+            </button>
+        </div>
+
+        <div class="infor-course">
+            <div class="title text-center">
+                <img src="./img/info_course.png" alt="" />
             </div>
-        </div>
-    </div>
-</section>
-<!-- New Products-->
-<section class="section section-xxl bg-default">
-    <div class="container">
-        <h4 class="title-style-1 wow fadeInLeft">We Deal In</h4>
-        <h2 class="wow fadeScale">Products</h2>
-        <div class="isotope-wrap">
-            <div class="row row-30 row-lg-50 isotope">
-                @foreach (var prodCate in Model)
-                {
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 isotope-item" data-filter="Type 1" style="min-height: 466px">
-                        <!-- Product-->
-                        <article class="product  wow fadeInRight">
-                            <div class="product-body">
-                                <div class="product-figure">
-                                    <a
-                                       href="@prodCate.ListExhibitProduct.First().LinkDetailProduct"
-                                       title="@prodCate.ListExhibitProduct.First().ProductName">
-                                        <img id="@("img-product-preview-category-"+prodCate.CategoryId)"
-                                             src="@prodCate.ListExhibitProduct.First().UrlMainImage"
-                                             alt="@prodCate.ListExhibitProduct.First().ProductName"
-                                             title="@prodCate.ListExhibitProduct.First().ProductName" />
-                                    </a>
-                                </div>
-                                <h5 class="product-title"><a>@prodCate.CategoryName</a></h5>
-                            </div>
-                            <div class="sub-product-image-container">
-                                @for (var i = 0; i < prodCate.ListExhibitProduct.Count(); i++)
-                                {
-                                    <a href="@prodCate.ListExhibitProduct[i].LinkDetailProduct"
-                                       class="sub-img @(@i == 0 ? "sub-img-focus" : "")"
-                                       categoryId="@prodCate.CategoryId"
-                                       productName="@prodCate.ListExhibitProduct[i].ProductName"
-                                       title="@prodCate.ListExhibitProduct[i].ProductName"
-                                       >
-                                        <img 
-                                             class="img-mini-preview" 
-                                             src="@prodCate.ListExhibitProduct[i].UrlMainImage"
-                                             alt="@prodCate.ListExhibitProduct[i].ProductName"
-                                             title="@prodCate.ListExhibitProduct[i].ProductName"/>
-                                    </a>
-                                }
-                            </div>
-                            <div class="product-button-wrap">
-                                <a id="@("product-name-"+prodCate.CategoryId)"
-                                   href="@prodCate.ListExhibitProduct.First().LinkDetailProduct"
-                                   title="@prodCate.ListExhibitProduct.First().ProductName"
-                                   >
-                                    @prodCate.ListExhibitProduct.First().ProductName
-                                </a>
-                            </div>
-                        </article>
-                    </div>
-                }
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Our clients-->
-<section class="section section-xxl bg-image-3 image-decor-wrap">
-    <div class="container">
-        <h4 class="title-style-1 wow fadeInRight">Latest Testimonials</h4>
-        <h2 class="wow fadeScale" style="color: #FFF">Our clients</h2>
-        <!-- Owl Carousel-->
-        <div class="owl-carousel owl-style-3" data-items="1" data-margin="200" data-autoplay="true" data-nav="true" data-dots="true" data-smart-speed="400" data-animation-in="fadeIn" data-animation-out="fadeOut">
-            <!-- Quote Modern-->
-            <article class="quote-modern quote-modern-2">
-                <div class="quote-modern-text">
-                    <div class="q">As an importer, I face the challenge of getting our goods cleared by the Food Safety and Standards Authority of India (FSSAI). The other challenge is that many a time, the cassia are not completely dried by exporters before shipping, and by the time they reach us, the moisture from the products evaporates and recondenses on the cassia in the container, leading to the formation of fungus. Fungus on vegetable products leads to the formation of aflatoxin, which is a harmful carcinogen. So, this process of drying by the packers has to be thorough, but many exporters do not follow this norm. Eximani Vietnam is presently our preferred sourcing company because of the quality of their product. In order to build a good reputation, exporters should adhere to better quality standards.</div>
-                </div>
-                <div class="unit unit-spacing-sm flex-column flex-md-row align-items-center">
-                    <div class="unit-left">
-                        <div class="quote-modern-figure">
-                            <img src="eximani-images/user-11-62x62.jpg" alt="user-11-62x62" width="62" height="62" />
+
+            <div class="infor-address">
+                <div class="box row">
+                    <div class="col-7 d-flex align-items-center">
+                        <img src="./img/location.svg" alt="" />
+                        <div class="text">
+                            Hanoi Towers, 49 Hai Bà Trưng, Hoàn Kiếm, Hà Nội
                         </div>
                     </div>
-                    <div class="unit-body">
-                        <div class="quote-modern-author">Rajesh Kumar Delhi,</div>
-                        <div class="quote-modern-status">India.</div>
-                    </div>
-                </div>
-            </article>
-            <!-- Quote Modern-->
-            <article class="quote-modern quote-modern-2">
-                <div class="quote-modern-text">
-                    <div class="q">I picked sample from your company first and than had a full container from your company it was really nice having deal with you. Quality was too good and delivery was on time.</div>
-                </div>
-                <div class="unit unit-spacing-sm flex-column flex-md-row align-items-center">
-                    <div class="unit-left">
-                        <div class="quote-modern-figure">
-                            <img src="eximani-images/user-10-62x62.jpg" alt="user-10-62x62" width="62" height="62" />
-                        </div>
-                    </div>
-                    <div class="unit-body">
-                        <div class="quote-modern-author">Bill Mcmillan</div>
-                        <div class="quote-modern-status">Australia</div>
-                    </div>
-                </div>
-            </article>
-
-            <article class="quote-modern quote-modern-2">
-                <div class="quote-modern-text">
-                    <div class="q">Previously, I imported Star Anise from Chinese partners because their prices were quite cheap, but the quality of goods was not equal. Since cooperating with Eximani Vietnam, I am completely assured of the quality and price.</div>
-                </div>
-                <div class="unit unit-spacing-sm flex-column flex-md-row align-items-center">
-                    <div class="unit-left">
-                        <div class="quote-modern-figure">
-                            <img src="eximani-images/user-6-62x62.jpg" alt="user-6-62x62" width="62" height="62" />
-                        </div>
-                    </div>
-                    <div class="unit-body">
-                        <div class="quote-modern-author">Pashupati</div>
-                        <div class="quote-modern-status">Nepal</div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Quote Modern-->
-            <article class="quote-modern quote-modern-2">
-                <div class="quote-modern-text">
-                    <div class="q">In the past, I was always worried about the amount of broken cinnamon being imported until I received a referral from a friend about Eximani. Since choosing them as a partner, I don't have to worry about anything else.</div>
-                </div>
-                <div class="unit unit-spacing-sm flex-column flex-md-row align-items-center">
-                    <div class="unit-left">
-                        <div class="quote-modern-figure">
-                            <img src="eximani-images/user-6-62x62.jpg" alt="user-6-62x62" width="62" height="62" />
-                        </div>
-                    </div>
-                    <div class="unit-body">
-                        <div class="quote-modern-author">M. Varadharajan, Mumbai</div>
-                        <div class="quote-modern-status">India</div>
-                    </div>
-                </div>
-            </article>
-        </div>
-
-</section>
-<!-- Banner-->
-<!-- Section Product and Clients-->
-<section class="section section-sm section-first bg-default text-md-left">
-    <div class="container">
-        <div class="row row-30 justify-content-center align-items-md-center">
-            <div class="col-sm-8 col-md-5 col-xl-6">
-                <div class="inset-xl-right-20">
-                    <div class="product-wrap-1 bg-image-1 block-1">
-                        <!-- Owl Carousel-->
-                        <div class="owl-carousel owl-style-5" data-items="1" data-margin="30" data-dots="true" data-autoplay="true">
-                            <article class="product-creative">
-                                <div class="product-figure">
-                                    <img src="~/eximani-images/product-slide/star-anise.jpg" alt="star-anise" title="Star Anise" width="470" height="324" />
-                                </div>
-                                <h4 class="product-creative-title"><a href="/EximaniProduct" title="Star Anise">Star Anise</a></h4>
-                                <div class="product-creative-price-wrap">
-                                </div>
-                            </article>
-                            <article class="product-creative">
-                                <div class="product-figure">
-                                    <img src="~/eximani-images/product-slide/cassia.jpg" alt="cassia" title="Cassia" width="470" height="324" />
-                                </div>
-                                <h4 class="product-creative-title"><a href="/EximaniProduct" title="Cassia"></a>Cassia</h4>
-                                <div class="product-creative-price-wrap">
-                                </div>
-                            </article>
-
-                            <article class="product-creative">
-                                <div class="product-figure">
-                                    <img src="~/eximani-images/product-slide/reddish-joss-powder.jpg" alt="reddish-joss-powder" title="Reddish Joss Powder" width="470" height="324" />
-                                </div>
-                                <h4 class="product-creative-title"><a href="/EximaniProduct" title="Joss Powder">Joss Powder</a></h4>
-                                <div class="product-creative-price-wrap">
-                                </div>
-                            </article>
-
-                            <article class="product-creative">
-                                <div class="product-figure">
-                                    <img src="~/eximani-images/product-slide/wood-powder.jpeg" alt="wood-powder" title="Wood Powder" width="470" height="324" />
-                                </div>
-                                <h4 class="product-creative-title"><a href="/EximaniProduct" title="Wood Powder">Wood Powder</a></h4>
-                                <div class="product-creative-price-wrap">
-                                </div>
-                            </article>
-                            <article class="product-creative">
-                                <div class="product-figure">
-                                    <img src="~/eximani-images/product-slide/bamboo-sticks.jpg" alt="bamboo-sticks" title="Bamboo sticks" width="470" height="324" />
-                                </div>
-                                <h4 class="product-creative-title"><a href="/EximaniProduct" title="Bamboo Sticks">Bamboo Sticks</a></h4>
-                                <div class="product-creative-price-wrap">
-                                </div>
-                            </article>
-                            <article class="product-creative">
-                                <div class="product-figure">
-                                    <img src="~/eximani-images/product-slide/incense-sticks.jpg" alt="incense-sticks" title="Incense sticks" width="470" height="324" />
-                                </div>
-                                <h4 class="product-creative-title"><a href="/EximaniProduct" title="Incense Sticks">Incense Sticks</a></h4>
-                                <div class="product-creative-price-wrap">
-                                </div>
-                            </article>
+                    <div class="col-5 d-flex align-items-center">
+                        <img src="./img/watch.svg" alt="" />
+                        <div class="text">
+                            <div>14:00 - 18:00,</div>
+                            <div>Thứ 7 ngày 17/12/2022</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-7 col-xl-6">
-                <h4 class="title-style-1 wow fadeInRight">Why Choose Us ??</h4>
-                <h2 class="text-spacing-20 wow fadeInRight" data-wow-delay=".1s">We are Best</h2>
-                <!-- Bootstrap collapse-->
-                <div class="card-group-custom card-group-custom-1 card-group-corporate" id="accordion1" role="tablist" aria-multiselectable="false">
-                    <!-- Bootstrap card-->
-                    <article class="card card-custom card-corporate wow fadeInRight" data-wow-delay=".2s">
-                        <div class="card-header" role="tab">
-                            <div class="card-title">
-                                <a id="accordion1-card-head-vinxbnny" data-toggle="collapse" data-parent="#accordion1" href="#accordion1-card-body-pxkhxtgg" aria-controls="accordion1-card-body-pxkhxtgg" aria-expanded="true" role="button">
-                                    Our &quot;Mission&quot;
-                                    <div class="card-arrow">
-                                        <div class="icon"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="collapse show" id="accordion1-card-body-pxkhxtgg" aria-labelledby="accordion1-card-head-vinxbnny" data-parent="#accordion1" role="tabpanel">
-                            <div class="card-body">
-                                <p>"Contribute for high quality of product and services for the betterment of society."</p>
-                            </div>
-                        </div>
-                    </article>
-                    <!-- Bootstrap card-->
-                    <article class="card card-custom card-corporate wow fadeInRight" data-wow-delay=".3s">
-                        <div class="card-header" role="tab">
-                            <div class="card-title">
-                                <a class="collapsed" id="accordion1-card-head-jaaceytc" data-toggle="collapse" data-parent="#accordion1" href="#accordion1-card-body-krbiajls" aria-controls="accordion1-card-body-krbiajls" aria-expanded="false" role="button">
-                                    Our Vision
-                                    <div class="card-arrow">
-                                        <div class="icon"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="collapse" id="accordion1-card-body-krbiajls" aria-labelledby="accordion1-card-head-jaaceytc" data-parent="#accordion1" role="tabpanel">
-                            <div class="card-body">
-                                <p>EXIMANI VIETNAM aims to remain trading partners of the world entrepreneurs to reap success.</p>
-                                <p>Our passion is to interact with the global trade to exchange innovative ideas and offer sharing our strengths to create better products. We intend to emerge as a destination of the world to play a major role in developing good products provided from Vietnam.</p>
-                            </div>
-                        </div>
-                    </article>
-                    <!-- Bootstrap card-->
-                    <article class="card card-custom card-corporate wow fadeInRight" data-wow-delay=".4s">
-                        <div class="card-header" role="tab">
-                            <div class="card-title">
-                                <a class="collapsed" id="accordion1-card-head-vikedqad" data-toggle="collapse" data-parent="#accordion1" href="#accordion1-card-body-wgyktlpb" aria-controls="accordion1-card-body-wgyktlpb" aria-expanded="false" role="button">
-                                    Why Us?
-                                    <div class="card-arrow">
-                                        <div class="icon"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="collapse" id="accordion1-card-body-wgyktlpb" aria-labelledby="accordion1-card-head-vikedqad" data-parent="#accordion1" role="tabpanel">
-                            <div class="card-body">
-                                <h5>&quot;GOOD PRODUCT, GOOD SERVICE&quot;</h5>
-                                <p>With decades of establishing and operating, we have built up a wide and strong network of loyal customers throughout countries in Europe, Middle East, Asia, and Africa also.</p>
-                            </div>
-                        </div>
-                    </article>
+
+            <div class="maps">
+                <div class="d-flex justify-content-around">
+                    <div class="box">Screen</div>
+                    <div class="box">Sân khấu</div>
+                    <div class="box">Screen</div>
                 </div>
+                <div class="maps-img">
+                    <img src="./img/maps.png" alt="" />
+                </div>
+            </div>
+
+            <div class="tickets">
+                <div class="d-flex justify-content-center gap-5">
+                    <div class="box">
+                        <img src="./img/ticket_gold.png" alt="" class="w-full" />
+                        <div>
+                            <img src="./img/arrowGreen.svg" alt="" width="10px" />
+                            Vé tham dự hội thảo
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <img src="./img/ticket_diamond.png" alt="" class="w-full" />
+                        <div>
+                            <img src="./img/arrowGreen.svg" alt="" width="10px" />
+                            Vé tham dự hội thảo
+                        </div>
+                        <div>
+                            <img src="./img/arrowGreen.svg" alt="" width="10px" />
+                            Nước uống
+                        </div>
+                        <div>
+                            <img src="./img/arrowGreen.svg" alt="" width="10px" />
+                            Vị trí gần sân khấu
+                        </div>
+                        <div>
+                            <img src="./img/arrowGreen.svg" alt="" width="10px" />
+                            Gift bag (sổ + bút)
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="d-flex justify-content-center">
+                    <div class="box">
+                        <img src="./img/ticket_platinum.png" alt="" class="w-full" />
+                        <div>
+                            <img src="./img/arrowGreen.svg" alt="" width="10px" />
+                            Vé tham dự hội thảo
+                        </div>
+                        <div>
+                            <img src="./img/arrowGreen.svg" alt="" width="10px" />
+                            Nước uống
+                        </div>
+                        <div>
+                            <img src="./img/arrowGreen.svg" alt="" width="10px" />
+                            Vị trí hàng đầu
+                        </div>
+                        <div>
+                            <img src="./img/arrowGreen.svg" alt="" width="10px" />
+                            Đồ ăn nhẹ
+                        </div>
+                        <div>
+                            <img src="./img/arrowGreen.svg" alt="" width="10px" />
+                            Gift bag (sổ + bút)
+                        </div>
+                        <div>
+                            <img src="./img/arrowGreen.svg" alt="" width="10px" />
+                            Chụp ảnh cùng diễn giả
+                        </div>
+                        <div>
+                            <img src="./img/arrowGreen.svg" alt="" width="10px" />
+                            Voucher giảm giá 1 triệu cho khóa học Livestream của Kolin
+                            Academy
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="form" class="form-register">
+                <div class="title text-center">
+                    <img src="./img/dang_ky.png" alt="" />
+                </div>
+
+                <form id="contact-form">
+                    <div class="form-submit">
+                        <input type="text" id="ct_full_name" placeholder="Họ và tên" />
+                        <input type="email" id="ct_email" placeholder="Email" />
+                        <input type="text" id="ct_sdt" placeholder="Số điện thoại" />
+                        <select id="ct_ticket_type">
+                            <option value="" disabled selected>Chọn loại vé</option>
+                            <option value="1">@TicketType.Gold.DisplayName()</option>
+                            <option value="2">@TicketType.Diamond.DisplayName()</option>
+                            <option value="3">@TicketType.Platium.DisplayName()</option>
+                        </select>
+                        <input type="number" min="1" id="ct_ticket_number" placeholder="Số lượng vé" />
+                        <input type="text" id="ct_ticket_address" placeholder="Địa chỉ nhận vé" />
+                        <input type="text" id="ct_ticket_question" placeholder="Câu hỏi dành cho diễn giả" />
+
+                        <div class="text-center">
+                            <button type="button" id="btn-contact-submit">ĐĂNG KÝ NGAY</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="sale-off text-center">
+                <div class="title">
+                    <img src="./img/uu_dai.png" alt="" />
+                </div>
+                <div class="d-flex justify-content-center gap-5">
+                    <div class="box">
+                        MUA 4 <br />
+                        TẶNG 1
+                    </div>
+                    <div class="box">
+                        MUA 3 <br />
+                        GIẢM 10%
+                    </div>
+                </div>
+
+                <div class="info-bank">
+                    <p><strong>THÔNG TIN TÀI KHOẢN:</strong></p>
+                    <p>NGÂN HÀNG: <strong>VP BANK</strong></p>
+                    <p>STK: <strong>881 666 666 666 66</strong></p>
+                    <p>CHỦ TK:<strong>VŨ DIỆU THÚY</strong></p>
+                </div>
+                <br />
+                <div class="content-send">
+                    <strong> NỘI DUNG CK: TÊN_SDT_HẠNG VÉ_SỐ LƯỢNG VÉ </strong>
+                </div>
+                <br />
+
+                <div class="text-center">
+                    <button>
+                        <a href="#form">ĐĂNG KÝ NGAY</a>
+                    </button>
+                </div>
+                <br />
             </div>
         </div>
     </div>
-</section>
-<!-- Our Blog-->
 
-<section class="section">
-    <!-- RD Google Map-->
-    @*<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14765.054604550196!2d70.7688101!3d22.3058665!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe417be0259c2f47!2sJasal%20Complex!5e0!3m2!1sen!2sin!4v1594985253132!5m2!1sen!2sin" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>*@
-    <div class="mapouter">
-        <div class="gmap_canvas">
-            <iframe width="1200" height="500" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.1437767637212!2d105.85712761404584!3d21.026932385999395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab82aa3ac5db%3A0x3d25c838e60257c9!2sEximani%20Vietnam%20Co%20Ltd!5e0!3m2!1svi!2s!4v1618386552949!5m2!1svi!2s" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://fmovies2.org"></a><br>
-            <style>
-                .mapouter {
-                    position: relative;
-                    text-align: right;
-                    height: 500px;
-                    width: 100%;
-                }
-            </style>
-            <style>
-                .gmap_canvas {
-                    overflow: hidden;
-                    background: none !important;
-                    height: 500px;
-                    width: 100%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-            </style>
+    <div class="footer">
+        <div class="row d-flex align-items-center">
+            <div class="col-6">
+                <img src="./img/logo_footer.png" alt="" class="logo" />
+            </div>
+            <div class="col-6">
+                <div class="d-flex align-items-center">
+                    <img src="./img/location.svg" alt="" width="40px" />
+                    <div class="text">
+                        Hanoi Towers, 49 Hai Bà Trưng, Hoàn Kiếm, Hà Nội
+                    </div>
+                </div>
+                <p>Hotline: <span>097 3835859</span></p>
+            </div>
         </div>
     </div>
-
-</section>
-<div class="snackbars" id="form-output-global"></div>
+</div>
+@section Scripts{
+   
+    <script src="~/js/contact.js"></script>
+}

@@ -1,4 +1,5 @@
-﻿@model List<ContactListItemViewModel>
+﻿@using LandingPage.Service.Dto.Contact
+@model List<CustomerContactDto>
 @{
     Layout = "_AdminLayout";
 }
@@ -22,23 +23,29 @@
             <table id="blog-table" class="table table-striped">
                 <thead>
                     <tr>
-                        <th style="width: 5%">STT</th>
-                        <th style="width: 30%">FullName</th>
+                        <th style="width: 80px">STT</th>
+                        <th style="width: 200px">Họ và tên</th>
                         <th>Email</th>
-                        <th>PhoneNumber</th>
+                        <th style="width:120px">SDT</th>
+                        <th style="width:120px">Loại vé</th>
+                        <th style="width:120px">Số lượng vé</th>
+                        <th>Địa chỉ nhận vé</th>
                         <th style="text-align: center;width: 150px">CreatedDate</th>
                         <th style="text-align:center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @for (var i = 0; i < Model.Count;i++)
                     {
-                        <tr id="record-@item.Id">
-                            <td>@item.Index</td>
-                            <td>@item.FullName</td>
-                            <td>@item.Email</td>
-                            <td>@item.PhoneNumber</td>
-                            <td style="text-align: center">@item.CreatedDate</td>
+                        <tr id="record-@Model[i].Id">
+                            <td>@(i+1)</td>
+                            <td>@Model[i].FullName</td>
+                            <td>@Model[i].Email</td>
+                            <td>@Model[i].PhoneNumber</td>
+                            <td>@Model[i].TicketType</td>
+                            <td>@Model[i].TicketAmount</td>
+                            <td>@Model[i].Address</td>
+                            <td style="text-align: center">@Model[i].CreatedDate</td>
 
                             <td style="text-align: center">
                                 <div class="btn-group">
@@ -46,10 +53,10 @@
                                         Action
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <button class="dropdown-item view-detail-contact-btn" type="button" contactId="@item.Id" data-toggle="modal" data-target="#contact-detail-modal">
+                                        <button class="dropdown-item view-detail-contact-btn" type="button" contactId="@Model[i].Id" data-toggle="modal" data-target="#contact-detail-modal">
                                             ViewDetail
                                         </button>
-                                        <button class="dropdown-item delete-contact-btn" type="button" contactId="@item.Id">
+                                        <button class="dropdown-item delete-contact-btn" type="button" contactId="@Model[i].Id">
                                             Delete
                                         </button>
                                     </div>
@@ -63,7 +70,7 @@
     </div>
 </div>
 
-<!-- Modal Crop Sub Product Image -->
+<!-- Modal -->
 <div class="modal fade" id="contact-detail-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -75,19 +82,28 @@
             </div>
             <div class="modal-body" style="min-width:650px;min-height:500px">
                 <div class="row">
-                    <div><strong>CustomerName: </strong><p id="ctm-name"></p></div>
+                    <div><strong>Họ và tên: </strong><p id="ctm-name"></p></div>
                 </div>
                 <div class="row">
                     <div><strong>Email: </strong><p id="ctm-email"></div>
                 </div>
                 <div class="row">
-                    <div><strong>PhoneNumber: </strong><p id="ctm-phone"></div>
+                    <div><strong>Số điện thoại: </strong><p id="ctm-phone"></div>
+                </div>  
+                <div class="row">
+                    <div><strong>Loại vé: </strong><p id="ctm-ticket-type"></div>
+                </div>  
+                <div class="row">
+                    <div><strong>Số lượng vé: </strong><p id="ctm-ticket-amount"></div>
+                </div>  
+                <div class="row">
+                    <div><strong>Địa chỉ nhận: </strong><p id="ctm-address"></div>
+                </div>  
+                <div class="row">
+                    <div><strong>Câu hỏi: </strong><p id="ctm-question"></div>
                 </div>
                 <div class="row">
-                    <div><strong>Message: </strong><p id="ctm-message"></div>
-                </div>
-                <div class="row">
-                    <div><strong>CreatedDate: </strong><p id="ctm-createdDate"></div>
+                    <div><strong>CreatedDate: </strong><p id="ctm-created-date"></div>
                 </div>
             </div>
             <div class="modal-footer">

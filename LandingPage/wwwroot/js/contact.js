@@ -1,37 +1,41 @@
 ﻿$(document).ready(function () {
     $('#btn-contact-submit').on("click", function () {
+        debugger
         $("#btn-contact-submit").prop('disabled', true);
-        var resultValidate = validateForm();
+        //var resultValidate = validateForm();
+        var resultValidate = null;
         if (resultValidate == null) {
             var contact = {};
-            contact.firstName = $("#contact-first-name-2").val();
-            contact.lastName = $("#contact-last-name-2").val();
-            contact.email = $("#contact-email-2").val();
-            contact.phoneNumber = $("#contact-phone-2").val();
-            contact.message = $("#contact-message-2").val();
+            contact.fullName = $("#ct_full_name").val();
+            contact.ticketType = parseInt($("#ct_ticket_type").val());
+            contact.email = $("#ct_email").val();
+            contact.phoneNumber = $("#ct_sdt").val();
+            contact.ticketAmount = parseInt($("#ct_ticket_number").val());
+            contact.address = $("#ct_ticket_address").val();
+            contact.question = $("#ct_ticket_question").val();
             try {
                 $.ajax({
                     type: 'POST',
-                    url: '/EximaniContact/ReceiveContact',
+                    url: '/Home/ReceiveContact',
                     contentType: "application/json",
                     data: JSON.stringify(contact),
                     async: false,
                     success: function (res) {
                         if (res.status == 200) {
                             $("#btn-contact-submit").prop('disabled', false);
-                            alert("Success");
-                            window.location = "/EximaniContact"
+                            alert("Bạn đã đăng ký thành công!");
+                            $('#contact-form').trigger("reset");
                         } else {
-                            alert("Error! An error occurred. Please try again later");
+                            alert("Đã có lỗi xảy ra!");
                         }
                     },
                     error: function (err) {
                         console.log(err);
-                        alert("Error! An error occurred. Please try again later");
+                        alert("Đã có lỗi xảy ra!");
                     }
                 })
             } catch (e) {
-                alert("Error! An error occurred. Please try again later");
+                alert("Đã có lỗi xảy ra!");
                 console.log(e);
             }
         } else {

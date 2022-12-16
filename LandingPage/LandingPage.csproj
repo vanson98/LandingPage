@@ -8,14 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\eximani-product-images\**" />
     <Compile Remove="wwwroot\images\**" />
+    <Content Remove="wwwroot\eximani-product-images\**" />
     <Content Remove="wwwroot\images\**" />
+    <EmbeddedResource Remove="wwwroot\eximani-product-images\**" />
     <EmbeddedResource Remove="wwwroot\images\**" />
+    <None Remove="wwwroot\eximani-product-images\**" />
     <None Remove="wwwroot\images\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\eximani-product-images\" />
     <Folder Include="wwwroot\upload\" />
   </ItemGroup>
 

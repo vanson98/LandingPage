@@ -1,4 +1,6 @@
-﻿using LandingPage.Domain.EF;
+﻿using LadingPage.Common.Enums;
+using LadingPage.Common.Enums.Extension;
+using LandingPage.Domain.EF;
 using LandingPage.Domain.Entities;
 using LandingPage.Service.Dto.Contact;
 using LandingPage.Service.Interfaces;
@@ -41,19 +43,24 @@ namespace LandingPage.Service.Services
             return await _dbContext.CustomerContacts
                 .Where(c =>
                     searchText == null || searchText == "" ||
-                    c.FirstName.Contains(searchText) || 
-                    c.LastName.Contains(searchText) ||
+                    c.FullName.Contains(searchText) || 
+                    c.Address.Contains(searchText) ||
+                    c.Question.Contains(searchText) ||
                     c.PhoneNumber.Contains(searchText) ||
                     c.Email.Contains(searchText) 
                 )
                 .OrderByDescending(c=>c.CreatedDate)
-                .Select(c => new CustomerContactDto()
+                .Select((c) => new CustomerContactDto()
                 {
                     Email = c.Email,
-                    FullName = c.FirstName + " " + c.LastName,
+                    FullName =c.FullName,
                     PhoneNumber = c.PhoneNumber,
-                    CreatedDate = c.CreatedDate.Value,
-                    Id = c.Id
+                    CreatedDate = c.CreatedDate.Value.ToString("dd/MM/yyyy"),
+                    Address = c.Address,
+                    Question = c.Question,  
+                    TicketAmount = c.TicketAmount,
+                    TicketType = c.TicketType.DisplayName(),
+                    Id = c.Id,
                 }).ToListAsync();
         }
 
@@ -62,24 +69,30 @@ namespace LandingPage.Service.Services
             return await _dbContext.CustomerContacts.Where(c => c.Id == id).Select(c => new CustomerContactDto()
             {
                 Email = c.Email,
-                FullName = c.FirstName + c.LastName,
+                FullName = c.FullName,
                 PhoneNumber = c.PhoneNumber,
-                CreatedDate = c.CreatedDate.Value,
-                Message = c.Message
+                CreatedDate = c.CreatedDate.Value.ToString("dd/MM/yyyy"),
+                Address = c.Address,
+                Question = c.Question,
+                TicketAmount = c.TicketAmount,
+                TicketType = c.TicketType.DisplayName(),
+                Id = c.Id
             }).FirstOrDefaultAsync();
         }
 
-        public async Task<CustomerContact> SaveCustomerContact(CustomerContactDto request)
+        public async Task<CustomerContact> SaveCustomerContact(SaveContactModel request)
         {
             try
             {
                 var contactModel = new CustomerContact()
                 {
-                    FirstName = request.FirstName,
-                    LastName = request.LastName,
+                    FullName = request.FullName,
                     PhoneNumber = request.PhoneNumber,
                     Email = request.Email,
-                    Message = request.Message,
+                    TicketType=  (TicketType)request.TicketType,
+                    TicketAmount= request.TicketAmount,
+                    Address = request.Address,  
+                    Question= request.Question,
                     CreatedDate = DateTime.Now
                 };
                 var ct = await _dbContext.CustomerContacts.AddAsync(contactModel);
@@ -93,7 +106,6 @@ namespace LandingPage.Service.Services
             catch (Exception e)
             {
                 return null;
-                throw e;
             }
         }
     }
