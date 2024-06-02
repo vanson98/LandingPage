@@ -1,47 +1,47 @@
 ﻿$(document).ready(function () {
     $('#btn-contact-submit').on("click", function () {
-        debugger
         $("#btn-contact-submit").prop('disabled', true);
         //var resultValidate = validateForm();
         var resultValidate = null;
-        if (resultValidate == null) {
-            var contact = {};
-            contact.fullName = $("#ct_full_name").val();
-            contact.ticketType = parseInt($("#ct_ticket_type").val());
-            contact.email = $("#ct_email").val();
-            contact.phoneNumber = $("#ct_sdt").val();
-            contact.ticketAmount = parseInt($("#ct_ticket_number").val());
-            contact.address = $("#ct_ticket_address").val();
-            contact.question = $("#ct_ticket_question").val();
-            try {
-                $.ajax({
-                    type: 'POST',
-                    url: '/Home/ReceiveContact',
-                    contentType: "application/json",
-                    data: JSON.stringify(contact),
-                    async: false,
-                    success: function (res) {
-                        if (res.status == 200) {
-                            $("#btn-contact-submit").prop('disabled', false);
-                            alert("Bạn đã đăng ký thành công!");
-                            $('#contact-form').trigger("reset");
-                        } else {
-                            alert("Đã có lỗi xảy ra!");
-                        }
-                    },
-                    error: function (err) {
-                        console.log(err);
-                        alert("Đã có lỗi xảy ra!");
-                    }
-                })
-            } catch (e) {
-                alert("Đã có lỗi xảy ra!");
-                console.log(e);
-            }
-        } else {
-            $("#btn-contact-submit").prop('disabled', false);
-            alert(resultValidate);
-        }
+        alert("Sự kiện này đã không còn slot đăng ký. Cảm ơn bạn đã quan tâm!");
+        //if (resultValidate == null) {
+        //    var contact = {};
+        //    contact.fullName = $("#ct_full_name").val();
+        //    contact.ticketType = parseInt($("#ct_ticket_type").val());
+        //    contact.email = $("#ct_email").val();
+        //    contact.phoneNumber = $("#ct_sdt").val();
+        //    contact.ticketAmount = parseInt($("#ct_ticket_number").val());
+        //    contact.address = $("#ct_ticket_address").val();
+        //    contact.question = $("#ct_ticket_question").val();
+        //    try {
+        //        $.ajax({
+        //            type: 'POST',
+        //            url: '/Home/ReceiveContact',
+        //            contentType: "application/json",
+        //            data: JSON.stringify(contact),
+        //            async: false,
+        //            success: function (res) {
+        //                if (res.status == 200) {
+        //                    $("#btn-contact-submit").prop('disabled', false);
+        //                    alert("Bạn đã đăng ký thành công!");
+        //                    $('#contact-form').trigger("reset");
+        //                } else {
+        //                    alert("Đã có lỗi xảy ra!");
+        //                }
+        //            },
+        //            error: function (err) {
+        //                console.log(err);
+        //                alert("Đã có lỗi xảy ra!");
+        //            }
+        //        })
+        //    } catch (e) {
+        //        alert("Đã có lỗi xảy ra!");
+        //        console.log(e);
+        //    }
+        //} else {
+        //    $("#btn-contact-submit").prop('disabled', false);
+        //    alert(resultValidate);
+        //}
 
     });
 
