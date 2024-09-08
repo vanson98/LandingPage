@@ -351,3 +351,5 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 /LandingPage/wwwroot/eximani-product-images
+/LandingPage/wwwroot/eximani-images
+/LandingPage/wwwroot/upload

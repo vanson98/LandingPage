@@ -17,8 +17,8 @@ namespace LandingPage.Controllers
         private IProductService _productService;
         private IConfiguration Configuration;
 
-        public HomeController(ILogger<HomeController> logger, 
-            IProductService productService, 
+        public HomeController(ILogger<HomeController> logger,
+            IProductService productService,
             IConfiguration configuration)
         {
             _logger = logger;
@@ -27,26 +27,34 @@ namespace LandingPage.Controllers
         }
 
         public IActionResult Index()
-        { 
-            ViewBag.Title = Configuration["SeoConfig:Home:Title"];
-            ViewBag.KeyWords = Configuration["SeoConfig:Home:KeyWords"];
-            ViewBag.Descriptions = Configuration["SeoConfig:Home:Description"];
+        {
             var listExProdCategory = new List<ExhibitProductCategoryViewModel>();
-            var listProductCategory = _productService.GetAllProductByCategoryOnView();
-            foreach (var pc in listProductCategory)
+            try
             {
-                var exProdCate = new ExhibitProductCategoryViewModel()
+                ViewBag.Title = Configuration["SeoConfig:Home:Title"];
+                ViewBag.KeyWords = Configuration["SeoConfig:Home:KeyWords"];
+                ViewBag.Descriptions = Configuration["SeoConfig:Home:Description"];
+                var listProductCategory = _productService.GetAllProductByCategoryOnView();
+                foreach (var pc in listProductCategory)
                 {
-                    CategoryId = pc.CategoryId,
-                    CategoryName = pc.CategoryName,
-                    ListExhibitProduct = pc.ListExhibitProduct.Select(p => new ExhibitProductViewModel()
+                    var exProdCate = new ExhibitProductCategoryViewModel()
                     {
-                        UrlMainImage = p.UrlMainImage,
-                        LinkDetailProduct = Url.Action("Detail", "EximaniProduct", new { name = p.ProductName.GetSeoName() + "-" + p.ProductId }),
-                        ProductName = p.ProductName
-                    }).ToArray()
-                };
-                listExProdCategory.Add(exProdCate);
+                        CategoryId = pc.CategoryId,
+                        CategoryName = pc.CategoryName,
+                        ListExhibitProduct = pc.ListExhibitProduct.Select(p => new ExhibitProductViewModel()
+                        {
+                            UrlMainImage = p.UrlMainImage,
+                            LinkDetailProduct = Url.Action("Detail", "EximaniProduct", new { name = p.ProductName.GetSeoName() + "-" + p.ProductId }),
+                            ProductName = p.ProductName
+                        }).ToArray()
+                    };
+                    listExProdCategory.Add(exProdCate);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred in Privacy action");
             }
             return View(listExProdCategory);
         }
